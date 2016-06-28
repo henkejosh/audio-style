@@ -26,74 +26,75 @@ Replicate the SoundCloud app's key features, functionality, and overall aestethi
 
 ## Design Docs
 * [View Wireframes][views]
-* [React Components][components]
+<!-- * [React Components][components]
 * [Flux Cycles][flux-cycles]
 * [API endpoints][api-endpoints]
-* [DB schema][schema]
+* [DB schema][schema] -->
 
 [views]: docs/views.md
-[components]: docs/components.md
+<!-- [components]: docs/components.md
 [flux-cycles]: docs/flux-cycles.md
 [api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+[schema]: docs/schema.md -->
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup and Front End User Authentication (6/28)
+### Phase 1: Backend setup and Front End User Authentication 
 
 **Objective:** Functioning rails project with front-end Authentication
 
-- [ ] create new project
-- [ ] create `User` model
-- [ ] authentication
-- [ ] user signup/signin pages
-- [ ] blank landing page after signin
+- [ ] Host on Heroku
+- [ ] Rails User JSON Api
+- [ ] Front-End Authentication
+- [ ] Style front-end Authentication
+- [ ] Guest demo login
 
-### Phase 2: Songs and Comments Models functional. (6/30)
+### Phase 2: Songs and Comments Models functional
 
 **Objective:** Songs and Comments can be created, read, edited and destroyed through
 the API.
 
-- [ ] create `Song`, 'Comment' models
-- [ ] seed the database with a small amount of test data
-- [ ] CRUD API for each (controllers)
-- [ ] jBuilder views for notes
-- [ ] setup Webpack & Flux scaffold
-- [ ] setup `APIUtil` to interact with the API
-- [ ] test out API interaction in the console.
+- [ ] Project CRUD JSON API
+- [ ] Some Project Seed Data
+- [ ] Project Index component
+- [ ] Project Item Component
+- [ ] Project Detail Component
+- [ ] Style all Project Components
 
-### Phase 3: Flux Architecture and Router (7/3)
+### Phase 3: Flux Architecture and Router
 
 **Objective:** Songs/Comments can be created, read, edited and destroyed with the user interface.
 
-- [ ] setup the flux loop with skeleton files
-- [ ] setup React Router
-- implement each note component, building out the flux loop as needed.
-  - [ ] `...`
-- [ ] save to the DB when the form loses focus or is left idle
-  after editing.
+- [ ] Navbar
+- [ ] Style Navbar
+- [ ] Homepage Components w/ featured Components
+- [ ] Style Homepage
 
-### Phase 4: Start Styling (7/4)
+### Phase 4: Start Styling
 
 **Objective:** Existing pages (including signup/signin) will look good.
 
-- [ ] create a basic style guide
-- [ ] position elements on the page
-- [ ] add basic colors & styles
+- [ ] Search Components
+- [ ] Discover Components
+- [ ] Style Search and Discovery
 
-### Phase 5: Allow Complex Styling in User Profiles (7/7)
+### Phase 5: Allow Complex Styling in User Profiles
 
 **objective:** Enable complex styling of profile pages.
 
-- [ ] Use Rails helpers to sanitize HTML before rendering.
+- [ ] Project Backing and rewards components
+- [ ] Style project backing and rewards
 
-### Phase 6: Styling Cleanup and Seeding (7/9)
+### Phase 6: Styling Cleanup and Seeding
 
 **objective:** Make the site feel more cohesive and awesome.
 
-- [ ] Get feedback on my UI from others
-- [ ] Refactor HTML classes & CSS rules
-- [ ] Add modals, transitions, and other styling flourishes.
+- [ ] Seed Everything
+- [ ] User Profile/Dashboard
+- [ ] Style profile/dashboard
+
+### Phase 7:
+- [ ] Production Readme
 
 ### Bonus Features (TBD)
 - [ ] Wave Forms
