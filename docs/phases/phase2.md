@@ -1,4 +1,12 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days)
+# Phase 2:
+* Project CRUD JSON API
+* Some Project Seed Data
+* Project Index Component
+* Project Item Component
+* Project Detail Component
+* Style all Project Components
+
+<!-- # Phase 2: Flux Architecture and Note CRUD (2 days)
 
 ## Rails
 ### Models
@@ -21,9 +29,9 @@
 * ApiActions.receiveSingleNote
 * ApiActions.deleteNote
 * NoteActions.fetchAllNotes -> triggers ApiUtil
-* NoteActions.fetchSingleNote 
+* NoteActions.fetchSingleNote
 * NoteActions.createNote
-* NoteActions.editNote 
+* NoteActions.editNote
 * NoteActions.destroyNote
 
 ### ApiUtil
@@ -35,4 +43,4 @@
 
 ## Gems/Libraries
 * Flux Dispatcher (npm)
-* Twitter Bootstrap
+* Twitter Bootstrap -->

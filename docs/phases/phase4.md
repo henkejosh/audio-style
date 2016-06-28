@@ -1,4 +1,9 @@
-# Phase 4: Allow Complex Styling in Notes (1 day)
+# Phase 4:
+* Search Components
+* Discover Components
+* Style search and discovery
+
+<!-- # Phase 4: Allow Complex Styling in Notes (1 day)
 
 ## Rails
 ### Models
@@ -15,4 +20,4 @@
 ### Actions
 
 ## Gems/Libraries
-* react-quill (npm)
+* react-quill (npm) -->

@@ -1,4 +1,8 @@
-# Phase 5: Reminders and Garbage Collection
+# Phase 5:
+* Project Backing and rewards components
+* Style project backing and rewards
+
+<!-- # Phase 5: Reminders and Garbage Collection
 
 ## Rails
 ### Models
@@ -37,4 +41,4 @@
 * ApiUtil.updateReminder
 * ApiUtil.destroyReminder
 
-## Gems/Libraries
+## Gems/Libraries -->

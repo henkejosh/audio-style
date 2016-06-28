@@ -1,4 +1,10 @@
-# Phase 3: Notebooks and Tags (2 days)
+# Phase 3:
+* Navbar
+* Style Navbar
+* Homepage Component with featured components
+* Style Homepage
+
+<!-- # Phase 3: Notebooks and Tags (2 days)
 
 ## Rails
 ### Models
@@ -41,4 +47,4 @@
 * ApiUtil.editNotebook
 * ApiUtil.destroyNotebook
 
-## Gems/Libraries
+## Gems/Libraries -->
