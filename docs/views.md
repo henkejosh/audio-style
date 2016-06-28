@@ -1,5 +1,11 @@
 # View Wireframes
 
+## Home Pages
+![home-page]
+
+## User Profile
+![user-profile]
+
 ## New User
 ![new-user]
 
@@ -15,6 +21,8 @@
 ## NotebookForm
 ![notebook-form]
 
+[home-page]: ./wireframes/new_user.png
+[user-profile]: ./wireframes/new_user.png
 [new-user]: ./wireframes/new_user.png
 [new-session]: ./wireframes/new_session.png
 [notes]: ./wireframes/root_notes.png
