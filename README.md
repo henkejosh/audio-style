@@ -6,7 +6,7 @@
 
 ## Minimum Viable Product
 
-Replicate the SoundCloud app's key features, functionality, and overall aestethic. By the end of week 9, this app will satisfy the following criteria:
+Replicate the SoundCloud app's key features, functionality, and overall aesthetic. By the end of week 9, this app will satisfy the following criteria:
 
 - [ ] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login
@@ -26,20 +26,20 @@ Replicate the SoundCloud app's key features, functionality, and overall aestethi
 
 ## Design Docs
 * [View Wireframes][views]
-<!-- * [React Components][components]
-* [Flux Cycles][flux-cycles]
-* [API endpoints][api-endpoints]
-* [DB schema][schema] -->
+* [React Components -- not started][components]
+* [Flux Cycles -- not started][flux-cycles]
+* [API endpoints -- started][api-endpoints]
+* [DB schema -- not started][schema]
 
 [views]: docs/views.md
-<!-- [components]: docs/components.md
+[components]: docs/components.md
 [flux-cycles]: docs/flux-cycles.md
 [api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md -->
+[schema]: docs/schema.md
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup and Front End User Authentication 
+### Phase 1: Backend setup and Front End User Authentication
 
 **Objective:** Functioning rails project with front-end Authentication
 

@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+
 	def create
 		@user = User.new(user_params)
 
@@ -8,6 +9,9 @@ class Api::UsersController < ApplicationController
 		else
 			render json: @user.errors, status: 422
 		end
+	end
+
+	def update
 	end
 
 	private
