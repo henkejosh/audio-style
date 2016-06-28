@@ -1,32 +1,29 @@
-# FresherNote
+# SoundCloud Clone
 
-[Heroku link][heroku] **Note:** This should be a link to your production site
+[Heroku link][heroku] **Note:** This **will** be a link to your production site
 
 [heroku]: http://www.herokuapp.com
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+Replicate the SoundCloud app's key features, functionality, and overall
+aestethic. By the end of week 9, this app will satisfy the following criteria:
 
 - [ ] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login
 - [ ] A production README, replacing this README (**NB**: check out the [sample production README](docs/production_readme.md) -- you'll write this later)
-- [ ] Notes
+- [ ] Comments
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
-- [ ] Notebooks for organizing notes
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
-- [ ] Tags for notes
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
-- [ ] Rich Text Editing of notes
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+- [ ] Song CRUD
+  - [ ] Ability to add, update, delete songs from a user's page
+- [ ] Continuous play while navigating the site
+  - [ ] Song display at bottom of page
+  - [ ] No loading issues while navigating (don't break stream!)
+- [ ] User Pages
+  - [ ] Links to followed artists
+  - [ ] Link to all personal playlists
 
 ## Design Docs
 * [View Wireframes][views]
