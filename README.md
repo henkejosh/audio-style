@@ -6,8 +6,7 @@
 
 ## Minimum Viable Product
 
-Replicate the SoundCloud app's key features, functionality, and overall
-aestethic. By the end of week 9, this app will satisfy the following criteria:
+Replicate the SoundCloud app's key features, functionality, and overall aestethic. By the end of week 9, this app will satisfy the following criteria:
 
 - [ ] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login

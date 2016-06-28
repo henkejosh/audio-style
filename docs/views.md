@@ -21,10 +21,10 @@
 ## NotebookForm
 ![notebook-form]
 
-[home-page]: ./wireframes/new_user.png
-[user-profile]: ./wireframes/new_user.png
-[new-user]: ./wireframes/new_user.png
+[home-page]: ./wireframes/Home.png
+[user-profile]: ./wireframes/user_profile.png
+<!-- [new-user]: ./wireframes/new_user.png
 [new-session]: ./wireframes/new_session.png
 [notes]: ./wireframes/root_notes.png
 [notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
+[notebook-form]: ./wireframes/notebook_form.png -->
