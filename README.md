@@ -48,50 +48,47 @@ Replicate the SoundCloud app's key features, functionality, and overall aestheti
 - [ ] Front-End Authentication
 - [ ] Style front-end Authentication
 - [ ] Guest demo login
+- [ ] Navbar
+- [ ] Style Navbar
 
 ### Phase 2: Songs and Comments Models functional
 
 **Objective:** Songs and Comments can be created, read, edited and destroyed through
 the API.
 
-- [ ] Project CRUD JSON API
-- [ ] Some Project Seed Data
-- [ ] Project Index component
-- [ ] Project Item Component
-- [ ] Project Detail Component
-- [ ] Style all Project Components
+- [ ] Song CRUD JSON API
+- [ ] Some Song Seed Data
+- [ ] Song Index component
+- [ ] Song Index Item Component
+- [ ] Style all Song Components
 
 ### Phase 3: Flux Architecture and Router
 
 **Objective:** Songs/Comments can be created, read, edited and destroyed with the user interface.
 
-- [ ] Navbar
-- [ ] Style Navbar
-- [ ] Homepage Components w/ featured Components
-- [ ] Style Homepage
+- [ ] Completed Song Playing feature
+- [ ] Comments component
+- [ ] Style comments
+- [ ] Style song playing feature
 
-### Phase 4: Start Styling
+### Phase 4: Search
 
-**Objective:** Existing pages (including signup/signin) will look good.
+**Objective:** Build and style fully functional search feature
 
 - [ ] Search Components
-- [ ] Discover Components
-- [ ] Style Search and Discovery
+- [ ] Style Search
 
-### Phase 5: Allow Complex Styling in User Profiles
+### Phase 5: User Profiles
 
-**objective:** Enable complex styling of profile pages.
+- [ ] User Profile page
+- [ ] Style profile page
+- [ ] Update search to include other Users
 
-- [ ] Project Backing and rewards components
-- [ ] Style project backing and rewards
-
-### Phase 6: Styling Cleanup and Seeding
+### Phase 6: Seeding
 
 **objective:** Make the site feel more cohesive and awesome.
 
 - [ ] Seed Everything
-- [ ] User Profile/Dashboard
-- [ ] Style profile/dashboard
 
 ### Phase 7:
 - [ ] Production Readme
