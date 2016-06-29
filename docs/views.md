@@ -7,10 +7,10 @@
 ![user-profile]
 
 ## Sign Up Form
-![sign-up-page]
+![sign-up-form]
 
 ## Sign In Form
-![sign-in-page]
+![sign-in-form]
 
 ## Search Index
 ![search-index]
