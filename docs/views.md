@@ -6,5 +6,17 @@
 ## User Profile
 ![user-profile]
 
+## Sign Up Form
+![sign-up-page]
+
+## Sign In Form
+![sign-in-page]
+
+## Search Index
+![search-index]
+
 [home-page]: ./wireframes/Home.png
 [user-profile]: ./wireframes/user_profile.png
+[sign-up-form]: ./wireframes/sign_up_form.png
+[sign-in-form]: ./wireframes/sign_in_form.png
+[search-index]: ./wireframes/search_index.png
