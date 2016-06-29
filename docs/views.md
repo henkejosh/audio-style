@@ -10,7 +10,7 @@
 ![sign-up-form]
 
 ## Sign In Form
-![sign-in-form]
+![sign-in-form]|
 
 ## Search Index
 ![search-index]
