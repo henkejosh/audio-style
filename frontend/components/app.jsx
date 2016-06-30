@@ -5,7 +5,6 @@ const SessionActions = require('../actions/session_actions.js');
 const SessionStore = require('../stores/session_store.js');
 const Modal = require('react-modal');
 const SignupForm = require('./signup_form.jsx');
-// import { hashHistory, Router, Route, IndexRoute } from 'react-router'
 const Router = require('react-router').Router;
 const hasHistory = Router.hashHistory;
 

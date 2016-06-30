@@ -23,9 +23,9 @@ const appRouter = (
 );
 
 document.addEventListener("DOMContentLoaded", function() {
+  SessionActions.receiveCurrentUser(window.currentUser);
   ReactDOM.render(
     appRouter,
-    // <App/>,
     document.getElementById("root"));
 });
 

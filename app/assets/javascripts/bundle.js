@@ -73,9 +73,8 @@
 	);
 	
 	document.addEventListener("DOMContentLoaded", function () {
-	  ReactDOM.render(appRouter,
-	  // <App/>,
-	  document.getElementById("root"));
+	  SessionActions.receiveCurrentUser(window.currentUser);
+	  ReactDOM.render(appRouter, document.getElementById("root"));
 	});
 	
 	// window.SessionActions = SessionActions;
@@ -35055,7 +35054,6 @@
 	var SessionStore = __webpack_require__(237);
 	var Modal = __webpack_require__(257);
 	var SignupForm = __webpack_require__(256);
-	// import { hashHistory, Router, Route, IndexRoute } from 'react-router'
 	var Router = __webpack_require__(1).Router;
 	var hasHistory = Router.hashHistory;
 	
