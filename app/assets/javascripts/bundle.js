@@ -32863,6 +32863,7 @@
 	var SessionStore = __webpack_require__(237);
 	var SessionActions = __webpack_require__(231);
 	var hashHistory = __webpack_require__(1).hashHistory;
+	var Modal = __webpack_require__(257);
 	
 	var LoginForm = React.createClass({
 	  displayName: 'LoginForm',
@@ -32889,6 +32890,10 @@
 	    };
 	  },
 	
+	  backToHome: function backToHome() {
+	    hashHistory.goBack();
+	  },
+	
 	  loggingIn: function loggingIn(event) {
 	    event.preventDefault();
 	    SessionActions.login(this.state);
@@ -32896,27 +32901,40 @@
 	
 	  render: function render() {
 	    return React.createElement(
-	      'form',
-	      { onSubmit: this.loggingIn },
+	      Modal,
+	      { isOpen: 'true' },
 	      React.createElement(
-	        'label',
-	        { name: 'email' },
-	        'Email: '
-	      ),
-	      React.createElement('input', { type: 'text', id: 'email', value: this.state.email,
-	        onChange: this.update("email") }),
-	      React.createElement('br', null),
-	      React.createElement('br', null),
-	      React.createElement(
-	        'label',
-	        { name: 'password' },
-	        'Password: '
-	      ),
-	      React.createElement('input', { type: 'password', id: 'password', value: this.state.password,
-	        onChange: this.update("password") }),
-	      React.createElement('br', null),
-	      React.createElement('br', null),
-	      React.createElement('input', { type: 'submit', value: 'Submit' })
+	        'div',
+	        null,
+	        React.createElement(
+	          'form',
+	          { onSubmit: this.loggingIn },
+	          React.createElement(
+	            'label',
+	            { name: 'email' },
+	            'Email: '
+	          ),
+	          React.createElement('input', { type: 'text', id: 'email', value: this.state.email,
+	            onChange: this.update("email") }),
+	          React.createElement('br', null),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'label',
+	            { name: 'password' },
+	            'Password: '
+	          ),
+	          React.createElement('input', { type: 'password', id: 'password', value: this.state.password,
+	            onChange: this.update("password") }),
+	          React.createElement('br', null),
+	          React.createElement('br', null),
+	          React.createElement('input', { type: 'submit', value: 'Submit' })
+	        ),
+	        React.createElement(
+	          'button',
+	          { onClick: this.backToHome },
+	          'Cancel'
+	        )
+	      )
 	    );
 	  }
 	});
