@@ -3,6 +3,7 @@ const hashHistory = require('react-router').hashHistory;
 const SessionApiUtil = require('../util/session_api_util.js');
 const SessionActions = require('../actions/session_actions.js');
 const SessionStore = require('../stores/session_store.js');
+const ErrorStore = require('../stores/error_store.js');
 const Modal = require('react-modal');
 
 const SignupForm = React.createClass({
@@ -12,6 +13,7 @@ const SignupForm = React.createClass({
 
   componentDidMount: function() {
     SessionStore.addListener(this.isUserLoggedIn);
+    ErrorStore.addListener();
   },
 
   isUserLoggedIn: function() {

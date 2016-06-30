@@ -3,14 +3,33 @@ const SessionStore = require('../stores/session_store.js');
 const SessionActions = require('../actions/session_actions.js');
 const hashHistory = require('react-router').hashHistory;
 const Modal = require('react-modal');
+const ErrorStore = require('../stores/error_store.js');
 
 const LoginForm = React.createClass({
   getInitialState: function() {
     return { email: "", password: "" };
   },
 
+  handleErrors: function() {
+    const errors = ErrorStore.formErrors("login");
+    if(!errors) { return; }
+    // debugger;
+    return Object.keys(errors).map( error => {
+      return (
+        <div key={error}>{errors[error]}</div>
+      );
+    });
+  },
+
   componentDidMount: function() {
-    SessionStore.addListener(this.isUserLoggedIn);
+    this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
+    this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
+    // this.errorListener = ErrorStore.addListener(this.handleErrors);
+  },
+
+  componentWillUnmount() {
+    this.errorListener.remove();
+    this.sessionListener.remove();
   },
 
   isUserLoggedIn: function() {
@@ -40,6 +59,7 @@ const LoginForm = React.createClass({
     return (
       <Modal isOpen="true">
         <div>
+        { this.handleErrors() }
           <form onSubmit={this.loggingIn}>
           <label name="email">Email: </label>
           <input type="text" id="email" value={this.state.email}

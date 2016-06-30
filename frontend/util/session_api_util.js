@@ -7,7 +7,10 @@ const SessionApiUtil = {
       data: { user },
       dataType: "json",
       success,
-      error
+      error: xhr => {
+        const errors = xhr.responseJSON;
+        error("signup", errors);
+      }
     });
   },
 
@@ -18,7 +21,10 @@ const SessionApiUtil = {
       data: { user },
       dataType: "json",
       success,
-      error
+      error: xhr => {
+        const errors = xhr.responseJSON;
+        error("login", errors);
+      }
     });
   },
 
@@ -29,7 +35,9 @@ const SessionApiUtil = {
       data: { user },
       dataType: "json",
       success,
-      error
+      error: () => {
+        console.log("SessionApiUtil#logout error");
+      }
     });
   },
 };

@@ -25955,25 +25955,31 @@
 	"use strict";
 	
 	var SessionApiUtil = {
-	  signup: function signup(user, success, error) {
+	  signup: function signup(user, success, _error) {
 	    $.ajax({
 	      url: "api/users",
 	      type: "POST",
 	      data: { user: user },
 	      dataType: "json",
 	      success: success,
-	      error: error
+	      error: function error(xhr) {
+	        var errors = xhr.responseJSON;
+	        _error("signup", errors);
+	      }
 	    });
 	  },
 	
-	  login: function login(user, success, error) {
+	  login: function login(user, success, _error2) {
 	    $.ajax({
 	      url: "api/session",
 	      type: "POST",
 	      data: { user: user },
 	      dataType: "json",
 	      success: success,
-	      error: error
+	      error: function error(xhr) {
+	        var errors = xhr.responseJSON;
+	        _error2("login", errors);
+	      }
 	    });
 	  },
 	
@@ -25984,7 +25990,9 @@
 	      data: { user: user },
 	      dataType: "json",
 	      success: success,
-	      error: error
+	      error: function error() {
+	        console.log("SessionApiUtil#logout error");
+	      }
 	    });
 	  }
 	};
@@ -25999,19 +26007,20 @@
 	
 	var Dispatcher = __webpack_require__(232);
 	var SessionApiUtil = __webpack_require__(230);
-	var SessionConstants = __webpack_require__(236);
+	var SessionConstants = __webpack_require__(281);
+	var ErrorActions = __webpack_require__(278);
 	
 	var SessionActions = {
 	  signup: function signup(params) {
-	    SessionApiUtil.signup(params, SessionActions.receiveCurrentUser);
+	    SessionApiUtil.signup(params, SessionActions.receiveCurrentUser, ErrorActions.setErrors);
 	  },
 	
 	  login: function login(params) {
-	    SessionApiUtil.login(params, SessionActions.receiveCurrentUser);
+	    SessionApiUtil.login(params, SessionActions.receiveCurrentUser, ErrorActions.setErrors);
 	  },
 	
 	  logout: function logout(params) {
-	    SessionApiUtil.logout(params, SessionActions.removeCurrentUser);
+	    SessionApiUtil.logout(params, SessionActions.removeCurrentUser, ErrorActions.setErrors);
 	  },
 	
 	  receiveCurrentUser: function receiveCurrentUser(user) {
@@ -26350,20 +26359,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 236 */
-/***/ function(module, exports) {
-
-	"use strict";
-	"user strict";
-	
-	var SessionConstants = {
-	  LOGIN: "LOGIN",
-	  LOGOUT: "LOGOUT"
-	};
-	
-	module.exports = SessionConstants;
-
-/***/ },
+/* 236 */,
 /* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -26371,7 +26367,7 @@
 	
 	var Store = __webpack_require__(238).Store;
 	var Dispatcher = __webpack_require__(232);
-	var SessionConstants = __webpack_require__(236);
+	var SessionConstants = __webpack_require__(281);
 	
 	var _currentUser = {};
 	
@@ -32864,6 +32860,7 @@
 	var SessionActions = __webpack_require__(231);
 	var hashHistory = __webpack_require__(1).hashHistory;
 	var Modal = __webpack_require__(257);
+	var ErrorStore = __webpack_require__(279);
 	
 	var LoginForm = React.createClass({
 	  displayName: 'LoginForm',
@@ -32872,9 +32869,32 @@
 	    return { email: "", password: "" };
 	  },
 	
-	  componentDidMount: function componentDidMount() {
-	    SessionStore.addListener(this.isUserLoggedIn);
+	  handleErrors: function handleErrors() {
+	    var errors = ErrorStore.formErrors("login");
+	    if (!errors) {
+	      return;
+	    }
+	    // debugger;
+	    return Object.keys(errors).map(function (error) {
+	      return React.createElement(
+	        'div',
+	        { key: error },
+	        errors[error]
+	      );
+	    });
 	  },
+	
+	  componentDidMount: function componentDidMount() {
+	    this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
+	    this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
+	    // this.errorListener = ErrorStore.addListener(this.handleErrors);
+	  },
+	
+	  componentWillUnmount: function componentWillUnmount() {
+	    this.errorListener.remove();
+	    this.sessionListener.remove();
+	  },
+	
 	
 	  isUserLoggedIn: function isUserLoggedIn() {
 	    if (SessionStore.isUserLoggedIn()) {
@@ -32906,6 +32926,7 @@
 	      React.createElement(
 	        'div',
 	        null,
+	        this.handleErrors(),
 	        React.createElement(
 	          'form',
 	          { onSubmit: this.loggingIn },
@@ -32954,6 +32975,7 @@
 	var SessionApiUtil = __webpack_require__(230);
 	var SessionActions = __webpack_require__(231);
 	var SessionStore = __webpack_require__(237);
+	var ErrorStore = __webpack_require__(279);
 	var Modal = __webpack_require__(257);
 	
 	var SignupForm = React.createClass({
@@ -32965,6 +32987,7 @@
 	
 	  componentDidMount: function componentDidMount() {
 	    SessionStore.addListener(this.isUserLoggedIn);
+	    ErrorStore.addListener();
 	  },
 	
 	  isUserLoggedIn: function isUserLoggedIn() {
@@ -35072,6 +35095,116 @@
 	});
 	
 	module.exports = App;
+
+/***/ },
+/* 278 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var Dispatcher = __webpack_require__(232);
+	var ErrorConstants = __webpack_require__(280);
+	var SessionApiUtil = __webpack_require__(230);
+	
+	var ErrorActions = {
+	  setErrors: function setErrors(form, errors) {
+	    // debugger;
+	    Dispatcher.dispatch({
+	      actionType: ErrorConstants.SET_ERRORS,
+	      form: form,
+	      errors: {
+	        error: errors.base[0]
+	      }
+	    });
+	  },
+	
+	  clearErrors: function clearErrors() {
+	    Dispatcher.dispatch({
+	      actionType: ErrorConstants.CLEAR_ERRORS
+	    });
+	  }
+	};
+	
+	module.exports = ErrorActions;
+
+/***/ },
+/* 279 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var Store = __webpack_require__(238).Store;
+	var Dispatcher = __webpack_require__(232);
+	var ErrorConstants = __webpack_require__(280);
+	
+	var _errors = {};
+	var _form = "";
+	
+	var ErrorStore = new Store(Dispatcher);
+	
+	ErrorStore.formErrors = function (form) {
+	  if (form === _form) {
+	    return Object.assign({}, _errors);
+	  }
+	};
+	
+	ErrorStore.form = function () {
+	  return Object.assign("", _form);
+	};
+	
+	var setErrors = function setErrors(payload) {
+	  _form = payload.form;
+	  _errors = payload.errors;
+	  ErrorStore.__emitChange();
+	  // debugger;
+	};
+	
+	var clearErrors = function clearErrors() {
+	  _form = "";
+	  _errors = {};
+	  ErrorStore.__emitChange();
+	};
+	
+	ErrorStore.__onDispatch = function (payload) {
+	  switch (payload.actionType) {
+	    case ErrorConstants.SET_ERRORS:
+	      setErrors(payload);
+	      break;
+	    case ErrorConstants.CLEAR_ERRORS:
+	      clearErrors();
+	      break;
+	  }
+	};
+	
+	module.exports = ErrorStore;
+
+/***/ },
+/* 280 */
+/***/ function(module, exports) {
+
+	"use strict";
+	"user strict";
+	
+	var ErrorConstants = {
+	  SET_ERRORS: "SET_ERRORS",
+	  CLEAR_ERRORS: "CLEAR_ERRORS"
+	};
+	
+	module.exports = ErrorConstants;
+
+/***/ },
+/* 281 */
+/***/ function(module, exports) {
+
+	"use strict";
+	"user strict";
+	
+	var SessionConstants = {
+	  LOGIN: "LOGIN",
+	  LOGOUT: "LOGOUT"
+	};
+	
+	module.exports = SessionConstants;
 
 /***/ }
 /******/ ]);
