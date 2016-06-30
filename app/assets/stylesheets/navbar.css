@@ -1,0 +1,28 @@
+body {
+  max-width: 960px;
+  border: 3px solid black;
+}
+
+nav {
+  width: 100%;
+  border: 3px solid green;
+}
+
+nav ul {
+  width: 100%;
+  list-style: none;
+  height: 100px;
+  list-style: none;
+  padding: 0;
+  border: 3px solid red;
+}
+
+li {
+  float: left;
+  width: 18%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 3px solid blue;
+  height: 100%;
+}

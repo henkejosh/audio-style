@@ -58,11 +58,12 @@ const App = React.createClass({
   render: function() {
     return (
       <div>
+      {this.props.children}
+      <br/>
         Home Page will go here
 
         <button onClick={this.openSignUpForm}>Sign Up!</button>
         <button onClick={this.openLoginForm}>Log In!</button>
-        {this.props.children}
       </div>
     );
   }

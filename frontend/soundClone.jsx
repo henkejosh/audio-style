@@ -6,6 +6,7 @@ const SessionStore = require('./stores/session_store.js');
 const LoginForm = require('./components/login_form.jsx');
 const SignupForm = require('./components/signup_form.jsx');
 const App = require('./components/app.jsx');
+const Navbar = require('./components/navbar.jsx');
 //Router
 const reactRouter = require('react-router');
 const Router = reactRouter.Router;
@@ -16,6 +17,7 @@ const IndexRoute = reactRouter.IndexRoute;
 const appRouter = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App } >
+      <IndexRoute component={ Navbar }/>
       <Route path="/signup" component={ SignupForm } />
       <Route path="/login" component={ LoginForm } />
     </Route>

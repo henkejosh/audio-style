@@ -54,6 +54,7 @@
 	var LoginForm = __webpack_require__(255);
 	var SignupForm = __webpack_require__(256);
 	var App = __webpack_require__(277);
+	var Navbar = __webpack_require__(282);
 	//Router
 	var reactRouter = __webpack_require__(1);
 	var Router = reactRouter.Router;
@@ -67,6 +68,7 @@
 	  React.createElement(
 	    Route,
 	    { path: '/', component: App },
+	    React.createElement(IndexRoute, { component: Navbar }),
 	    React.createElement(Route, { path: '/signup', component: SignupForm }),
 	    React.createElement(Route, { path: '/login', component: LoginForm })
 	  )
@@ -35111,6 +35113,8 @@
 	    return React.createElement(
 	      'div',
 	      null,
+	      this.props.children,
+	      React.createElement('br', null),
 	      'Home Page will go here',
 	      React.createElement(
 	        'button',
@@ -35121,8 +35125,7 @@
 	        'button',
 	        { onClick: this.openLoginForm },
 	        'Log In!'
-	      ),
-	      this.props.children
+	      )
 	    );
 	  }
 	});
@@ -35236,6 +35239,65 @@
 	};
 	
 	module.exports = SessionConstants;
+
+/***/ },
+/* 282 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(4);
+	var ReactDOM = __webpack_require__(100);
+	
+	var Navbar = React.createClass({
+	  displayName: 'Navbar',
+	
+	  render: function render() {
+	    return React.createElement(
+	      'nav',
+	      null,
+	      React.createElement(
+	        'ul',
+	        null,
+	        React.createElement(
+	          'li',
+	          null,
+	          'Logo coming here'
+	        ),
+	        React.createElement(
+	          'li',
+	          null,
+	          React.createElement(
+	            'a',
+	            { href: '#' },
+	            'Stream'
+	          )
+	        ),
+	        React.createElement(
+	          'li',
+	          null,
+	          React.createElement(
+	            'a',
+	            { href: '#' },
+	            'Search Component'
+	          )
+	        ),
+	        React.createElement(
+	          'li',
+	          null,
+	          'profile icon w/ link to user page'
+	        ),
+	        React.createElement(
+	          'li',
+	          null,
+	          'upload songs button'
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = Navbar;
 
 /***/ }
 /******/ ]);
