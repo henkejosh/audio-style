@@ -1,6 +1,5 @@
 const React = require('react');
 const hashHistory = require('react-router').hashHistory;
-const SessionApiUtil = require('../util/session_api_util.js');
 const SessionActions = require('../actions/session_actions.js');
 const SessionStore = require('../stores/session_store.js');
 const ErrorStore = require('../stores/error_store.js');
@@ -11,9 +10,31 @@ const SignupForm = React.createClass({
     return { email: "", password: "" };
   },
 
+  getErrors: function(type) {
+    const errors = ErrorStore.formErrors("signup");
+    if(!errors) { return; }
+    return errors[type];
+  },
+
+  handleErrors: function() {
+    const errors = ErrorStore.formErrors("signup");
+    if(!errors) { return; }
+
+    return Object.keys(errors).map( error => {
+      return (
+        <div key={error}>{errors[error]}</div>
+      );
+    });
+  },
+
   componentDidMount: function() {
-    SessionStore.addListener(this.isUserLoggedIn);
-    ErrorStore.addListener();
+    this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
+    this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
+  },
+
+  componentWillUnmount() {
+    this.errorListener.remove();
+    this.sessionListener.remove();
   },
 
   isUserLoggedIn: function() {
@@ -22,7 +43,8 @@ const SignupForm = React.createClass({
     }
   },
 
-  signingUp: function() {
+  signingUp: function(event) {
+    event.preventDefault();
     SessionActions.signup(this.state);
   },
 
@@ -44,11 +66,14 @@ const SignupForm = React.createClass({
         <div>
           <h2>Sign Up</h2>
           <form onSubmit={this.signingUp}>
+
           <label name="email">Email: </label>
+          {this.getErrors("email")}
           <input type="text" id="email" value={this.state.email}
             onChange={this.update("email")}></input>
             <br/><br/>
           <label name="password">Password: </label>
+          {this.getErrors("password")}
           <input type="password" id="password" value={this.state.password}
             onChange={this.update("password")}></input>
             <br/><br/>

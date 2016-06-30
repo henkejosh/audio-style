@@ -23,7 +23,6 @@ const setErrors = function(payload) {
   _form = payload.form;
   _errors = payload.errors;
   ErrorStore.__emitChange();
-  // debugger;
 };
 
 const clearErrors = function() {

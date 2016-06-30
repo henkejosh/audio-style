@@ -32874,7 +32874,6 @@
 	    if (!errors) {
 	      return;
 	    }
-	    // debugger;
 	    return Object.keys(errors).map(function (error) {
 	      return React.createElement(
 	        'div',
@@ -32928,6 +32927,11 @@
 	        null,
 	        this.handleErrors(),
 	        React.createElement(
+	          'h2',
+	          null,
+	          'Log In'
+	        ),
+	        React.createElement(
 	          'form',
 	          { onSubmit: this.loggingIn },
 	          React.createElement(
@@ -32972,7 +32976,6 @@
 	
 	var React = __webpack_require__(4);
 	var hashHistory = __webpack_require__(1).hashHistory;
-	var SessionApiUtil = __webpack_require__(230);
 	var SessionActions = __webpack_require__(231);
 	var SessionStore = __webpack_require__(237);
 	var ErrorStore = __webpack_require__(279);
@@ -32985,10 +32988,39 @@
 	    return { email: "", password: "" };
 	  },
 	
-	  componentDidMount: function componentDidMount() {
-	    SessionStore.addListener(this.isUserLoggedIn);
-	    ErrorStore.addListener();
+	  getErrors: function getErrors(type) {
+	    var errors = ErrorStore.formErrors("signup");
+	    if (!errors) {
+	      return;
+	    }
+	    return errors[type];
 	  },
+	
+	  handleErrors: function handleErrors() {
+	    var errors = ErrorStore.formErrors("signup");
+	    if (!errors) {
+	      return;
+	    }
+	
+	    return Object.keys(errors).map(function (error) {
+	      return React.createElement(
+	        'div',
+	        { key: error },
+	        errors[error]
+	      );
+	    });
+	  },
+	
+	  componentDidMount: function componentDidMount() {
+	    this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
+	    this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
+	  },
+	
+	  componentWillUnmount: function componentWillUnmount() {
+	    this.errorListener.remove();
+	    this.sessionListener.remove();
+	  },
+	
 	
 	  isUserLoggedIn: function isUserLoggedIn() {
 	    if (SessionStore.isUserLoggedIn()) {
@@ -32996,7 +33028,8 @@
 	    }
 	  },
 	
-	  signingUp: function signingUp() {
+	  signingUp: function signingUp(event) {
+	    event.preventDefault();
 	    SessionActions.signup(this.state);
 	  },
 	
@@ -33032,6 +33065,7 @@
 	            { name: 'email' },
 	            'Email: '
 	          ),
+	          this.getErrors("email"),
 	          React.createElement('input', { type: 'text', id: 'email', value: this.state.email,
 	            onChange: this.update("email") }),
 	          React.createElement('br', null),
@@ -33041,6 +33075,7 @@
 	            { name: 'password' },
 	            'Password: '
 	          ),
+	          this.getErrors("password"),
 	          React.createElement('input', { type: 'password', id: 'password', value: this.state.password,
 	            onChange: this.update("password") }),
 	          React.createElement('br', null),
@@ -35108,15 +35143,14 @@
 	
 	var ErrorActions = {
 	  setErrors: function setErrors(form, errors) {
-	    // debugger;
+	
 	    Dispatcher.dispatch({
 	      actionType: ErrorConstants.SET_ERRORS,
 	      form: form,
-	      errors: {
-	        error: errors.base[0]
-	      }
+	      errors: errors
 	    });
 	  },
+	  // error: errors.base[0]
 	
 	  clearErrors: function clearErrors() {
 	    Dispatcher.dispatch({
@@ -35156,7 +35190,6 @@
 	  _form = payload.form;
 	  _errors = payload.errors;
 	  ErrorStore.__emitChange();
-	  // debugger;
 	};
 	
 	var clearErrors = function clearErrors() {

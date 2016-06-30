@@ -13,7 +13,6 @@ const LoginForm = React.createClass({
   handleErrors: function() {
     const errors = ErrorStore.formErrors("login");
     if(!errors) { return; }
-    // debugger;
     return Object.keys(errors).map( error => {
       return (
         <div key={error}>{errors[error]}</div>
@@ -60,6 +59,7 @@ const LoginForm = React.createClass({
       <Modal isOpen="true">
         <div>
         { this.handleErrors() }
+        <h2>Log In</h2>
           <form onSubmit={this.loggingIn}>
           <label name="email">Email: </label>
           <input type="text" id="email" value={this.state.email}

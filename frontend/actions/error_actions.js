@@ -4,15 +4,14 @@ const SessionApiUtil = require('../util/session_api_util');
 
 const ErrorActions = {
   setErrors: function(form, errors) {
-    // debugger;
+
     Dispatcher.dispatch({
       actionType: ErrorConstants.SET_ERRORS,
       form: form,
-      errors: {
-        error: errors.base[0]
-      }
+      errors: errors
     });
   },
+  // error: errors.base[0]
 
   clearErrors: function() {
     Dispatcher.dispatch({
