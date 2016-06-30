@@ -1,6 +1,7 @@
 const React = require('react');
 const SessionStore = require('../stores/session_store.js');
 const SessionActions = require('../actions/session_actions.js');
+const hashHistory = require('react-router').hashHistory;
 
 const LoginForm = React.createClass({
   getInitialState: function() {
@@ -13,7 +14,7 @@ const LoginForm = React.createClass({
 
   isUserLoggedIn: function() {
     if(SessionStore.isUserLoggedIn()) {
-      this.context.router.push("/");
+      hashHistory.push(`api/users/${SessionStore.currentUser().id}`);
     }
   },
 
