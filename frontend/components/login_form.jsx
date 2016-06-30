@@ -5,7 +5,7 @@ const hashHistory = require('react-router').hashHistory;
 
 const LoginForm = React.createClass({
   getInitialState: function() {
-    return { email: "", password: "" }
+    return { email: "", password: "" };
   },
 
   componentDidMount: function() {
@@ -23,7 +23,7 @@ const LoginForm = React.createClass({
       this.setState({
         [prop]: e.target.value
       });
-    }
+    };
   },
 
   loggingIn: function(event) {
