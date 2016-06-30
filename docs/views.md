@@ -1,4 +1,9 @@
 # View Wireframes
+## Comment Form
+![comment-form]
+
+## Continuous Play
+![continuous-play]
 
 ## Home Pages
 ![home-page]
@@ -20,3 +25,5 @@
 [sign-up-form]: ./wireframes/sign_up_form.png
 [sign-in-form]: ./wireframes/sign_in_form.png
 [search-index]: ./wireframes/search_index.png
+[comment-form]: ./wireframes/comment_form.png
+[continuous-play]: ./wireframes/song_playing_component.png

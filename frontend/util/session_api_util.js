@@ -32,6 +32,6 @@ const SessionApiUtil = {
       error
     });
   },
-}
+};
 
 module.exports = SessionApiUtil;

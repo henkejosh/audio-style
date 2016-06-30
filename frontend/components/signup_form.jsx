@@ -6,7 +6,7 @@ const SessionStore = require('../stores/session_store.js');
 
 const SignupForm = React.createClass({
   getInitialState: function() {
-    return { email: "", password: "" }
+    return { email: "", password: "" };
   },
 
   componentDidMount: function() {
@@ -28,7 +28,7 @@ const SignupForm = React.createClass({
       this.setState({
         [prop]: e.target.value
       });
-    }
+    };
   },
 
   render: function() {
