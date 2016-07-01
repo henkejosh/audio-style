@@ -28,13 +28,24 @@ const App = React.createClass({
    this.setState({loginIsOpen: false});
  },
 
-  guestLogin: function() {
+  guestLogin: function(e) {
+    e.preventDefault();
     SessionActions.login({email: "guest", password: "password"});
   },
 
   LogOut: function(e) {
     e.preventDefault();
     SessionActions.logout();
+  },
+
+  componentDidMount: function() {
+    this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
+  },
+
+  isUserLoggedIn: function() {
+    if(SessionStore.isUserLoggedIn()) {
+      hashHistory.push(`/songs`);
+    }
   },
 
  componentWillMount() {

@@ -33,13 +33,12 @@ const SessionApiUtil = {
       url: "api/session",
       type: "DELETE",
       dataType: "json",
-      success
+      success,
+      error: (data) => {
+        console.log("SessionApiUtil#logout error");
+      }
     });
   },
 };
 
-// error: (data) => {
-//   debugger;
-//   console.log("SessionApiUtil#logout error");
-// }
 module.exports = SessionApiUtil;

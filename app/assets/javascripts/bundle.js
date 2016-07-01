@@ -89,9 +89,6 @@
 	
 	  ReactDOM.render(appRouter, document.getElementById("root"));
 	});
-	
-	// window.SessionActions = SessionActions;
-	// window.SessionStore = SessionStore;
 
 /***/ },
 /* 1 */
@@ -20426,15 +20423,14 @@
 	      url: "api/session",
 	      type: "DELETE",
 	      dataType: "json",
-	      success: success
+	      success: success,
+	      error: function error(data) {
+	        console.log("SessionApiUtil#logout error");
+	      }
 	    });
 	  }
 	};
 	
-	// error: (data) => {
-	//   debugger;
-	//   console.log("SessionApiUtil#logout error");
-	// }
 	module.exports = SessionApiUtil;
 
 /***/ },
@@ -20462,11 +20458,6 @@
 	    SessionApiUtil.logout(SessionActions.removeCurrentUser);
 	  },
 	
-	  // logout: function(params) {
-	  //   SessionApiUtil.logout(params, SessionActions.removeCurrentUser,
-	  //     ErrorActions.setErrors);
-	  // },
-	
 	  receiveCurrentUser: function receiveCurrentUser(user) {
 	    Dispatcher.dispatch({
 	      actionType: SessionConstants.LOGIN,
@@ -20478,7 +20469,6 @@
 	    Dispatcher.dispatch({
 	      actionType: SessionConstants.LOGOUT
 	    });
-	    // hashHistory.push("/");
 	  }
 	};
 	
@@ -35231,13 +35221,24 @@
 	    this.setState({ loginIsOpen: false });
 	  },
 	
-	  guestLogin: function guestLogin() {
+	  guestLogin: function guestLogin(e) {
+	    e.preventDefault();
 	    SessionActions.login({ email: "guest", password: "password" });
 	  },
 	
 	  LogOut: function LogOut(e) {
 	    e.preventDefault();
 	    SessionActions.logout();
+	  },
+	
+	  componentDidMount: function componentDidMount() {
+	    this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
+	  },
+	
+	  isUserLoggedIn: function isUserLoggedIn() {
+	    if (SessionStore.isUserLoggedIn()) {
+	      hashHistory.push('/songs');
+	    }
 	  },
 	
 	  componentWillMount: function componentWillMount() {

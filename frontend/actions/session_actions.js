@@ -19,11 +19,6 @@ const SessionActions = {
     SessionApiUtil.logout(SessionActions.removeCurrentUser);
   },
 
-  // logout: function(params) {
-  //   SessionApiUtil.logout(params, SessionActions.removeCurrentUser,
-  //     ErrorActions.setErrors);
-  // },
-
   receiveCurrentUser: function(user) {
     Dispatcher.dispatch({
       actionType: SessionConstants.LOGIN,
@@ -35,7 +30,6 @@ const SessionActions = {
     Dispatcher.dispatch({
       actionType: SessionConstants.LOGOUT
     });
-    // hashHistory.push("/");
   }
 };
 

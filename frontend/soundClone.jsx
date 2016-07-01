@@ -36,11 +36,8 @@ document.addEventListener("DOMContentLoaded", function() {
   if (window.currentUser) {
     SessionActions.receiveCurrentUser(window.currentUser);
   }
-  
+
   ReactDOM.render(
     appRouter,
     document.getElementById("root"));
 });
-
-// window.SessionActions = SessionActions;
-// window.SessionStore = SessionStore;
