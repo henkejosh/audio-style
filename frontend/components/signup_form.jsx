@@ -47,7 +47,7 @@ const SignupForm = React.createClass({
   },
 
   backToHome: function() {
-    hashHistory.goBack();
+    hashHistory.push("/");
   },
 
   render: function() {
@@ -59,14 +59,14 @@ const SignupForm = React.createClass({
           <form onSubmit={this.signingUp}>
 
           <label name="email">Email: </label>
-          {this.getErrors("email")}
           <input type="text" id="email" value={this.state.email}
             onChange={this.update("email")}></input>
+            <div>{this.getErrors("email")}</div>
             <br/><br/>
           <label name="password">Password: </label>
-          {this.getErrors("password")}
           <input type="password" id="password" value={this.state.password}
             onChange={this.update("password")}></input>
+            <div>{this.getErrors("password")}</div>
             <br/><br/>
           <input type="submit" value="Submit"></input>
           </form>
@@ -76,6 +76,5 @@ const SignupForm = React.createClass({
     );
   }
 });
-
 
 module.exports = SignupForm;

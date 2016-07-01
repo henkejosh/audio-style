@@ -13,13 +13,7 @@ const App = React.createClass({
  },
 
  openSignUpForm: function() {
-  //  this.setState({signUpIsOpen: true});
   hashHistory.push("/signup");
- },
-
- afterOpenSignUpForm: function() {
-   // references are now sync'd and can be accessed.
-   this.refs.subtitle.style.color = '#f00';
  },
 
  closeSignUpForm: function() {
@@ -28,11 +22,6 @@ const App = React.createClass({
 
  openLoginForm: function() {
    hashHistory.push("/login");
- },
-
- afterOpenLoginForm: function() {
-   // references are now sync'd and can be accessed.
-  //  this.refs.subtitle.style.color = '#f00';
  },
 
  closeLoginForm: function() {

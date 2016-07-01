@@ -46,7 +46,7 @@ const LoginForm = React.createClass({
   },
 
   backToHome: function() {
-    hashHistory.goBack();
+    hashHistory.push("/");
   },
 
   loggingIn: function(event) {

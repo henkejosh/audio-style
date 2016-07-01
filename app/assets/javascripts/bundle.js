@@ -32910,7 +32910,7 @@
 	  },
 	
 	  backToHome: function backToHome() {
-	    hashHistory.goBack();
+	    hashHistory.push("/");
 	  },
 	
 	  loggingIn: function loggingIn(event) {
@@ -33029,7 +33029,7 @@
 	  },
 	
 	  backToHome: function backToHome() {
-	    hashHistory.goBack();
+	    hashHistory.push("/");
 	  },
 	
 	  render: function render() {
@@ -33053,9 +33053,13 @@
 	            { name: 'email' },
 	            'Email: '
 	          ),
-	          this.getErrors("email"),
 	          React.createElement('input', { type: 'text', id: 'email', value: this.state.email,
 	            onChange: this.update("email") }),
+	          React.createElement(
+	            'div',
+	            null,
+	            this.getErrors("email")
+	          ),
 	          React.createElement('br', null),
 	          React.createElement('br', null),
 	          React.createElement(
@@ -33063,9 +33067,13 @@
 	            { name: 'password' },
 	            'Password: '
 	          ),
-	          this.getErrors("password"),
 	          React.createElement('input', { type: 'password', id: 'password', value: this.state.password,
 	            onChange: this.update("password") }),
+	          React.createElement(
+	            'div',
+	            null,
+	            this.getErrors("password")
+	          ),
 	          React.createElement('br', null),
 	          React.createElement('br', null),
 	          React.createElement('input', { type: 'submit', value: 'Submit' })
@@ -35053,13 +35061,7 @@
 	  },
 	
 	  openSignUpForm: function openSignUpForm() {
-	    //  this.setState({signUpIsOpen: true});
 	    hashHistory.push("/signup");
-	  },
-	
-	  afterOpenSignUpForm: function afterOpenSignUpForm() {
-	    // references are now sync'd and can be accessed.
-	    this.refs.subtitle.style.color = '#f00';
 	  },
 	
 	  closeSignUpForm: function closeSignUpForm() {
@@ -35068,11 +35070,6 @@
 	
 	  openLoginForm: function openLoginForm() {
 	    hashHistory.push("/login");
-	  },
-	
-	  afterOpenLoginForm: function afterOpenLoginForm() {
-	    // references are now sync'd and can be accessed.
-	    //  this.refs.subtitle.style.color = '#f00';
 	  },
 	
 	  closeLoginForm: function closeLoginForm() {
