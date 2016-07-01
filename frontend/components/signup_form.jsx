@@ -4,6 +4,7 @@ const SessionActions = require('../actions/session_actions.js');
 const SessionStore = require('../stores/session_store.js');
 const ErrorStore = require('../stores/error_store.js');
 const Modal = require('react-modal');
+const modStyle = require('./modal_styles.js');
 
 const SignupForm = React.createClass({
   getInitialState: function() {
@@ -14,17 +15,6 @@ const SignupForm = React.createClass({
     const errors = ErrorStore.formErrors("signup");
     if(!errors) { return; }
     return errors[type];
-  },
-
-  handleErrors: function() {
-    const errors = ErrorStore.formErrors("signup");
-    if(!errors) { return; }
-
-    return Object.keys(errors).map( error => {
-      return (
-        <div key={error}>{errors[error]}</div>
-      );
-    });
   },
 
   componentDidMount: function() {
@@ -62,7 +52,8 @@ const SignupForm = React.createClass({
 
   render: function() {
     return (
-      <Modal isOpen="true">
+      <Modal style={modStyle}
+        isOpen="true">
         <div>
           <h2>Sign Up</h2>
           <form onSubmit={this.signingUp}>

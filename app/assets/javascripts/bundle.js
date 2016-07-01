@@ -68,7 +68,6 @@
 	  React.createElement(
 	    Route,
 	    { path: '/', component: App },
-	    React.createElement(IndexRoute, { component: Navbar }),
 	    React.createElement(Route, { path: '/signup', component: SignupForm }),
 	    React.createElement(Route, { path: '/login', component: LoginForm })
 	  )
@@ -32860,8 +32859,9 @@
 	var SessionStore = __webpack_require__(237);
 	var SessionActions = __webpack_require__(231);
 	var hashHistory = __webpack_require__(1).hashHistory;
-	var Modal = __webpack_require__(257);
 	var ErrorStore = __webpack_require__(279);
+	var Modal = __webpack_require__(257);
+	var modStyle = __webpack_require__(283);
 	
 	var LoginForm = React.createClass({
 	  displayName: 'LoginForm',
@@ -32887,7 +32887,6 @@
 	  componentDidMount: function componentDidMount() {
 	    this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
 	    this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
-	    // this.errorListener = ErrorStore.addListener(this.handleErrors);
 	  },
 	
 	  componentWillUnmount: function componentWillUnmount() {
@@ -32922,7 +32921,8 @@
 	  render: function render() {
 	    return React.createElement(
 	      Modal,
-	      { isOpen: 'true' },
+	      { style: modStyle,
+	        isOpen: 'true' },
 	      React.createElement(
 	        'div',
 	        null,
@@ -32981,6 +32981,7 @@
 	var SessionStore = __webpack_require__(237);
 	var ErrorStore = __webpack_require__(279);
 	var Modal = __webpack_require__(257);
+	var modStyle = __webpack_require__(283);
 	
 	var SignupForm = React.createClass({
 	  displayName: 'SignupForm',
@@ -32995,21 +32996,6 @@
 	      return;
 	    }
 	    return errors[type];
-	  },
-	
-	  handleErrors: function handleErrors() {
-	    var errors = ErrorStore.formErrors("signup");
-	    if (!errors) {
-	      return;
-	    }
-	
-	    return Object.keys(errors).map(function (error) {
-	      return React.createElement(
-	        'div',
-	        { key: error },
-	        errors[error]
-	      );
-	    });
 	  },
 	
 	  componentDidMount: function componentDidMount() {
@@ -33049,7 +33035,8 @@
 	  render: function render() {
 	    return React.createElement(
 	      Modal,
-	      { isOpen: 'true' },
+	      { style: modStyle,
+	        isOpen: 'true' },
 	      React.createElement(
 	        'div',
 	        null,
@@ -35050,25 +35037,13 @@
 	'use strict';
 	
 	var React = __webpack_require__(4);
-	var hashHistory = __webpack_require__(1).hashHistory;
 	var SessionApiUtil = __webpack_require__(230);
 	var SessionActions = __webpack_require__(231);
 	var SessionStore = __webpack_require__(237);
 	var Modal = __webpack_require__(257);
-	var SignupForm = __webpack_require__(256);
+	var Navbar = __webpack_require__(282);
 	var Router = __webpack_require__(1).Router;
-	var hasHistory = Router.hashHistory;
-	
-	var customStyles = {
-	  content: {
-	    top: '50%',
-	    left: '50%',
-	    right: 'auto',
-	    bottom: 'auto',
-	    marginRight: '-50%',
-	    transform: 'translate(-50%, -50%)'
-	  }
-	};
+	var hashHistory = __webpack_require__(1).hashHistory;
 	
 	var App = React.createClass({
 	  displayName: 'App',
@@ -35104,6 +35079,10 @@
 	    this.setState({ loginIsOpen: false });
 	  },
 	
+	  guestLogin: function guestLogin() {
+	    SessionActions.login({ email: "guest", password: "password" });
+	  },
+	
 	  componentWillMount: function componentWillMount() {
 	    Modal.setAppElement(document.getElementById("root"));
 	  },
@@ -35113,18 +35092,23 @@
 	    return React.createElement(
 	      'div',
 	      null,
+	      React.createElement(Navbar, null),
 	      this.props.children,
 	      React.createElement('br', null),
-	      'Home Page will go here',
+	      React.createElement(
+	        'button',
+	        { onClick: this.guestLogin },
+	        'Guest Login'
+	      ),
 	      React.createElement(
 	        'button',
 	        { onClick: this.openSignUpForm },
-	        'Sign Up!'
+	        'Sign Up'
 	      ),
 	      React.createElement(
 	        'button',
 	        { onClick: this.openLoginForm },
-	        'Log In!'
+	        'Log In'
 	      )
 	    );
 	  }
@@ -35298,6 +35282,34 @@
 	});
 	
 	module.exports = Navbar;
+
+/***/ },
+/* 283 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	module.exports = {
+	  overlay: {
+	    position: 'fixed',
+	    top: 0,
+	    left: 0,
+	    right: 0,
+	    bottom: 0,
+	    backgroundColor: 'rgba(255, 255, 255, 0.75)'
+	  },
+	  content: {
+	    position: 'fixed',
+	    top: '15%',
+	    left: '30%',
+	    right: 'auto',
+	    bottom: 'auto',
+	    border: '1px solid #ccc',
+	    marginRight: '-50%',
+	    padding: '20px',
+	    transform: 'translate(-50%, -50%)'
+	  }
+	};
 
 /***/ }
 /******/ ]);

@@ -1,23 +1,11 @@
 const React = require('react');
-const hashHistory = require('react-router').hashHistory;
 const SessionApiUtil = require('../util/session_api_util.js');
 const SessionActions = require('../actions/session_actions.js');
 const SessionStore = require('../stores/session_store.js');
 const Modal = require('react-modal');
-const SignupForm = require('./signup_form.jsx');
+const Navbar = require('./navbar.jsx');
 const Router = require('react-router').Router;
-const hasHistory = Router.hashHistory;
-
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
+const hashHistory = require('react-router').hashHistory;
 
 const App = React.createClass({
   getInitialState: function() {
@@ -51,6 +39,10 @@ const App = React.createClass({
    this.setState({loginIsOpen: false});
  },
 
+guestLogin: function() {
+  SessionActions.login({email: "guest", password: "password"});
+},
+
  componentWillMount() {
     Modal.setAppElement(document.getElementById("root"));
  },
@@ -58,12 +50,12 @@ const App = React.createClass({
   render: function() {
     return (
       <div>
+      <Navbar/>
       {this.props.children}
       <br/>
-        Home Page will go here
-
-        <button onClick={this.openSignUpForm}>Sign Up!</button>
-        <button onClick={this.openLoginForm}>Log In!</button>
+        <button onClick={this.guestLogin}>Guest Login</button>
+        <button onClick={this.openSignUpForm}>Sign Up</button>
+        <button onClick={this.openLoginForm}>Log In</button>
       </div>
     );
   }

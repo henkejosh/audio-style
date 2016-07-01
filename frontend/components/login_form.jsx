@@ -2,8 +2,9 @@ const React = require('react');
 const SessionStore = require('../stores/session_store.js');
 const SessionActions = require('../actions/session_actions.js');
 const hashHistory = require('react-router').hashHistory;
-const Modal = require('react-modal');
 const ErrorStore = require('../stores/error_store.js');
+const Modal = require('react-modal');
+const modStyle = require('./modal_styles.js');
 
 const LoginForm = React.createClass({
   getInitialState: function() {
@@ -23,7 +24,6 @@ const LoginForm = React.createClass({
   componentDidMount: function() {
     this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
     this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
-    // this.errorListener = ErrorStore.addListener(this.handleErrors);
   },
 
   componentWillUnmount() {
@@ -56,7 +56,8 @@ const LoginForm = React.createClass({
 
   render: function() {
     return (
-      <Modal isOpen="true">
+      <Modal style={modStyle}
+        isOpen="true">
         <div>
         { this.handleErrors() }
         <h2>Log In</h2>
