@@ -7,6 +7,7 @@ const LoginForm = require('./components/login_form.jsx');
 const SignupForm = require('./components/signup_form.jsx');
 const App = require('./components/app.jsx');
 const Navbar = require('./components/navbar.jsx');
+const SongIndex = require('./components/song_index.jsx');
 //Router
 const reactRouter = require('react-router');
 const Router = reactRouter.Router;
@@ -19,6 +20,7 @@ const appRouter = (
     <Route path="/" component={ App } >
       <Route path="/signup" component={ SignupForm } />
       <Route path="/login" component={ LoginForm } />
+      <Route path="/songs" component={ SongIndex } />
     </Route>
   </Router>
 );

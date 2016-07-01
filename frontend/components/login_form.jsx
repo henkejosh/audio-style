@@ -33,7 +33,7 @@ const LoginForm = React.createClass({
 
   isUserLoggedIn: function() {
     if(SessionStore.isUserLoggedIn()) {
-      hashHistory.push(`api/users/${SessionStore.currentUser().id}`);
+      hashHistory.push(`/songs`);
     }
   },
 

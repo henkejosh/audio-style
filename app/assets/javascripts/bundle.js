@@ -55,6 +55,7 @@
 	var SignupForm = __webpack_require__(256);
 	var App = __webpack_require__(277);
 	var Navbar = __webpack_require__(282);
+	var SongIndex = __webpack_require__(284);
 	//Router
 	var reactRouter = __webpack_require__(1);
 	var Router = reactRouter.Router;
@@ -69,7 +70,8 @@
 	    Route,
 	    { path: '/', component: App },
 	    React.createElement(Route, { path: '/signup', component: SignupForm }),
-	    React.createElement(Route, { path: '/login', component: LoginForm })
+	    React.createElement(Route, { path: '/login', component: LoginForm }),
+	    React.createElement(Route, { path: '/songs', component: SongIndex })
 	  )
 	);
 	
@@ -32897,7 +32899,7 @@
 	
 	  isUserLoggedIn: function isUserLoggedIn() {
 	    if (SessionStore.isUserLoggedIn()) {
-	      hashHistory.push('api/users/' + SessionStore.currentUser().id);
+	      hashHistory.push('/songs');
 	    }
 	  },
 	
@@ -33011,7 +33013,7 @@
 	
 	  isUserLoggedIn: function isUserLoggedIn() {
 	    if (SessionStore.isUserLoggedIn()) {
-	      hashHistory.push('api/users/' + SessionStore.currentUser().id);
+	      hashHistory.push('/songs');
 	    }
 	  },
 	
@@ -35307,6 +35309,28 @@
 	    transform: 'translate(-50%, -50%)'
 	  }
 	};
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(4);
+	
+	var SongIndex = React.createClass({
+	  displayName: 'SongIndex',
+	
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      'song index'
+	    );
+	  }
+	});
+	
+	module.exports = SongIndex;
 
 /***/ }
 /******/ ]);
