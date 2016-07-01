@@ -28,18 +28,18 @@ const SessionApiUtil = {
     });
   },
 
-  logout: function(user, success, error) {
+  logout: function(success) {
     $.ajax({
-      url: `api/session/${user.id}`,
+      url: "api/session",
       type: "DELETE",
-      data: { user },
       dataType: "json",
-      success,
-      error: () => {
-        console.log("SessionApiUtil#logout error");
-      }
+      success
     });
   },
 };
 
+// error: (data) => {
+//   debugger;
+//   console.log("SessionApiUtil#logout error");
+// }
 module.exports = SessionApiUtil;

@@ -3,6 +3,7 @@
 const Store = require('flux/utils').Store;
 const Dispatcher = require('../dispatcher/dispatcher.js');
 const SessionConstants = require('../constants/session_constants.js');
+const hashHistory = require('react-router').hashHistory;
 
 let _currentUser = {};
 
@@ -14,6 +15,7 @@ const _login = function(currentUser) {
 
 const _logout = function() {
   _currentUser = {};
+  hashHistory.push("/");
 };
 
 SessionStore.currentUser = function() {

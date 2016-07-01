@@ -28,23 +28,36 @@ const App = React.createClass({
    this.setState({loginIsOpen: false});
  },
 
-guestLogin: function() {
-  SessionActions.login({email: "guest", password: "password"});
-},
+  guestLogin: function() {
+    SessionActions.login({email: "guest", password: "password"});
+  },
+
+  LogOut: function(e) {
+    e.preventDefault();
+    SessionActions.logout();
+  },
 
  componentWillMount() {
     Modal.setAppElement(document.getElementById("root"));
  },
 
   render: function() {
+    let component = <div><button onClick={this.LogOut}>Log Out</button></div>;
+    if (SessionStore.currentUser().id === undefined) {
+      component = (
+        <div>
+          <button onClick={this.guestLogin}>Guest Login</button>
+          <button onClick={this.openSignUpForm}>Sign Up</button>
+          <button onClick={this.openLoginForm}>Log In</button>
+        </div>
+      );
+    }
     return (
       <div>
       <Navbar/>
       {this.props.children}
       <br/>
-        <button onClick={this.guestLogin}>Guest Login</button>
-        <button onClick={this.openSignUpForm}>Sign Up</button>
-        <button onClick={this.openLoginForm}>Log In</button>
+        {component}
       </div>
     );
   }

@@ -2,6 +2,7 @@ const Dispatcher = require('../dispatcher/dispatcher.js');
 const SessionApiUtil = require('../util/session_api_util');
 const SessionConstants = require('../constants/session_constants.js');
 const ErrorActions = require('./error_actions.js');
+const hashHistory = require('react-router').hashHistory;
 
 const SessionActions = {
   signup: function(params) {
@@ -14,10 +15,14 @@ const SessionActions = {
       ErrorActions.setErrors);
   },
 
-  logout: function(params) {
-    SessionApiUtil.logout(params, SessionActions.removeCurrentUser,
-      ErrorActions.setErrors);
+  logout: function() {
+    SessionApiUtil.logout(SessionActions.removeCurrentUser);
   },
+
+  // logout: function(params) {
+  //   SessionApiUtil.logout(params, SessionActions.removeCurrentUser,
+  //     ErrorActions.setErrors);
+  // },
 
   receiveCurrentUser: function(user) {
     Dispatcher.dispatch({
@@ -28,9 +33,9 @@ const SessionActions = {
 
   removeCurrentUser: function(user) {
     Dispatcher.dispatch({
-      actionType: SessionConstants.LOGOUT,
-      currentUser: user
+      actionType: SessionConstants.LOGOUT
     });
+    // hashHistory.push("/");
   }
 };
 
