@@ -35284,6 +35284,7 @@
 	var ReactDOM = __webpack_require__(38);
 	var LeftNav = __webpack_require__(286);
 	var RightNav = __webpack_require__(287);
+	var SearchIndex = __webpack_require__(288);
 	
 	var Header = React.createClass({
 	  displayName: 'Header',
@@ -35293,6 +35294,7 @@
 	      'nav',
 	      { className: 'header' },
 	      React.createElement(LeftNav, { props: this.props.props }),
+	      React.createElement(SearchIndex, null),
 	      React.createElement(RightNav, { props: this.props.props })
 	    );
 	  }
@@ -35457,13 +35459,14 @@
 	        )
 	      );
 	    }
+	
 	    return React.createElement(
 	      'ul',
 	      { className: 'right-nav' },
 	      React.createElement(
 	        'li',
 	        { onClick: this.updateAuthComp },
-	        'profile icon w/ link to user page...',
+	        React.createElement('img', { src: 'http://f.cl.ly/items/0g2V1V3P08160j2t2y3X/users.png' }),
 	        React.createElement(
 	          'ul',
 	          { className: 'auth-buttons' },
@@ -35481,6 +35484,28 @@
 	});
 	
 	module.exports = RightNav;
+
+/***/ },
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var SearchIndex = React.createClass({
+	  displayName: "SearchIndex",
+	
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      { className: "search" },
+	      React.createElement("input", { type: "text", value: "...search" })
+	    );
+	  }
+	});
+	
+	module.exports = SearchIndex;
 
 /***/ }
 /******/ ]);

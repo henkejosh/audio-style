@@ -82,10 +82,11 @@ const RightNav = React.createClass({
         </div>
       );
     }
+
     return(
       <ul className="right-nav">
         <li onClick={this.updateAuthComp}>
-          profile icon w/ link to user page...
+          <img src="http://f.cl.ly/items/0g2V1V3P08160j2t2y3X/users.png"/>
           <ul className="auth-buttons">
             {this.state.authButtons ? button : null }
             {this.displayAuthComponent()}
