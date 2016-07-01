@@ -11,7 +11,7 @@ const hashHistory = require('react-router').hashHistory;
 
 const RightNav = React.createClass({
   getInitialState: function() {
-   return { signUpIsOpen: false, loginIsOpen: false };
+   return { signUpIsOpen: false, loginIsOpen: false , authButtons: false};
  },
 
  openSignUpForm: function() {
@@ -58,9 +58,18 @@ const RightNav = React.createClass({
     }
   },
 
- componentWillMount() {
+  componentWillMount() {
     Modal.setAppElement(document.getElementById("root"));
- },
+  },
+
+  updateAuthComp: function(e) {
+    e.preventDefault();
+    if(this.state.authButtons) {
+      this.setState({authButtons: false});
+    } else {
+      this.setState({authButtons: true});
+    }
+  },
 
   render: function() {
     let button = <div><button onClick={this.LogOut}>Log Out</button></div>;
@@ -74,11 +83,11 @@ const RightNav = React.createClass({
       );
     }
     return(
-      <ul>
-        <li>
+      <ul className="right-nav">
+        <li onClick={this.updateAuthComp}>
           profile icon w/ link to user page...
-          <ul>
-            {button}
+          <ul className="auth-buttons">
+            {this.state.authButtons ? button : null }
             {this.displayAuthComponent()}
           </ul>
         </li>

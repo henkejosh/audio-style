@@ -4,7 +4,7 @@ const ReactDOM = require('react-dom');
 const LeftNav = React.createClass({
   render: function() {
     return (
-        <ul>
+        <ul className="left-nav">
           <li>
             Logo coming here
           </li>

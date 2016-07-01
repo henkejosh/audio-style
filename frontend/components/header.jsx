@@ -9,7 +9,6 @@ const Header = React.createClass({
       <nav>
         <LeftNav props={this.props.props}/>
         <RightNav props={this.props.props}/>
-        Header here
       </nav>
     );
   }

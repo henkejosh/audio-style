@@ -35293,8 +35293,7 @@
 	      'nav',
 	      null,
 	      React.createElement(LeftNav, { props: this.props.props }),
-	      React.createElement(RightNav, { props: this.props.props }),
-	      'Header here'
+	      React.createElement(RightNav, { props: this.props.props })
 	    );
 	  }
 	});
@@ -35316,7 +35315,7 @@
 	  render: function render() {
 	    return React.createElement(
 	      'ul',
-	      null,
+	      { className: 'left-nav' },
 	      React.createElement(
 	        'li',
 	        null,
@@ -35367,7 +35366,7 @@
 	  displayName: 'RightNav',
 	
 	  getInitialState: function getInitialState() {
-	    return { signUpIsOpen: false, loginIsOpen: false };
+	    return { signUpIsOpen: false, loginIsOpen: false, authButtons: false };
 	  },
 	
 	  openSignUpForm: function openSignUpForm() {
@@ -35419,6 +35418,15 @@
 	  },
 	
 	
+	  updateAuthComp: function updateAuthComp(e) {
+	    e.preventDefault();
+	    if (this.state.authButtons) {
+	      this.setState({ authButtons: false });
+	    } else {
+	      this.setState({ authButtons: true });
+	    }
+	  },
+	
 	  render: function render() {
 	    var button = React.createElement(
 	      'div',
@@ -35452,15 +35460,15 @@
 	    }
 	    return React.createElement(
 	      'ul',
-	      null,
+	      { className: 'right-nav' },
 	      React.createElement(
 	        'li',
-	        null,
+	        { onClick: this.updateAuthComp },
 	        'profile icon w/ link to user page...',
 	        React.createElement(
 	          'ul',
-	          null,
-	          button,
+	          { className: 'auth-buttons' },
+	          this.state.authButtons ? button : null,
 	          this.displayAuthComponent()
 	        )
 	      ),
