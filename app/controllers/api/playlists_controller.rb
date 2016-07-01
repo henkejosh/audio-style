@@ -5,43 +5,43 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def new
-		@album = Playlist.new
-		render json: @album
+		@playlist = Playlist.new
+		render json: @playlist
 	end
 
 	def show
-		@album = Playlist.find(params[:id])
-		render json: @album
+		@playlist = Playlist.find(params[:id])
+		render json: @playlist
 	end
 
   def destroy
-    @album = Playlist.find(params[:id])
-    @album.destroy!
+    @playlist = Playlist.find(params[:id])
+    @playlist.destroy!
     render "api/playlists"
   end
 
 	def create
-		@album = Playlist.new(album_params)
+		@playlist = Playlist.new(playlist_params)
 
-		if @album.save
+		if @playlist.save
 			render "api/playlists/show"
 		else
-			render json: @album.errors, status: 422
+			render json: @playlist.errors, status: 422
 		end
 	end
 
 	def update
-		@album = Playlist.find(params[:id])
-		@album.update_attributes!(album_params)
-		if @album.save
+		@playlist = Playlist.find(params[:id])
+		@playlist.update_attributes!(playlist_params)
+		if @playlist.save
 			render "api/playlists/show"
 		else
-			render json: @album.errors, status: 422
+			render json: @playlist.errors, status: 422
 		end
 	end
 
 	private
-	def album_params
-		params.require(:album).permit(:artist_id, :title, :image_url)
+	def playlist_params
+		params.require(:playlist).permit(:user_id, :name, :song_id)
 	end
 end
