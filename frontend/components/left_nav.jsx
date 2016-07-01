@@ -1,10 +1,9 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
-const Navbar = React.createClass({
+const LeftNav = React.createClass({
   render: function() {
     return (
-      <nav>
         <ul>
           <li>
             Logo coming here
@@ -22,9 +21,8 @@ const Navbar = React.createClass({
             upload songs button
           </li>
         </ul>
-      </nav>
     );
   }
 });
 
-module.exports = Navbar;
+module.exports = LeftNav;

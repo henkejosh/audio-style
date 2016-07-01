@@ -54,7 +54,6 @@
 	var LoginForm = __webpack_require__(195);
 	var SignupForm = __webpack_require__(280);
 	var App = __webpack_require__(281);
-	var Navbar = __webpack_require__(282);
 	var SongIndex = __webpack_require__(283);
 	var SongIndexItem = __webpack_require__(284);
 	//Router
@@ -35194,7 +35193,8 @@
 	var SessionActions = __webpack_require__(169);
 	var SessionStore = __webpack_require__(177);
 	var Modal = __webpack_require__(259);
-	var Navbar = __webpack_require__(282);
+	// const Navbar = require('./navbar.jsx');
+	var Header = __webpack_require__(285);
 	var Router = __webpack_require__(196).Router;
 	var hashHistory = __webpack_require__(196).hashHistory;
 	
@@ -35280,7 +35280,7 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(Navbar, null),
+	      React.createElement(Header, null),
 	      this.props.children,
 	      React.createElement('br', null),
 	      component
@@ -35291,65 +35291,7 @@
 	module.exports = App;
 
 /***/ },
-/* 282 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(38);
-	
-	var Navbar = React.createClass({
-	  displayName: 'Navbar',
-	
-	  render: function render() {
-	    return React.createElement(
-	      'nav',
-	      null,
-	      React.createElement(
-	        'ul',
-	        null,
-	        React.createElement(
-	          'li',
-	          null,
-	          'Logo coming here'
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          React.createElement(
-	            'a',
-	            { href: '#' },
-	            'Stream'
-	          )
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          React.createElement(
-	            'a',
-	            { href: '#' },
-	            'Search Component'
-	          )
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          'profile icon w/ link to user page'
-	        ),
-	        React.createElement(
-	          'li',
-	          null,
-	          'upload songs button'
-	        )
-	      )
-	    );
-	  }
-	});
-	
-	module.exports = Navbar;
-
-/***/ },
+/* 282 */,
 /* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -35393,6 +35335,111 @@
 	});
 	
 	module.exports = SongIndexItem;
+
+/***/ },
+/* 285 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var ReactDOM = __webpack_require__(38);
+	var LeftNav = __webpack_require__(286);
+	var RightNav = __webpack_require__(287);
+	
+	var Header = React.createClass({
+	  displayName: 'Header',
+	
+	  render: function render() {
+	    return React.createElement(
+	      'nav',
+	      null,
+	      React.createElement(LeftNav, null),
+	      React.createElement(RightNav, null),
+	      'Header here'
+	    );
+	  }
+	});
+	
+	module.exports = Header;
+
+/***/ },
+/* 286 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var ReactDOM = __webpack_require__(38);
+	
+	var LeftNav = React.createClass({
+	  displayName: 'LeftNav',
+	
+	  render: function render() {
+	    return React.createElement(
+	      'ul',
+	      null,
+	      React.createElement(
+	        'li',
+	        null,
+	        'Logo coming here'
+	      ),
+	      React.createElement(
+	        'li',
+	        null,
+	        React.createElement(
+	          'a',
+	          { href: '#' },
+	          'Stream'
+	        )
+	      ),
+	      React.createElement(
+	        'li',
+	        null,
+	        React.createElement(
+	          'a',
+	          { href: '#' },
+	          'Search Component'
+	        )
+	      ),
+	      React.createElement(
+	        'li',
+	        null,
+	        'profile icon w/ link to user page'
+	      ),
+	      React.createElement(
+	        'li',
+	        null,
+	        'upload songs button'
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = LeftNav;
+
+/***/ },
+/* 287 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	var ReactDOM = __webpack_require__(38);
+	
+	var RightNav = React.createClass({
+	  displayName: 'RightNav',
+	
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      'stuff'
+	    );
+	  }
+	});
+	
+	module.exports = RightNav;
 
 /***/ }
 /******/ ]);

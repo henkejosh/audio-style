@@ -3,7 +3,8 @@ const SessionApiUtil = require('../util/session_api_util.js');
 const SessionActions = require('../actions/session_actions.js');
 const SessionStore = require('../stores/session_store.js');
 const Modal = require('react-modal');
-const Navbar = require('./navbar.jsx');
+// const Navbar = require('./navbar.jsx');
+const Header = require('./header.jsx');
 const Router = require('react-router').Router;
 const hashHistory = require('react-router').hashHistory;
 
@@ -65,7 +66,7 @@ const App = React.createClass({
     }
     return (
       <div>
-      <Navbar/>
+      <Header/>
       {this.props.children}
       <br/>
         {component}
