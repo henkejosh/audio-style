@@ -35193,7 +35193,6 @@
 	var SessionActions = __webpack_require__(169);
 	var SessionStore = __webpack_require__(177);
 	var Modal = __webpack_require__(259);
-	// const Navbar = require('./navbar.jsx');
 	var Header = __webpack_require__(285);
 	var Router = __webpack_require__(196).Router;
 	var hashHistory = __webpack_require__(196).hashHistory;
@@ -35201,35 +35200,6 @@
 	var App = React.createClass({
 	  displayName: 'App',
 	
-	  getInitialState: function getInitialState() {
-	    return { signUpIsOpen: false, loginIsOpen: false };
-	  },
-	
-	  openSignUpForm: function openSignUpForm() {
-	    hashHistory.push("/signup");
-	  },
-	
-	  closeSignUpForm: function closeSignUpForm() {
-	    this.setState({ signUpIsOpen: false });
-	  },
-	
-	  openLoginForm: function openLoginForm() {
-	    hashHistory.push("/login");
-	  },
-	
-	  closeLoginForm: function closeLoginForm() {
-	    this.setState({ loginIsOpen: false });
-	  },
-	
-	  guestLogin: function guestLogin(e) {
-	    e.preventDefault();
-	    SessionActions.login({ email: "guest", password: "password" });
-	  },
-	
-	  LogOut: function LogOut(e) {
-	    e.preventDefault();
-	    SessionActions.logout();
-	  },
 	
 	  componentDidMount: function componentDidMount() {
 	    this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
@@ -35247,43 +35217,11 @@
 	
 	
 	  render: function render() {
-	    var component = React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'button',
-	        { onClick: this.LogOut },
-	        'Log Out'
-	      )
-	    );
-	    if (SessionStore.currentUser().id === undefined) {
-	      component = React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'button',
-	          { onClick: this.guestLogin },
-	          'Guest Login'
-	        ),
-	        React.createElement(
-	          'button',
-	          { onClick: this.openSignUpForm },
-	          'Sign Up'
-	        ),
-	        React.createElement(
-	          'button',
-	          { onClick: this.openLoginForm },
-	          'Log In'
-	        )
-	      );
-	    }
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(Header, null),
-	      this.props.children,
-	      React.createElement('br', null),
-	      component
+	      React.createElement(Header, { props: this.props }),
+	      React.createElement('br', null)
 	    );
 	  }
 	});
@@ -35354,8 +35292,8 @@
 	    return React.createElement(
 	      'nav',
 	      null,
-	      React.createElement(LeftNav, null),
-	      React.createElement(RightNav, null),
+	      React.createElement(LeftNav, { props: this.props.props }),
+	      React.createElement(RightNav, { props: this.props.props }),
 	      'Header here'
 	    );
 	  }
@@ -35401,16 +35339,6 @@
 	          { href: '#' },
 	          'Search Component'
 	        )
-	      ),
-	      React.createElement(
-	        'li',
-	        null,
-	        'profile icon w/ link to user page'
-	      ),
-	      React.createElement(
-	        'li',
-	        null,
-	        'upload songs button'
 	      )
 	    );
 	  }
@@ -35425,16 +35353,122 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(38);
+	var SessionApiUtil = __webpack_require__(168);
+	var SessionActions = __webpack_require__(169);
+	var SessionStore = __webpack_require__(177);
+	var Modal = __webpack_require__(259);
+	var Header = __webpack_require__(285);
+	var SignupForm = __webpack_require__(280);
+	var LoginForm = __webpack_require__(195);
+	var Router = __webpack_require__(196).Router;
+	var hashHistory = __webpack_require__(196).hashHistory;
 	
 	var RightNav = React.createClass({
 	  displayName: 'RightNav',
 	
+	  getInitialState: function getInitialState() {
+	    return { signUpIsOpen: false, loginIsOpen: false };
+	  },
+	
+	  openSignUpForm: function openSignUpForm() {
+	    hashHistory.push("/signup");
+	  },
+	
+	  closeSignUpForm: function closeSignUpForm() {
+	    this.setState({ signUpIsOpen: false });
+	  },
+	
+	  openLoginForm: function openLoginForm() {
+	    hashHistory.push("/login");
+	  },
+	
+	  closeLoginForm: function closeLoginForm() {
+	    this.setState({ loginIsOpen: false });
+	  },
+	
+	  guestLogin: function guestLogin(e) {
+	    e.preventDefault();
+	    SessionActions.login({ email: "guest", password: "password" });
+	  },
+	
+	  LogOut: function LogOut(e) {
+	    e.preventDefault();
+	    SessionActions.logout();
+	  },
+	
+	  componentDidMount: function componentDidMount() {
+	    this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
+	  },
+	
+	  isUserLoggedIn: function isUserLoggedIn() {
+	    if (SessionStore.isUserLoggedIn()) {
+	      hashHistory.push('/songs');
+	    }
+	  },
+	
+	  displayAuthComponent: function displayAuthComponent() {
+	    if (this.props.props.location.pathname === "/login") {
+	      return React.createElement(LoginForm, null);
+	    } else if (this.props.props.location.pathname === "/signup") {
+	      return React.createElement(SignupForm, null);
+	    }
+	  },
+	
+	  componentWillMount: function componentWillMount() {
+	    Modal.setAppElement(document.getElementById("root"));
+	  },
+	
+	
 	  render: function render() {
-	    return React.createElement(
+	    var button = React.createElement(
 	      'div',
 	      null,
-	      'stuff'
+	      React.createElement(
+	        'button',
+	        { onClick: this.LogOut },
+	        'Log Out'
+	      )
+	    );
+	    if (SessionStore.currentUser().id === undefined) {
+	      button = React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'button',
+	          { onClick: this.guestLogin },
+	          'Guest Login'
+	        ),
+	        React.createElement(
+	          'button',
+	          { onClick: this.openSignUpForm },
+	          'Sign Up'
+	        ),
+	        React.createElement(
+	          'button',
+	          { onClick: this.openLoginForm },
+	          'Log In'
+	        )
+	      );
+	    }
+	    return React.createElement(
+	      'ul',
+	      null,
+	      React.createElement(
+	        'li',
+	        null,
+	        'profile icon w/ link to user page...',
+	        React.createElement(
+	          'ul',
+	          null,
+	          button,
+	          this.displayAuthComponent()
+	        )
+	      ),
+	      React.createElement(
+	        'li',
+	        null,
+	        'upload songs button'
+	      )
 	    );
 	  }
 	});

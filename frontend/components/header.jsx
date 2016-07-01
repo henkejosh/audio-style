@@ -7,8 +7,8 @@ const Header = React.createClass({
   render: function() {
     return (
       <nav>
-        <LeftNav/>
-        <RightNav/>
+        <LeftNav props={this.props.props}/>
+        <RightNav props={this.props.props}/>
         Header here
       </nav>
     );

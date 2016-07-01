@@ -14,12 +14,6 @@ const LeftNav = React.createClass({
           <li>
             <a href="#">Search Component</a>
           </li>
-          <li>
-            profile icon w/ link to user page
-          </li>
-          <li>
-            upload songs button
-          </li>
         </ul>
     );
   }
