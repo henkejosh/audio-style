@@ -35291,7 +35291,7 @@
 	  render: function render() {
 	    return React.createElement(
 	      'nav',
-	      null,
+	      { className: 'header' },
 	      React.createElement(LeftNav, { props: this.props.props }),
 	      React.createElement(RightNav, { props: this.props.props })
 	    );
@@ -35304,39 +35304,38 @@
 /* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(38);
 	
 	var LeftNav = React.createClass({
-	  displayName: 'LeftNav',
+	  displayName: "LeftNav",
 	
 	  render: function render() {
 	    return React.createElement(
-	      'ul',
-	      { className: 'left-nav' },
+	      "ul",
+	      { className: "left-nav" },
 	      React.createElement(
-	        'li',
-	        null,
-	        'Logo coming here'
+	        "li",
+	        { className: "logo" },
+	        React.createElement("img", { src: "http://f.cl.ly/items/1o0i3F2Y412W2z0i3J3g/youtube-music-logo.jpg" })
 	      ),
 	      React.createElement(
-	        'li',
+	        "li",
 	        null,
 	        React.createElement(
-	          'a',
-	          { href: '#' },
-	          'Stream'
+	          "a",
+	          { href: "#" },
+	          "Stream"
 	        )
 	      ),
 	      React.createElement(
-	        'li',
+	        "li",
 	        null,
 	        React.createElement(
-	          'a',
-	          { href: '#' },
-	          'Search Component'
+	          "a",
+	          { href: "#" },
+	          "Search Component"
 	        )
 	      )
 	    );

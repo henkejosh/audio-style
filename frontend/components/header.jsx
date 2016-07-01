@@ -6,7 +6,7 @@ const RightNav = require('./right_nav.jsx');
 const Header = React.createClass({
   render: function() {
     return (
-      <nav>
+      <nav className="header">
         <LeftNav props={this.props.props}/>
         <RightNav props={this.props.props}/>
       </nav>
