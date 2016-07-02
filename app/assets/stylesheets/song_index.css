@@ -1,0 +1,51 @@
+.songIndex {
+  display: flex;
+  flex-direction: column;
+}
+
+.songIndex figure {
+  display: flex;
+  border: 1px solid black;
+}
+
+.songIndex img {
+  max-width: 160px;
+  max-height: 160px;
+  min-width: 160px;
+  min-height: 160px;
+  padding: 10px 5px 20px 5px;
+}
+
+.songIndex section {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  border: 1px solid black;
+}
+
+.song div {
+  border: 1px solid red;
+  height: 80%;
+}
+
+.song div {
+  display: flex;
+}
+
+.song button {
+  width: 30%;
+}
+
+.song ul {
+  display: flex;
+}
+
+.song ul {
+  display: flex;
+  border: 1px solid green;
+}
+
+.song ul li {
+  width: 35%;
+  height: 75%;
+}

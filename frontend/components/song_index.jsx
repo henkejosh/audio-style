@@ -4,7 +4,7 @@ const SongIndexItem = require('./song_index_item.jsx');
 const SongIndex = React.createClass({
   render: function() {
     return (
-        <div>
+        <div className="songIndex">
           <SongIndexItem />
         </div>
       );

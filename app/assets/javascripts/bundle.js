@@ -35247,7 +35247,7 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'songIndex' },
 	      React.createElement(SongIndexItem, null)
 	    );
 	  }
@@ -35268,13 +35268,55 @@
 	
 	  render: function render() {
 	    return React.createElement(
-	      "section",
+	      "figure",
 	      null,
+	      React.createElement("img", { alt: "Crooked Rain, Crooked Rain",
+	        src: "http://f.cl.ly/items/2I0M121z2b1A0Q3X0y2S/220px-Pavement_Crooked_Rain.jpg" }),
 	      React.createElement(
-	        "div",
-	        null,
-	        React.createElement("img", { alt: "Crooked Rain, Crooked Rain",
-	          src: "http://f.cl.ly/items/2I0M121z2b1A0Q3X0y2S/220px-Pavement_Crooked_Rain.jpg" })
+	        "section",
+	        { className: "song" },
+	        React.createElement(
+	          "div",
+	          null,
+	          React.createElement(
+	            "button",
+	            null,
+	            "Play"
+	          ),
+	          React.createElement(
+	            "ul",
+	            null,
+	            React.createElement(
+	              "li",
+	              null,
+	              "Song Title"
+	            ),
+	            React.createElement(
+	              "li",
+	              null,
+	              "Artist"
+	            ),
+	            React.createElement(
+	              "li",
+	              null,
+	              "Album"
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          "ul",
+	          null,
+	          React.createElement(
+	            "li",
+	            null,
+	            "Comment button"
+	          ),
+	          React.createElement(
+	            "li",
+	            null,
+	            "Like button"
+	          )
+	        )
 	      )
 	    );
 	  }
