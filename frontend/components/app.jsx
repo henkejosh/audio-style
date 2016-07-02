@@ -6,6 +6,7 @@ const Modal = require('react-modal');
 const Header = require('./header.jsx');
 const Router = require('react-router').Router;
 const hashHistory = require('react-router').hashHistory;
+const SongIndex = require('./song_index.jsx');
 
 const App = React.createClass({
 
@@ -26,8 +27,8 @@ const App = React.createClass({
   render: function() {
     return (
       <div>
-      <Header props={this.props}/>
-      <br/>
+        <Header/>
+        {this.props.children}
       </div>
     );
   }

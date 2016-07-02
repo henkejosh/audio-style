@@ -8,6 +8,7 @@ const SignupForm = require('./components/signup_form.jsx');
 const App = require('./components/app.jsx');
 const SongIndex = require('./components/song_index.jsx');
 const SongIndexItem = require('./components/song_index_item.jsx');
+const Header = require('./components/header.jsx');
 //Router
 const reactRouter = require('react-router');
 const Router = reactRouter.Router;
@@ -21,6 +22,7 @@ const _ensureLoggedIn = function(nextState, replace) {
   }
 };
 
+// <IndexRoute component={ Header } />
 const appRouter = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App } >

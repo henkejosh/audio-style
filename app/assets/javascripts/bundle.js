@@ -56,6 +56,7 @@
 	var App = __webpack_require__(281);
 	var SongIndex = __webpack_require__(283);
 	var SongIndexItem = __webpack_require__(284);
+	var Header = __webpack_require__(285);
 	//Router
 	var reactRouter = __webpack_require__(196);
 	var Router = reactRouter.Router;
@@ -69,6 +70,7 @@
 	  }
 	};
 	
+	// <IndexRoute component={ Header } />
 	var appRouter = React.createElement(
 	  Router,
 	  { history: hashHistory },
@@ -35196,6 +35198,7 @@
 	var Header = __webpack_require__(285);
 	var Router = __webpack_require__(196).Router;
 	var hashHistory = __webpack_require__(196).hashHistory;
+	var SongIndex = __webpack_require__(283);
 	
 	var App = React.createClass({
 	  displayName: 'App',
@@ -35220,8 +35223,8 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(Header, { props: this.props }),
-	      React.createElement('br', null)
+	      React.createElement(Header, null),
+	      this.props.children
 	    );
 	  }
 	});
@@ -35236,6 +35239,7 @@
 	'use strict';
 	
 	var React = __webpack_require__(1);
+	var SongIndexItem = __webpack_require__(284);
 	
 	var SongIndex = React.createClass({
 	  displayName: 'SongIndex',
@@ -35244,7 +35248,7 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      'song index'
+	      React.createElement(SongIndexItem, null)
 	    );
 	  }
 	});
@@ -35266,8 +35270,12 @@
 	    return React.createElement(
 	      "section",
 	      null,
-	      "Songs on Songs",
-	      React.createElement("img", { src: "#", alt: "album_description_goes_here" })
+	      React.createElement(
+	        "div",
+	        null,
+	        React.createElement("img", { alt: "Crooked Rain, Crooked Rain",
+	          src: "http://f.cl.ly/items/2I0M121z2b1A0Q3X0y2S/220px-Pavement_Crooked_Rain.jpg" })
+	      )
 	    );
 	  }
 	});
@@ -35286,6 +35294,9 @@
 	var RightNav = __webpack_require__(287);
 	var SearchIndex = __webpack_require__(288);
 	
+	// <LeftNav props={this.props.props}/>
+	// <SearchIndex />
+	// <RightNav props={this.props.props}/>
 	var Header = React.createClass({
 	  displayName: 'Header',
 	
@@ -35293,9 +35304,9 @@
 	    return React.createElement(
 	      'nav',
 	      { className: 'header' },
-	      React.createElement(LeftNav, { props: this.props.props }),
+	      React.createElement(LeftNav, null),
 	      React.createElement(SearchIndex, null),
-	      React.createElement(RightNav, { props: this.props.props })
+	      React.createElement(RightNav, null)
 	    );
 	  }
 	});
@@ -35460,6 +35471,7 @@
 	      );
 	    }
 	
+	    // {this.displayAuthComponent()}
 	    return React.createElement(
 	      'ul',
 	      { className: 'right-nav' },
@@ -35470,8 +35482,7 @@
 	        React.createElement(
 	          'ul',
 	          { className: 'auth-buttons' },
-	          this.state.authButtons ? button : null,
-	          this.displayAuthComponent()
+	          this.state.authButtons ? button : null
 	        )
 	      ),
 	      React.createElement(
