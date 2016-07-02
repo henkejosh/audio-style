@@ -8,7 +8,8 @@
     "test": "test"
   },
   "scripts": {
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "postinstall": "./node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,10 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/henkejosh/capstone/issues"
+  },
+  "engines": {
+    "node": "6.1.0",
+    "npm": "3.8.6"
   },
   "homepage": "https://github.com/henkejosh/capstone#readme",
   "dependencies": {
