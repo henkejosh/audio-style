@@ -24,7 +24,6 @@ const _ensureLoggedIn = function(nextState, replace) {
   }
 };
 
-// <IndexRoute component={ Header } />
 const appRouter = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App } >
