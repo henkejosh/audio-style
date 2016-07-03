@@ -7,6 +7,7 @@ const Header = require('./header.jsx');
 const Router = require('react-router').Router;
 const hashHistory = require('react-router').hashHistory;
 const SongIndex = require('./song_index.jsx');
+const CurrentSongPlayer = require('./current_song_player.jsx');
 
 const App = React.createClass({
 
@@ -29,6 +30,7 @@ const App = React.createClass({
       <div>
         <Header/>
         {this.props.children}
+        <CurrentSongPlayer />
       </div>
     );
   }

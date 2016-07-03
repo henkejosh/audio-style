@@ -38,6 +38,7 @@
 
 .song ul {
   display: flex;
+  flex-direction: column;
 }
 
 .song ul {

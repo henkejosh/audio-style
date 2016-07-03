@@ -5,17 +5,17 @@ const SongIndexItem = React.createClass({
     return (
       <figure>
 
-        <img alt="Crooked Rain, Crooked Rain"
-          src="http://f.cl.ly/items/2I0M121z2b1A0Q3X0y2S/220px-Pavement_Crooked_Rain.jpg"/>
+        <img alt={this.props.song.album_name}
+          src={this.props.song.image_url}/>
 
         <section className="song">
 
           <div>
             <button>Play</button>
             <ul>
-              <li>Song Title</li>
-              <li>Artist</li>
-              <li>Album</li>
+              <li>{this.props.song.title}</li>
+              <li>{this.props.song.artist_name}</li>
+              <li>{this.props.song.album_name}</li>
             </ul>
           </div>
 
