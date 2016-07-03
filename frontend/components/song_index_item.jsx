@@ -19,9 +19,10 @@ const SongIndexItem = React.createClass({
             </ul>
           </div>
 
-          <ul>
-            <li>Comment button</li>
-            <li>Like button</li>
+          <ul className="song-button-feats">
+            <li>Comment</li>
+            <li>Like</li>
+            <li>Add to PL</li>
           </ul>
         </section>
       </figure>
