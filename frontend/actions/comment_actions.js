@@ -7,11 +7,10 @@ const CommentActions = {
     CommentApiUtil.fetchSongComments(songID, this.receiveSongComments);
   },
 
-  receiveSongComments: function(songID, comments) {
+  receiveSongComments: function(comments) {
     Dispatcher.dispatch({
       actionType: CommentConstants.FETCH_COMMENTS,
-      comments: comments,
-      songID: songID
+      comments: comments
     });
   },
 
@@ -19,11 +18,10 @@ const CommentActions = {
     CommentApiUtil.createSongComment(songID, comment, this.receiveSongComment);
   },
 
-  receiveSongComment: function(songID, comment) {
+  receiveSongComment: function(comment) {
     Dispatcher.dispatch({
       actionType: CommentConstants.ADD_NEW_COMMENT,
-      comment: comment,
-      songID: songID
+      comment: comment
     });
   }
 };

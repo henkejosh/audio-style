@@ -1,6 +1,24 @@
 const React = require('react');
+const CommentForm = require('./comment_form.jsx');
 
 const SongIndexItem = React.createClass({
+  getInitialState: function() {
+    return { shown: "none"};
+  },
+
+  handleCommentForm: function(event) {
+    event.preventDefault();
+
+    let displayAtt;
+    if(this.state.shown === "none") {
+      displayAtt = "block";
+    } else {
+      displayAtt = "none";
+    }
+    this.setState({ shown: "block"});
+    this.forceUpdate();
+  },
+
   render: function() {
     return (
       <figure>
@@ -20,7 +38,9 @@ const SongIndexItem = React.createClass({
           </div>
 
           <ul className="song-button-feats">
-            <li>Comment</li>
+            <li onClick={this.handleCommentForm}>
+              <CommentForm displayProp={this.state.shown}/>
+            </li>
             <li>Like</li>
             <li>Add to PL</li>
           </ul>
