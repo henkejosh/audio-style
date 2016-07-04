@@ -2,6 +2,7 @@ ul.songIndex {
   display: flex;
   flex-direction: column;
   padding: 0px;
+  margin: 0 auto -30px;
 }
 
 .songIndex figure {
@@ -32,8 +33,8 @@ ul.songIndex {
   display: flex;
 }
 
-.song button {
-  width: 30%;
+.song .play-button {
+  width: 90px;
 }
 
 .song ul {
@@ -63,4 +64,14 @@ ul.song-button-feats li {
 .song ul li {
   width: 35%;
   height: 75%;
+}
+
+div.push {
+  height: 30px;
+}
+
+audio {
+  height: 30px;
+  width: 100%;
+  position: fixed;
 }

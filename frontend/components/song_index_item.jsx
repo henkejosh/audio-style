@@ -11,7 +11,7 @@ const SongIndexItem = React.createClass({
         <section className="song">
 
           <div>
-            <button>Play</button>
+            <button className="play-button">Play</button>
             <ul className="song-info">
               <li>{this.props.song.title}</li>
               <li>{this.props.song.artist_name}</li>

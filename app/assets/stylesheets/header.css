@@ -1,5 +1,7 @@
 body {
   margin: 0px;
+  padding: 0px;
+  background: green;
 }
 
 nav.header {
@@ -10,7 +12,7 @@ nav.header {
 }
 
 ul.left-nav {
-  padding: 0px 10px 0px 0px;
+  padding: 0px 10px;
   margin: 0px;
   width: 35%;
   list-style: none;
