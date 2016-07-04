@@ -3,7 +3,6 @@ const CommentForm = require('./comment_form.jsx');
 const CurrentSongStore = require('../stores/current_song_store.js');
 const CurrentSongActions = require('../actions/current_song_actions');
 
-
 const SongIndexItem = React.createClass({
   getInitialState: function() {
     return { shown: "none"};
@@ -24,6 +23,20 @@ const SongIndexItem = React.createClass({
   handleSongPlay: function(e) {
     e.preventDefault();
     CurrentSongActions.selectCurrentSong(this.props.song.id);
+    this._wavesurfer.playPause();
+  },
+
+  componentDidMount: function() {
+    this._wavesurfer = WaveSurfer.create({
+      container: `#waveform${this.props.song.id}`,
+      waveColor:'violet',
+      progressColor: 'purple',
+      fillParent: true
+    });
+
+    if(this.props.song.id) {
+      this._wavesurfer.load(this.props.song.spotify_preview);
+    }
   },
 
   render: function() {
@@ -49,7 +62,7 @@ const SongIndexItem = React.createClass({
 
             </div>
 
-            <figure id="wafeform"/>
+            <figure id={`waveform${this.props.song.id}`}/>
 
           </div>
 
