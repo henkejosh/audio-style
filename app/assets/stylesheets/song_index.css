@@ -74,9 +74,5 @@ div.push {
 audio {
   height: 30px;
   width: 100%;
-  position: fixed;
 }
-
-/*.song-button-feats section form {
-  display: none;
-}*/
+/*position: fixed;*/

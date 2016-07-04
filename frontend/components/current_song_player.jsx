@@ -12,15 +12,16 @@ const CurrentSongPlayer = React.createClass({
 
   fetchCurrentSong: function() {
     this.setState({currentSong: CurrentSongStore.currentSong()});
+    const audio = document.getElementById('player');
+    audio.load();
   },
 
   render: function() {
-    
     return (
       <div>
         <div className="push">
-          <audio controls="controls">
-          <source src="https://p.scdn.co/mp3-preview/605b1c1a5995a87eb64dab0264738f5143c64e2c"/>
+          <audio id="player" controls="controls" autoPlay>
+          <source src={ this.state.currentSong.spotify_preview }/>
             Your browser does not support the audio element.
           </audio>
         </div>
