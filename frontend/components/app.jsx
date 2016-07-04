@@ -8,11 +8,22 @@ const Router = require('react-router').Router;
 const hashHistory = require('react-router').hashHistory;
 const SongIndex = require('./song_index.jsx');
 const CurrentSongPlayer = require('./current_song_player.jsx');
+const CurrentSongStore = require('../stores/current_song_store.js');
 
 const App = React.createClass({
+  getInitialState: function() {
+    return {currentSong: "false"};
+  },
 
   componentDidMount: function() {
     this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
+    this.currentSongListener = CurrentSongStore.addListener(this.isCurrentSong);
+  },
+
+  isCurrentSong: function() {
+    if(CurrentSongStore.isCurrentSong()) {
+      this.setState({ currentSong: "true"});
+    }
   },
 
   isUserLoggedIn: function() {
@@ -26,11 +37,16 @@ const App = React.createClass({
  },
 
   render: function() {
+    let currSong;
+    if(this.state.currentSong === "true") {
+      currSong = <CurrentSongPlayer/>;
+    }
+
     return (
       <div>
         <Header/>
         {this.props.children}
-        <CurrentSongPlayer />
+        {currSong}
       </div>
     );
   }

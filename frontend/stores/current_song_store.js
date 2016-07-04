@@ -12,6 +12,10 @@ const _receiveCurrentSong = function(currSong) {
   _currentSong = currSong;
 };
 
+CurrentSongStore.isCurrentSong = function() {
+  return !!_currentSong.title;
+};
+
 CurrentSongStore.currentSong = function() {
   return Object.assign({}, _currentSong);
 };
