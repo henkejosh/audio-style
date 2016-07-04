@@ -28,21 +28,29 @@ const SongIndexItem = React.createClass({
 
   render: function() {
     return (
-      <figure>
+      <figure className="song-index-item">
 
         <img alt={this.props.song.album_name}
           src={this.props.song.image_url}/>
 
         <section className="song">
 
-          <div>
-            <button onClick={this.handleSongPlay}
-              className="play-button">Play</button>
-            <ul className="song-info">
-              <li>{this.props.song.title}</li>
-              <li>{this.props.song.artist_name}</li>
-              <li>{this.props.song.album_name}</li>
-            </ul>
+          <div className="song-item">
+            <div className="play-song-info">
+
+              <div onClick={this.handleSongPlay}
+                className="play-button">Play</div>
+
+              <ul className="song-info">
+                <li>{this.props.song.title}</li>
+                <li>{this.props.song.artist_name}</li>
+                <li>{this.props.song.album_name}</li>
+              </ul>
+
+            </div>
+
+            <figure id="wafeform"/>
+
           </div>
 
           <ul className="song-button-feats">

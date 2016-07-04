@@ -5,9 +5,9 @@ ul.songIndex {
   margin: 10px 10px -30px 10px;
 }
 
-.songIndex figure {
+.songIndex > figure {
   display: flex;
-  border: 1px solid black;
+  border: 2px solid orange;
   margin: 10px;
 }
 
@@ -19,52 +19,67 @@ ul.songIndex {
   padding: 10px 0px 30px 5px;
 }
 
-.songIndex section {
+.song-index-item > section {
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: 1px solid black;
-  padding: 10px;
-  padding-bottom: 0px;
+  border: 2px solid black;
+  padding: 0px 10px;
 }
 
-.song div {
-  border: 1px solid red;
-  height: 80%;
+div.song-item {
+  border: 2px solid red;
+  height: 160px;
   display: flex;
-}
-
-.song .play-button {
-  width: 90px;
-}
-
-.song ul {
-  display: flex;
-  border: 1px solid green;
   flex-direction: column;
 }
 
+div.play-button {
+  width: 90px;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background: #FF7400;
+}
+
+div.play-button:hover {
+  background: #DC6400;
+}
+
 ul.song-info {
-  width: 70%;
+  display: flex;
+  border: 2px solid green;
+  flex-direction: column;
+  height: calc(100% - 140px);
+  width: calc(100% - 90px);
+  flex-direction: row;
 }
 
 ul.song-button-feats {
   display: flex;
   flex-direction: row;
-  border: 1px solid yellow;
-  margin: 10px;
-  margin-bottom: 0px;
+  border: 2px solid yellow;
   width: 50%;
+  height: 25px;
 }
 
 ul.song-button-feats li {
-  width: 30%;
-  border: 1px solid aqua;
+  width: 33%;
+  border: 1px solid purple;
+  height: 100%;
 }
 
-.song ul li {
-  width: 35%;
-  height: 75%;
+div.play-song-info {
+  display: flex;
+  flex-direction: row;
+}
+
+#wafeform {
+  height: 140px;
+  background: aqua;
+  margin: 0px;
+  border: 2px solid blue;
+  bottom: 0;
 }
 
 div.push {
@@ -75,4 +90,3 @@ audio {
   height: 30px;
   width: 100%;
 }
-/*position: fixed;*/
