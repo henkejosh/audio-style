@@ -2,12 +2,13 @@ ul.songIndex {
   display: flex;
   flex-direction: column;
   padding: 0px;
-  margin: 0 auto -30px;
+  margin: 10px 10px -30px 10px;
 }
 
 .songIndex figure {
   display: flex;
   border: 1px solid black;
+  margin: 10px;
 }
 
 .songIndex img {
@@ -75,3 +76,7 @@ audio {
   width: 100%;
   position: fixed;
 }
+
+/*.song-button-feats section form {
+  display: none;
+}*/

@@ -20,7 +20,6 @@ const CommentForm = React.createClass({
       displayAtt = "none";
     }
     this.setState({ shown: displayAtt });
-    this.forceUpdate();
   },
 
   render: function() {

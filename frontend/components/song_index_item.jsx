@@ -16,7 +16,6 @@ const SongIndexItem = React.createClass({
       displayAtt = "none";
     }
     this.setState({ shown: "block"});
-    this.forceUpdate();
   },
 
   render: function() {
