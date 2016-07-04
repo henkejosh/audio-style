@@ -7,7 +7,7 @@ const SongApiUtil = {
       url: "api/songs",
       dataType: "JSON",
       success: function(songs) {
-        // return array of songs
+        // returns array of songs
         successCB(songs);
       },
       error: () => {

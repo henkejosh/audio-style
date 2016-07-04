@@ -11,6 +11,8 @@ const SongIndexItem = require('./components/song_index_item.jsx');
 const Header = require('./components/header.jsx');
 const SongActions = require('./actions/song_actions.js');
 const SongStore = require('./stores/song_store.js');
+const CommentActions = require('./actions/comment_actions.js');
+
 //Router
 const reactRouter = require('react-router');
 const Router = reactRouter.Router;
@@ -44,5 +46,4 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("root"));
 });
 
-window.SongActions = SongActions;
-window.SS = SongStore;
+window.CommentActions = CommentActions;

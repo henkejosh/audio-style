@@ -1,6 +1,6 @@
-class CommentsController < ApplicationController
+class Api::CommentsController < ApplicationController
   def index
-    @comments = Comment.find_by(params[:song_id])
+    @comments = Comment.where(song_id: params[:song_id])
     render "api/comments/index"
   end
 
