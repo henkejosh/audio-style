@@ -26,7 +26,9 @@ const SongIndex = React.createClass({
     return (
       <ul className="songIndex">
         { Object.keys(that.state.songs).map( songID => {
-          return <SongIndexItem key={songID} song={that.state.songs[songID]} />;
+          return (
+              <SongIndexItem key={songID} song={that.state.songs[songID]} />
+            );
         })}
       </ul>
     );

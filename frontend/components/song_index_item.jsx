@@ -1,5 +1,8 @@
 const React = require('react');
 const CommentForm = require('./comment_form.jsx');
+const CurrentSongStore = require('../stores/current_song_store.js');
+const CurrentSongActions = require('../actions/current_song_actions');
+
 
 const SongIndexItem = React.createClass({
   getInitialState: function() {
@@ -18,6 +21,11 @@ const SongIndexItem = React.createClass({
     this.setState({ shown: "block"});
   },
 
+  handleSongPlay: function(e) {
+    e.preventDefault();
+    CurrentSongActions.selectCurrentSong(this.props.song.id);
+  },
+
   render: function() {
     return (
       <figure>
@@ -28,7 +36,8 @@ const SongIndexItem = React.createClass({
         <section className="song">
 
           <div>
-            <button className="play-button">Play</button>
+            <button onClick={this.handleSongPlay}
+              className="play-button">Play</button>
             <ul className="song-info">
               <li>{this.props.song.title}</li>
               <li>{this.props.song.artist_name}</li>

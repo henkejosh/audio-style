@@ -11,7 +11,7 @@ class Api::SongsController < ApplicationController
 
 	def show
 		@song = Song.find(params[:id])
-		render "api/songs/show"
+		render json: @song
 	end
 
   def destroy
@@ -24,7 +24,7 @@ class Api::SongsController < ApplicationController
 		@song = Song.new(song_params)
 
 		if @song.save
-			render "api/songs/show"
+			render json: @song
 		else
 			render json: @song.errors, status: 422
 		end
@@ -42,6 +42,6 @@ class Api::SongsController < ApplicationController
 
 	private
 	def song_params
-		params.require(:song).permit(:title, :album_id, :playlist_id, :duration)
+		params.require(:song).permit(:title, :album_id, :playlist_id, :duration, :spotify_uri, :spotify_preview)
 	end
 end

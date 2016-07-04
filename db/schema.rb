@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704004107) do
+ActiveRecord::Schema.define(version: 20160704180615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
-    t.integer  "artist_id",  null: false
-    t.string   "title",      null: false
+    t.integer  "artist_id",   null: false
+    t.string   "title",       null: false
     t.string   "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "spotify_uri"
   end
 
   add_index "albums", ["artist_id"], name: "index_albums_on_artist_id", using: :btree
@@ -56,12 +57,14 @@ ActiveRecord::Schema.define(version: 20160704004107) do
   add_index "playlists", ["user_id"], name: "index_playlists_on_user_id", using: :btree
 
   create_table "songs", force: :cascade do |t|
-    t.string   "title",       null: false
+    t.string   "title",           null: false
     t.integer  "album_id"
     t.integer  "playlist_id"
     t.integer  "duration"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "spotify_uri"
+    t.string   "spotify_preview"
   end
 
   add_index "songs", ["album_id"], name: "index_songs_on_album_id", using: :btree

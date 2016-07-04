@@ -7,10 +7,6 @@ const SongActions = {
     SongApiUtil.getAllSongs(this.receiveSongs);
   },
 
-  getSongs: function() {
-
-  },
-
   receiveSongs: function(songs) {
     Dispatcher.dispatch({
       actionType: SongConstants.GET_SONGS,

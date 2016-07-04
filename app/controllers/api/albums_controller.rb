@@ -24,8 +24,9 @@ class Api::AlbumsController < ApplicationController
 		@album = Album.new(album_params)
 
 		if @album.save
-			render "api/albums/show"
+			render json: @album
 		else
+      debugger;
 			render json: @album.errors, status: 422
 		end
 	end
@@ -42,6 +43,6 @@ class Api::AlbumsController < ApplicationController
 
 	private
 	def album_params
-		params.require(:album).permit(:artist_id, :title, :image_url)
+		params.require(:album).permit(:artist_id, :title, :image_url, :spotify_uri)
 	end
 end
