@@ -25,12 +25,12 @@ const App = React.createClass({
     Modal.setAppElement(document.getElementById("root"));
  },
 
+ // <CurrentSongPlayer />
   render: function() {
     return (
       <div>
         <Header/>
         {this.props.children}
-        <CurrentSongPlayer />
       </div>
     );
   }

@@ -11,24 +11,24 @@ const hashHistory = require('react-router').hashHistory;
 
 const RightNav = React.createClass({
   getInitialState: function() {
-   return { signUpIsOpen: false, loginIsOpen: false , authButtons: false};
+   return { signUpIsOpen: false, loginIsOpen: false , authLinks: false};
  },
 
- openSignUpForm: function() {
-  hashHistory.push("/signup");
- },
+  openSignUpForm: function() {
+    hashHistory.push("/signup");
+  },
 
- closeSignUpForm: function() {
-   this.setState({signUpIsOpen: false});
- },
+  closeSignUpForm: function() {
+    this.setState({signUpIsOpen: false});
+  },
 
- openLoginForm: function() {
-   hashHistory.push("/login");
- },
+  openLoginForm: function() {
+    hashHistory.push("/login");
+  },
 
- closeLoginForm: function() {
-   this.setState({loginIsOpen: false});
- },
+  closeLoginForm: function() {
+    this.setState({loginIsOpen: false});
+  },
 
   guestLogin: function(e) {
     e.preventDefault();
@@ -64,32 +64,31 @@ const RightNav = React.createClass({
 
   updateAuthComp: function(e) {
     e.preventDefault();
-    if(this.state.authButtons) {
-      this.setState({authButtons: false});
+    if(this.state.authLinks) {
+      this.setState({authLinks: false});
     } else {
-      this.setState({authButtons: true});
+      this.setState({authLinks: true});
     }
   },
 
   render: function() {
-    let button = <div><button onClick={this.LogOut}>Log Out</button></div>;
+    let authLink = <ul><li onClick={this.LogOut}>Log Out</li></ul>;
     if (SessionStore.currentUser().id === undefined) {
-      button = (
-        <div>
-          <button onClick={this.guestLogin}>Guest Login</button>
-          <button onClick={this.openSignUpForm}>Sign Up</button>
-          <button onClick={this.openLoginForm}>Log In</button>
-        </div>
+      authLink = (
+        <ul>
+          <li onClick={this.guestLogin}>Guest Login</li>
+          <li onClick={this.openSignUpForm}>Sign Up</li>
+          <li onClick={this.openLoginForm}>Log In</li>
+        </ul>
       );
     }
 
-    // {this.displayAuthComponent()}
     return(
       <ul className="right-nav">
         <li onClick={this.updateAuthComp}>
           <img src="http://f.cl.ly/items/0g2V1V3P08160j2t2y3X/users.png"/>
-          <ul className="auth-buttons">
-            {this.state.authButtons ? button : null }
+          <ul className="auth-links">
+            {this.state.authLinks ? authLink : null }
           </ul>
         </li>
         <li>

@@ -56,20 +56,23 @@ const LoginForm = React.createClass({
 
   render: function() {
     return (
-      <Modal style={modStyle}
-        isOpen="true">
+      <Modal style={modStyle} isOpen="true">
         <div>
+
         { this.handleErrors() }
         <h2>Log In</h2>
           <form onSubmit={this.loggingIn}>
+
           <label name="email">Email: </label>
           <input type="text" id="email" value={this.state.email}
             onChange={this.update("email")}></input>
             <br/><br/>
+
           <label name="password">Password: </label>
           <input type="password" id="password" value={this.state.password}
             onChange={this.update("password")}></input>
             <br/><br/>
+
           <input type="submit" value="Submit"></input>
           </form>
           <button onClick={this.backToHome}>Cancel</button>
