@@ -48,9 +48,9 @@ div.play-button:hover {
 
 ul.song-info {
   display: flex;
-  border: 2px solid green;
+  background: green;
   flex-direction: column;
-  height: calc(100% - 140px);
+  height: 100%;
   width: calc(100% - 90px);
   flex-direction: row;
 }
@@ -72,14 +72,21 @@ ul.song-button-feats li {
 div.play-song-info {
   display: flex;
   flex-direction: row;
+  height: 35%;
+  border: 2px solid green;
 }
 
-#wafeform {
-  height: 140px;
+figure #waveform {
+  height: 65%;
   background: aqua;
   margin: 0px;
   border: 2px solid blue;
-  bottom: 0;
+  padding-top: 15px;
+}
+
+#waveform > div {
+  display: block;
+  justify-content: center;
 }
 
 div.push {

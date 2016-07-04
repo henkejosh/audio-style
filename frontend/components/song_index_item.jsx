@@ -29,9 +29,12 @@ const SongIndexItem = React.createClass({
   componentDidMount: function() {
     this._wavesurfer = WaveSurfer.create({
       container: `#waveform${this.props.song.id}`,
-      waveColor:'violet',
-      progressColor: 'purple',
-      fillParent: true
+      waveColor:'black',
+      progressColor: 'grey',
+      fillParent: true,
+      barWidth: 1,
+      height: 70,
+      autoCenter: true
     });
 
     if(this.props.song.id) {
@@ -61,9 +64,9 @@ const SongIndexItem = React.createClass({
               </ul>
 
             </div>
-
-            <figure id={`waveform${this.props.song.id}`}/>
-
+            <figure id="waveform">
+              <div id={`waveform${this.props.song.id}`}/>
+            </figure>
           </div>
 
           <ul className="song-button-feats">
