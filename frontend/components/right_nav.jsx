@@ -85,15 +85,18 @@ const RightNav = React.createClass({
 
     return(
       <ul className="right-nav">
-        <li onClick={this.updateAuthComp}>
+
+        <li>
+          Upload
+        </li>
+
+        <li className="auth-button" onClick={this.updateAuthComp}>
           <img src="http://f.cl.ly/items/0g2V1V3P08160j2t2y3X/users.png"/>
           <ul className="auth-links">
             {this.state.authLinks ? authLink : null }
           </ul>
         </li>
-        <li>
-          Upload
-        </li>
+
       </ul>
     );
   }
