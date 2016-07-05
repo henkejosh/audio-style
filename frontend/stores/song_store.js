@@ -9,6 +9,8 @@ let _songs = {};
 const SongStore = new Store(Dispatcher);
 
 const _receiveSongs = function(songs) {
+  if (Object.keys(songs).length === 0) {return {};}
+  
   songs.songsArr.forEach( song => {
     _songs[song.id] = song;
   });

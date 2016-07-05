@@ -1,5 +1,6 @@
 class Album < ActiveRecord::Base
   validates :artist_id, :title, presence: true
+  validates :spotify_uri, uniqueness: true
 
   belongs_to :artist,
   primary_key: :id,

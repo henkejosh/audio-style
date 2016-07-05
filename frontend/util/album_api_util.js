@@ -5,7 +5,7 @@ const AlbumApiUtil = {
       url: "api/albums",
       data: {
         album: {
-          artist_id: 1,
+          artist_id: 3,
           spotify_uri: album.uri,
           title: album.name,
           image_url: album.images[0].url
@@ -22,6 +22,7 @@ const AlbumApiUtil = {
   },
 
   addSongToDB: function(song, albumID) {
+    debugger;
     $.ajax({
       type: "POST",
       url: "api/songs",
@@ -51,7 +52,7 @@ const AlbumApiUtil = {
       success: function(album) {
         addAlbum(album);
         album.tracks.items.forEach( song => {
-          addSong(song, album.id);
+          addSong(song, 1);
         });
       },
       error: function() {

@@ -48,4 +48,4 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("root"));
 });
 
-window.CurrentSongStore = CurrentSongStore;
+window.AlbumActions = AlbumActions;

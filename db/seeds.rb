@@ -21,55 +21,43 @@ User.create!(
 )
 
 Artist.create!(
-  name: "Jeff Buckley",
-)
-
-Artist.create!(
-  name: "The Rolling Stones",
+name: "Jeff Buckley",
 )
 
 Artist.create!(
   name: "Pavement"
 )
 
-Album.create!(
-  artist_id: 1,
-  title: "Grace",
-  image_url: "https://upload.wikimedia.org/wikipedia/en/e/e4/Jeff_Buckley_grace.jpg"
+Artist.create!(
+  name: "The Rolling Stones"
 )
 
-Album.create!(
-  artist_id: 2,
-  title: "Exile on Main Street",
-  image_url: "https://upload.wikimedia.org/wikipedia/en/c/ca/ExileMainSt.jpg"
-)
-
-Album.create!(
-  artist_id: 3,
-  title: "Crooked Rain, Crooked Rain",
-  image_url: "http://f.cl.ly/items/2I0M121z2b1A0Q3X0y2S/220px-Pavement_Crooked_Rain.jpg"
-)
+# Album.create!(
+#   artist_id: 1,
+#   title: "Grace",
+#   image_url: "https://upload.wikimedia.org/wikipedia/en/e/e4/Jeff_Buckley_grace.jpg"
+# )
+#
+# Album.create!(
+#   artist_id: 2,
+#   title: "Crooked Rain, Crooked Rain",
+#   image_url: "http://f.cl.ly/items/2I0M121z2b1A0Q3X0y2S/220px-Pavement_Crooked_Rain.jpg"
+# )
 
 Playlist.create!(
-user_id: 1,
-name: "Jams"
+  user_id: 1,
+  name: "Jams"
 )
 
-Song.create!(
-  title: "Mojo Pin",
-  album_id: 1,
-  duration: "310",
-  playlist_id: 1
-)
-
-Song.create!(
-  title: "Sweet Virginia",
-  album_id: 2,
-  playlist_id: 1
-)
-
-Song.create!(
-  title: "Silence Kid",
-  album_id: 3,
-  playlist_id: 1
-)
+# Song.create!(
+#   title: "Mojo Pin",
+#   album_id: 1,
+#   duration: "310",
+#   playlist_id: 1
+# )
+#
+# Song.create!(
+#   title: "Silence Kid",
+#   album_id: 2,
+#   playlist_id: 1
+# )
