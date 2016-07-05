@@ -6,6 +6,7 @@ const Modal = require('react-modal');
 const Header = require('./header.jsx');
 const SignupForm = require('./signup_form.jsx');
 const LoginForm = require('./login_form.jsx');
+const ErrorActions = require('../actions/error_actions.js');
 const Router = require('react-router').Router;
 const hashHistory = require('react-router').hashHistory;
 
@@ -15,6 +16,7 @@ const RightNav = React.createClass({
  },
 
   openSignUpForm: function() {
+    ErrorActions.clearErrors();
     hashHistory.push("/signup");
   },
 
@@ -23,6 +25,7 @@ const RightNav = React.createClass({
   },
 
   openLoginForm: function() {
+    ErrorActions.clearErrors();
     hashHistory.push("/login");
   },
 
