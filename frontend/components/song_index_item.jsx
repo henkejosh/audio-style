@@ -34,7 +34,9 @@ const SongIndexItem = React.createClass({
       fillParent: true,
       barWidth: 1,
       height: 70,
-      autoCenter: true
+      autoCenter: true,
+      backend: 'MediaElement'
+      // backend: 'Audio'
     });
 
     if(this.props.song.id) {
