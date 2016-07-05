@@ -54,8 +54,9 @@ const SongIndexItem = React.createClass({
           <div className="song-item">
             <div className="play-song-info">
 
-              <div onClick={this.handleSongPlay}
-                className="play-button">Play</div>
+              <img src="http://f.cl.ly/items/1Q3U3s0J2m133f2u1V1x/play-button.png"
+                onClick={this.handleSongPlay}
+                className="play-button"/>
 
               <ul className="song-info">
                 <li>{this.props.song.title}</li>

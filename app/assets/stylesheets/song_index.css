@@ -34,16 +34,18 @@ div.song-item {
   flex-direction: column;
 }
 
-div.play-button {
-  width: 90px;
-  height: 100%;
+.songIndex img.play-button {
+  max-width: 64px;
+  min-width: 64px;
+  min-height: 64px;
+  max-height: 64px;
   margin: 0px;
   padding: 0px;
   background: #FF7400;
 }
 
-div.play-button:hover {
-  background: #DC6400;
+img.play-button:hover {
+  background: grey;
 }
 
 ul.song-info {
@@ -51,7 +53,7 @@ ul.song-info {
   background: green;
   flex-direction: column;
   height: 100%;
-  width: calc(100% - 90px);
+  width: calc(100% - 64px);
   flex-direction: row;
 }
 
@@ -72,12 +74,12 @@ ul.song-button-feats li {
 div.play-song-info {
   display: flex;
   flex-direction: row;
-  height: 35%;
+  height: 64px;
   border: 2px solid green;
 }
 
 figure #waveform {
-  height: 65%;
+  height: calc(100% - 64px);
   background: aqua;
   margin: 0px;
   border: 2px solid blue;
