@@ -26,9 +26,9 @@ const CommentForm = React.createClass({
   render: function() {
     return (
       <section>
-        <div onClick={this.handleComment}>
+        <button onClick={this.handleComment}>
           Comment
-        </div>
+        </button>
 
         <form display={this.state.shown}
           onSubmit={this.handleForm}>

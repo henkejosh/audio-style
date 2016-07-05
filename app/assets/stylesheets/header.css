@@ -8,29 +8,31 @@ nav.header {
   height: 60px;
   display: flex;
   background: green;
+  justify-content: space-between;
 }
 
 ul.left-nav {
-  padding: 0px 10px;
+  padding-left: 3%;
+  flex-basis: 275px;
+  justify-content: center;
   margin: 0px;
   width: 35%;
   list-style: none;
   display: flex;
-  flex-basis: 275px;
-  border: 1px solid green;
+  /*border: 2px solid aqua;*/
 }
 
 div.search {
-  border: 2px solid purple;
+  /*border: 2px solid purple;*/
   width: 40%;
 }
 
 ul.right-nav {
   display: flex;
   width: 25%;
-  border: 1px solid orange;
+  /*border: 1px solid orange;*/
   height: 100%;
-  padding: 0px 0px 0px 10px;
+  padding: 0px 3% 0px 10px;
   margin: 0px;
   flex-basis: 200px;
 }
@@ -44,12 +46,13 @@ ul.right-nav {
 
 ul.auth-links {
   position: absolute;
-  background: blue;
+  /*background: blue;*/
   /*top: 0;*/
 }
 
 ul.auth-links li:hover {
   background-color: #f1f1f1;
+  cursor: pointer;
 }
 
 ul.auth-links li {
@@ -69,12 +72,12 @@ ul.auth-links li {
 
 .left-nav li {
   width: 60px;
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
 }
 
 .right-nav li {
   width: 60px;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
   height: 100%
 }
 

@@ -7,7 +7,7 @@ ul.songIndex {
 
 .songIndex > figure {
   display: flex;
-  border: 2px solid orange;
+  /*border: 2px solid orange;*/
   margin: 10px;
 }
 
@@ -23,66 +23,70 @@ ul.songIndex {
   display: flex;
   flex-direction: column;
   width: 100%;
-  border: 2px solid black;
+  /*border: 2px solid black;*/
   padding: 0px 10px;
 }
 
 div.song-item {
-  border: 2px solid red;
+  /*border: 2px solid red;*/
   height: 160px;
   display: flex;
   flex-direction: column;
 }
 
 .songIndex img.play-button {
-  max-width: 64px;
-  min-width: 64px;
-  min-height: 64px;
-  max-height: 64px;
+  max-width: 55px;
+  min-width: 55px;
+  min-height: 55px;
+  max-height: 55px;
   margin: 0px;
+  margin-right: 6px;
   padding: 0px;
-  background: #FF7400;
+  /*background: #FF7400;*/
 }
 
 img.play-button:hover {
   background: grey;
+  cursor: pointer;
 }
 
 ul.song-info {
   display: flex;
-  background: green;
+  /*background: green;*/
   flex-direction: column;
   height: 100%;
-  width: calc(100% - 64px);
-  flex-direction: row;
+  width: calc(100% - 55px);
 }
 
 ul.song-button-feats {
   display: flex;
   flex-direction: row;
-  border: 2px solid yellow;
+  /*border: 2px solid yellow;*/
   width: 50%;
   height: 25px;
 }
 
 ul.song-button-feats li {
-  width: 33%;
-  border: 1px solid purple;
+  padding: 0px 5px;
+  /*border: 1px solid purple;*/
   height: 100%;
 }
 
 div.play-song-info {
   display: flex;
   flex-direction: row;
-  height: 64px;
-  border: 2px solid green;
+  height: 55px;
+  /*border: 2px solid green;*/
+}
+
+li.album-name {
+  color: grey;
 }
 
 figure #waveform {
-  height: calc(100% - 64px);
-  background: aqua;
+  /*background: aqua;*/
   margin: 0px;
-  border: 2px solid blue;
+  /*border: 2px solid blue;*/
   padding-top: 15px;
 }
 

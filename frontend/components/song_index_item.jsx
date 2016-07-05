@@ -29,7 +29,7 @@ const SongIndexItem = React.createClass({
   componentDidMount: function() {
     this._wavesurfer = WaveSurfer.create({
       container: `#waveform${this.props.song.id}`,
-      waveColor:'black',
+      waveColor: '#8C8C8C',
       progressColor: 'grey',
       fillParent: true,
       barWidth: 1,
@@ -54,14 +54,13 @@ const SongIndexItem = React.createClass({
           <div className="song-item">
             <div className="play-song-info">
 
-              <img src="http://f.cl.ly/items/1Q3U3s0J2m133f2u1V1x/play-button.png"
+              <img src="http://f.cl.ly/items/2B380T1a0s181d370f3K/movie-player-play-button.png"
                 onClick={this.handleSongPlay}
                 className="play-button"/>
 
               <ul className="song-info">
-                <li>{this.props.song.title}</li>
-                <li>{this.props.song.artist_name}</li>
-                <li>{this.props.song.album_name}</li>
+                <li>{this.props.song.artist_name} - {this.props.song.title}</li>
+                <li className="album-name">{this.props.song.album_name}</li>
               </ul>
 
             </div>
@@ -74,8 +73,8 @@ const SongIndexItem = React.createClass({
             <li onClick={this.handleCommentForm}>
               <CommentForm displayProp={this.state.shown}/>
             </li>
-            <li>Like</li>
-            <li>Add to PL</li>
+            <li><button>Like</button></li>
+            <li><button>Add to Playlist</button></li>
           </ul>
         </section>
       </figure>
