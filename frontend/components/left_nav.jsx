@@ -8,10 +8,10 @@ const LeftNav = React.createClass({
             <img src="http://f.cl.ly/items/1o0i3F2Y412W2z0i3J3g/youtube-music-logo.jpg"/>
           </li>
           <li>
-            <a href="#">Stream</a>
+            <a href="">Home</a>
           </li>
           <li>
-            <a href="#">Search Component</a>
+            <a href="">Collection</a>
           </li>
         </ul>
     );

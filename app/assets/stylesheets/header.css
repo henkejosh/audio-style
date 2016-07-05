@@ -5,10 +5,11 @@ body {
 
 nav.header {
   width: 100%;
-  height: 60px;
+  height: 46px;
   display: flex;
-  background: green;
+  background: #333333;
   justify-content: space-between;
+  border: 1px solid #111111;
 }
 
 ul.left-nav {
@@ -42,6 +43,8 @@ ul.right-nav {
   width: 80%;
   height: 25px;
   margin: 10px;
+  color: #CBCBCB;
+  font: 100 14px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
 }
 
 ul.auth-links {
@@ -61,6 +64,7 @@ ul.auth-links li {
   text-decoration: none;
   display: block;
   top: 0;
+  1px solid #111111
 }
 
 .header img {
@@ -71,14 +75,32 @@ ul.auth-links li {
 }
 
 .left-nav li {
-  width: 60px;
+  width: 85px;
+  color: #CBCBCB;
+  font: 100 14px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+  text-decoration: none;
   /*border: 1px solid blue;*/
+  border: 1px solid #111111;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+}
+
+.left-nav a {
+  color: #CBCBCB;
+  font: 100 14px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+  text-decoration: none;
 }
 
 .right-nav li {
-  width: 60px;
+  width: 85px;
+  color: #CBCBCB;
+  font: 100 14px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+  text-decoration: none;
   /*border: 1px solid red;*/
-  height: 100%
+  height: 100%;
+  border: 1px solid #111111;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
 }
 
 li {
