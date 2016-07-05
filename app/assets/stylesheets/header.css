@@ -13,7 +13,7 @@ nav.header {
 }
 
 ul.left-nav {
-  padding-left: 3%;
+  padding-left: 5%;
   flex-basis: 275px;
   justify-content: center;
   margin: 0px;
@@ -35,7 +35,7 @@ ul.right-nav {
   width: 25%;
   /*border: 1px solid orange;*/
   height: 100%;
-  padding: 0px 3% 0px 0px;
+  padding: 0px 5% 0px 0px;
   margin: 0px;
   flex-basis: 200px;
 }
@@ -52,22 +52,24 @@ ul.right-nav {
 ul.auth-links {
   position: absolute;
   /*background: blue;*/
-  top: 46px;
+  top: 48px;
 }
 
 ul.auth-links li:hover {
-  background-color: #f1f1f1;
+  background-color: #333333;
   cursor: pointer;
 }
 
 ul.auth-links li {
-  color: black;
+  background-color: #111111;
+  color: #CBCBCB;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
   border: 1px solid #111111;
   border-top: 0px;
   cursor: pointer;
+  font: 100 14px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
 }
 
 li.auth-button {
@@ -87,13 +89,6 @@ li.auth-button > img {
   min-width: 46px;
 }
 
-/*.header img {
-  max-width: 100%;
-  max-height: 100%;
-  min-width: 100%;
-  min-height: 100%;
-}*/
-
 .left-nav li {
   width: 85px;
   color: #CBCBCB;
@@ -101,9 +96,15 @@ li.auth-button > img {
   text-decoration: none;
   /*border: 1px solid blue;*/
   border: 1px solid #111111;
+  border-left: 0px;
   border-top-width: 0px;
   border-bottom-width: 0px;
   text-align: center;
+}
+
+.left-nav li:hover {
+  background-color: #111111;
+  cursor: pointer;
 }
 
 .left-nav a {
@@ -126,13 +127,18 @@ li.auth-button > img {
   border-top-width: 0px;
   border-bottom-width: 0px;
   text-align: center;
-  cursor: pointer;
   line-height: 45px;
+}
+
+.right-nav li:hover {
+  background-color: #111111;
+  cursor: pointer;
 }
 
 li.logo {
   background: #FF5500;
   text-align: center;
+  border-left: 1px solid #111111;
 }
 
 li.logo img {

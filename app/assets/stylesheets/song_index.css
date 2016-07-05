@@ -1,8 +1,8 @@
 ul.songIndex {
   display: flex;
   flex-direction: column;
-  padding: 0px;
-  margin: 10px 10px -30px 10px;
+  padding: 0px 5%;
+  margin: 10px 0px -30px 0px;
 }
 
 .songIndex > figure {
@@ -16,7 +16,7 @@ ul.songIndex {
   max-height: 160px;
   min-width: 160px;
   min-height: 160px;
-  padding: 10px 0px 30px 5px;
+  padding: 10px 0px 30px 0px;
 }
 
 .song-index-item > section {
