@@ -5,7 +5,7 @@ const LeftNav = React.createClass({
     return (
         <ul className="left-nav">
           <li className="logo">
-            <img src="http://f.cl.ly/items/1o0i3F2Y412W2z0i3J3g/youtube-music-logo.jpg"/>
+            <img src="http://f.cl.ly/items/0G3J0q3o0q0s252U4021/headphones%20(1).png"/>
           </li>
           <li>
             <a href="">Home</a>

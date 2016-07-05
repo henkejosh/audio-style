@@ -92,7 +92,7 @@ const RightNav = React.createClass({
           </ul>
         </li>
         <li>
-          upload songs button
+          Upload
         </li>
       </ul>
     );

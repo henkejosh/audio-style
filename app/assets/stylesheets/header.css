@@ -83,12 +83,15 @@ ul.auth-links li {
   border: 1px solid #111111;
   border-top-width: 0px;
   border-bottom-width: 0px;
+  text-align: center;
 }
 
 .left-nav a {
   color: #CBCBCB;
   font: 100 14px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
   text-decoration: none;
+  vertical-align: middle;
+  display: block;
 }
 
 .right-nav li {
@@ -101,6 +104,19 @@ ul.auth-links li {
   border: 1px solid #111111;
   border-top-width: 0px;
   border-bottom-width: 0px;
+  text-align: center;
+}
+
+li.logo {
+  background: #FF5500;
+  text-align: center;
+}
+
+li.logo img {
+  max-width: 46px;
+  max-height: 46px;
+  min-width: 46px;
+  min-height: 46px;
 }
 
 li {
