@@ -13,9 +13,8 @@ module.exports = {
     left            : '300px',
     right           : '300px',
     bottom          : '300px',
-    border          : '1px solid #ccc',
+    border          : '2px solid #ccc',
     padding         : '50px 100px 50px 100px',
-
   }
 };
 
