@@ -147,3 +147,82 @@ li {
   padding: 0;
   height: 100%;
 }
+
+div.ReactModal__Content h2 {
+  font: 100 25px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+  text-align: center;
+}
+
+div.ReactModal__Content label {
+  font: 100 20px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+}
+
+.login-errors {
+  color: red;
+  font: 100 14px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+}
+
+.signup-errors {
+  color: red;
+  font: 100 14px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+}
+
+div.submit-button {
+  text-align: center;
+}
+
+form.login div.login-email {
+  text-align: center;
+}
+
+form.login div.login-password {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form.signup div.signup-email {
+  text-align: center;
+}
+
+form.signup div.signup-password {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label[name="email"] {
+  margin-right: 43px;
+}
+
+label[name="password"] {
+  margin-right: 3px;
+}
+
+input[type="submit"] {
+  /*background: #333333;*/
+  width: 150px;
+  height: 25px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  font: 100 10px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+  cursor: pointer;
+}
+
+div.cancel-button {
+  text-align: center;
+}
+
+button[type="cancel"] {
+  cursor: pointer;
+  width: 150px;
+  height: 25px;
+  border-radius: 8px;
+  font: 100 10px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+}
+
+div.login-errors {
+  text-align: center;
+}
+
+div.signup-errors {
+  text-align: center;
+}
