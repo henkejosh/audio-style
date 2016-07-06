@@ -53,6 +53,11 @@ const RightNav = React.createClass({
     }
   },
 
+  NavToUserPage: function(e) {
+    e.preventDefault();
+    hashHistory.replace('/user');
+  },
+
   displayAuthComponent: function() {
     if(this.props.props.location.pathname === "/login") {
       return <LoginForm/>;
@@ -75,7 +80,12 @@ const RightNav = React.createClass({
   },
 
   render: function() {
-    let authLink = <ul><li onClick={this.LogOut}>Log Out</li></ul>;
+    let authLink = (
+        <ul>
+          <li onClick={this.NavToUserPage}>Profile</li>
+          <li onClick={this.LogOut}>Log Out</li>
+        </ul>
+      );
     if (SessionStore.currentUser().id === undefined) {
       authLink = (
         <ul>

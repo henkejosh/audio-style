@@ -1,0 +1,13 @@
+body {
+  background: #F2F2F2;
+}
+
+div.define-content-area {
+  padding: 0px 5%;
+  height: 100%;
+}
+
+div.content-start {
+  background: white;
+  height: 100%;
+}

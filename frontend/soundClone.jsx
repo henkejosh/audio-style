@@ -15,6 +15,7 @@ const CommentActions = require('./actions/comment_actions.js');
 const CommentStore = require('./stores/comment_store.js');
 const AlbumActions = require('./actions/album_actions.js');
 const CurrentSongStore = require('./stores/current_song_store.js');
+const UserPage = require('./components/user_page.jsx');
 //Router
 const reactRouter = require('react-router');
 const Router = reactRouter.Router;
@@ -34,6 +35,7 @@ const appRouter = (
       <Route path="/login" component={ LoginForm } />
       <Route path="/signup" component={ SignupForm } />
       <Route path="/songs" component={ SongIndex } onEnter={ _ensureLoggedIn }/>
+      <Route path="/user" component= { UserPage } onEnter={ _ensureLoggedIn }/>
     </Route>
   </Router>
 );

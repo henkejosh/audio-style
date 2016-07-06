@@ -43,12 +43,19 @@ const App = React.createClass({
     //   currSong = <CurrentSongPlayer/>;
     // }
     let currSong = <div/>;
-    
+
     return (
       <div>
         <Header/>
-        {this.props.children}
-        {currSong}
+
+        <div className="define-content-area">
+          <div className="content-start">
+          
+          {this.props.children}
+          {currSong}
+
+          </div>
+        </div>
       </div>
     );
   }
