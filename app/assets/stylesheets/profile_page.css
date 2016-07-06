@@ -2,21 +2,34 @@ figure.user-page-content {
   display: flex;
   flex-direction: column;
   border: 2px solid green;
+  width: 960px;
 }
 
 span.user-pics {
   border: 2px solid red;
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 img.background-image {
+  width: 100%;
+  height: 260px;
+  position: absolute;
+  z-index: 0;
+}
+
+img.profile-pic {
   margin: 40px;
   max-width: 200px;
   min-width: 200px;
   max-height: 200px;
   min-height: 200px;
   border: 2px solid yellow;
+  border-radius: 100px;
+  display: block;
+  z-index: 1;
+  /*position: absolute;*/
 }
 
 nav.user-nav-bar ul {

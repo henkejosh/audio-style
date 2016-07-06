@@ -10,7 +10,8 @@ const UserPage = React.createClass({
     return (
       <figure className="user-page-content">
         <span className="user-pics">
-          <img className="background-image"/>
+          <img src="http://f.cl.ly/items/3Q0L46442f23151C1d0j/Sun%20on%20Blue%20Sky%20Vector%20Background.jpg"
+            className="background-image"/>
           <img className="profile-pic"/>
           <div className="username-display">{this.state.currentUser.email}</div>
           <div className="upload-image-button"/>
@@ -35,7 +36,7 @@ const UserPage = React.createClass({
               List other info here? Recently played tracks by ffriends
               or comments or something
             </div>
-            
+
           </span>
 
         </section>
