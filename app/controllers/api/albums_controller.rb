@@ -26,7 +26,6 @@ class Api::AlbumsController < ApplicationController
 		if @album.save
 			render json: @album
 		else
-      debugger;
 			render json: @album.errors, status: 422
 		end
 	end

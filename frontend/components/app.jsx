@@ -50,7 +50,7 @@ const App = React.createClass({
 
         <div className="define-content-area">
           <div className="content-start">
-          
+
           {this.props.children}
           {currSong}
 
