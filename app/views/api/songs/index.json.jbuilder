@@ -10,7 +10,6 @@ if !@songs.empty?
     json.updated_at song.updated_at
     json.playlist_id song.playlist_id
     json.duration song.duration
-    json.spotify_uri song.spotify_uri
-    json.spotify_preview song.spotify_preview
+    json.song_url song.song_url
   end
 end

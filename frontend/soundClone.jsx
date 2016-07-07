@@ -14,8 +14,10 @@ const SongStore = require('./stores/song_store.js');
 const CommentActions = require('./actions/comment_actions.js');
 const CommentStore = require('./stores/comment_store.js');
 const AlbumActions = require('./actions/album_actions.js');
+const CurrentSongActions = require('./actions/current_song_actions.js');
 const CurrentSongStore = require('./stores/current_song_store.js');
 const UserPage = require('./components/user_page.jsx');
+const SongDetail = require('./components/song_detail.jsx');
 //Router
 const reactRouter = require('react-router');
 const Router = reactRouter.Router;
@@ -35,6 +37,7 @@ const appRouter = (
       <Route path="/login" component={ LoginForm } />
       <Route path="/signup" component={ SignupForm } />
       <Route path="/songs" component={ SongIndex } onEnter={ _ensureLoggedIn }/>
+      <Route path="/songs/:songID" component={ SongDetail } onEnter={ _ensureLoggedIn }/>
       <Route path="/user" component= { UserPage } onEnter={ _ensureLoggedIn }/>
     </Route>
   </Router>
@@ -50,4 +53,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("root"));
 });
 
+window.CurrentSongStore = CurrentSongStore;
+window.CurrentSongActions = CurrentSongActions;
 window.AlbumActions = AlbumActions;

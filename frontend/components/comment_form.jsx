@@ -22,7 +22,6 @@ const CommentForm = React.createClass({
     this.setState({ shown: displayAtt });
   },
 
-  // <input type="textarea" display={this.state.shown}/>
   render: function() {
     return (
       <section>

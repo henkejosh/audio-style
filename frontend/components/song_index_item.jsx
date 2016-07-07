@@ -2,6 +2,7 @@ const React = require('react');
 const CommentForm = require('./comment_form.jsx');
 const CurrentSongStore = require('../stores/current_song_store.js');
 const CurrentSongActions = require('../actions/current_song_actions');
+const hashHistory = require('react-router').hashHistory;
 
 const SongIndexItem = React.createClass({
   getInitialState: function() {
@@ -26,6 +27,11 @@ const SongIndexItem = React.createClass({
     this._wavesurfer.playPause();
   },
 
+  goToSongDetail: function(e) {
+    e.preventDefault();
+    hashHistory.push(`songs/${this.props.song.id}`);
+  },
+
   componentDidMount: function() {
     this._wavesurfer = WaveSurfer.create({
       container: `#waveform${this.props.song.id}`,
@@ -40,7 +46,7 @@ const SongIndexItem = React.createClass({
     });
 
     if(this.props.song.id) {
-      this._wavesurfer.load(this.props.song.spotify_preview);
+      this._wavesurfer.load(this.props.song.song_url);
     }
   },
 
@@ -49,7 +55,8 @@ const SongIndexItem = React.createClass({
       <figure className="song-index-item">
 
         <img alt={this.props.song.album_name}
-          src={this.props.song.image_url}/>
+          src={this.props.song.image_url}
+          onClick={this.goToSongDetail}/>
 
         <section className="song">
 

@@ -1,6 +1,6 @@
 class Song < ActiveRecord::Base
   validates :title, presence: true
-  validates :spotify_preview, :spotify_uri, presence: true, uniqueness: true
+  validates :song_url, presence: true, uniqueness: true
 
   belongs_to :album,
   primary_key: :id,
