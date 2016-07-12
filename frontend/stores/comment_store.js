@@ -17,6 +17,22 @@ const _receiveComments = function(comments) {
   });
 };
 
+const _resetComments = function() {
+  _comments = {};
+  _songID = null;
+};
+
+const _receiveComment = function(comment) {
+  _songID = comment.comment.song_id;
+  _comments[comment.comment.id] = comment.comment;
+};
+
+const _firstSongComment = function(comment) {
+  _comments = {};
+  _songID = comment.comment.song_id;
+  _comments[comment.comment.id] = comment.comment;
+};
+
 CommentStore.all = function(songID) {
   if(songID === _songID) {
     return Object.assign({}, _comments);
@@ -31,6 +47,18 @@ CommentStore.__onDispatch = payload => {
         _receiveComments(payload.comments);
         CommentStore.__emitChange();
       break;
+
+    case CommentConstants.ADD_NEW_COMMENT:
+      if(payload.comment.comment.song_id === _songID) {
+        _receiveComment(payload.comment);
+      } else {
+        _firstSongComment(payload.comment);
+      }
+      CommentStore.__emitChange();
+      break;
+
+    case CommentConstants.RESET_COMMENTS:
+      _resetComments();
   }
 };
 

@@ -14,11 +14,14 @@ const CommentApiUtil = {
     });
   },
 
-  createSongComment: function(songID, comment) {
+  createSongComment: function(songID, comment, successCB) {
     $.ajax({
       type: "POST",
       url: `api/songs/${songID}/comments`,
       data: { comment },
+      success: function(aComment) {
+        successCB(aComment);
+      },
       error: xhr => {
         const errors = xhr.responseJSON;
         console.log(errors);

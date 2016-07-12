@@ -23,6 +23,12 @@ const CommentActions = {
       actionType: CommentConstants.ADD_NEW_COMMENT,
       comment: comment
     });
+  },
+
+  resetComments: function() {
+    Dispatcher.dispatch({
+      actionType: CommentConstants.RESET_COMMENTS
+    });
   }
 };
 
