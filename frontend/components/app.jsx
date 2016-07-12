@@ -38,11 +38,11 @@ const App = React.createClass({
  },
 
   render: function() {
-    // let currSong;
-    // if(this.state.currentSong === "true") {
-    //   currSong = <CurrentSongPlayer/>;
-    // }
-    let currSong = <div/>;
+    let currSong;
+    if(this.state.currentSong === "true") {
+      currSong = <CurrentSongPlayer/>;
+    }
+    // let currSong = <div/>;
 
     return (
       <div>

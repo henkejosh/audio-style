@@ -21,7 +21,7 @@ const CurrentSongPlayer = React.createClass({
       <div>
         <div className="push">
           <audio id="player" controls="controls" autoPlay>
-          <source src={ this.state.currentSong.spotify_preview }/>
+          <source src={ this.state.currentSong.song_url }/>
             Your browser does not support the audio element.
           </audio>
         </div>
