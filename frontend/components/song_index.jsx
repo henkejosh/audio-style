@@ -14,7 +14,7 @@ const SongIndex = React.createClass({
 
   componentDidMount: function() {
     this.songListener = SongStore.addListener(this._onChange);
-    SongActions.getAllSongs();
+    // SongActions.getAllSongs();
   },
 
   componentWillUnmount: function() {

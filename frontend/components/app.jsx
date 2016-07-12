@@ -7,6 +7,7 @@ const Header = require('./header.jsx');
 const Router = require('react-router').Router;
 const hashHistory = require('react-router').hashHistory;
 const SongIndex = require('./song_index.jsx');
+const SongActions = require('../actions/song_actions.js');
 const CurrentSongPlayer = require('./current_song_player.jsx');
 const CurrentSongStore = require('../stores/current_song_store.js');
 const ReactPlayer = require('./react_player.jsx');
@@ -19,6 +20,7 @@ const App = React.createClass({
   componentDidMount: function() {
     this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
     this.currentSongListener = CurrentSongStore.addListener(this.isCurrentSong);
+    SongActions.getAllSongs();
   },
 
   isCurrentSong: function() {
