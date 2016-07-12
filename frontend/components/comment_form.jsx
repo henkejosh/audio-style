@@ -14,7 +14,6 @@ const CommentForm = React.createClass({
   handleForm: function(event) {
     event.preventDefault();
     const comment = Object.assign({}, this.state);
-    // TODO create a Comment from this info
     CommentActions.createSongComment(this.state.song_id, comment);
     this.resetState();
   },

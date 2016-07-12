@@ -10,6 +10,7 @@ let _songID = null;
 const CommentStore = new Store(Dispatcher);
 
 const _receiveComments = function(comments) {
+  _comments = {};
   _songID = comments.songID;
   comments.commentsArr.forEach( comment => {
     _comments[comment.id] = comment;
@@ -19,6 +20,8 @@ const _receiveComments = function(comments) {
 CommentStore.all = function(songID) {
   if(songID === _songID) {
     return Object.assign({}, _comments);
+  } else {
+    return {};
   }
 };
 
