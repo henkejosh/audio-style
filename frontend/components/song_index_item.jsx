@@ -32,23 +32,22 @@ const SongIndexItem = React.createClass({
     hashHistory.push(`songs/${this.props.song.id}`);
   },
 
-  componentDidMount: function() {
-    this._wavesurfer = WaveSurfer.create({
-      container: `#waveform${this.props.song.id}`,
-      waveColor: '#8C8C8C',
-      progressColor: 'grey',
-      fillParent: true,
-      barWidth: 1,
-      height: 70,
-      autoCenter: true,
-      backend: 'MediaElement'
-      // backend: 'Audio'
-    });
-
-    if(this.props.song.id) {
-      this._wavesurfer.load(this.props.song.song_url);
-    }
-  },
+  // componentDidMount: function() {
+  //   // this._wavesurfer = WaveSurfer.create({
+  //   //   container: `#waveform${this.props.song.id}`,
+  //   //   waveColor: '#8C8C8C',
+  //   //   progressColor: 'grey',
+  //   //   fillParent: true,
+  //   //   barWidth: 1,
+  //   //   height: 70,
+  //   //   autoCenter: true,
+  //   //   backend: 'MediaElement'
+  //   // });
+  //
+  //   if(this.props.song.id) {
+  //     this._wavesurfer.load(this.props.song.song_url);
+  //   }
+  // },
 
   render: function() {
     return (

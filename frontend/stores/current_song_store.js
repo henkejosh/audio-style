@@ -12,6 +12,10 @@ const _receiveCurrentSong = function(currSong) {
   _currentSong = currSong;
 };
 
+const _clearCurrentSong = function() {
+  _currentSong = {};
+};
+
 CurrentSongStore.isCurrentSong = function() {
   return !!_currentSong.title;
 };
@@ -28,6 +32,10 @@ CurrentSongStore.__onDispatch = payload => {
       break;
     case CurrentSongConstants.FETCH_CURRENT_SONG:
       return;
+    case CurrentSongConstants.CLEAR_CURRENT_SONG:
+      _clearCurrentSong();
+      CurrentSongStore.__emitChange();
+      break;
   }
 };
 

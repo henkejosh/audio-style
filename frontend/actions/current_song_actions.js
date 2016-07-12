@@ -12,6 +12,12 @@ const CurrentSongActions = {
       actionType: CurrentSongConstants.RECEIVE_CURRENT_SONG,
       currentSong: song
     });
+  },
+
+  clearCurrentSong: function(){
+    Dispatcher.dispatch({
+      actionType: CurrentSongConstants.CLEAR_CURRENT_SONG
+    });
   }
 };
 

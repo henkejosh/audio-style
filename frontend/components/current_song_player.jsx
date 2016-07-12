@@ -7,7 +7,11 @@ const CurrentSongPlayer = React.createClass({
   },
 
   componentDidMount: function() {
-    CurrentSongStore.addListener(this.fetchCurrentSong);
+    this.currSongListener = CurrentSongStore.addListener(this.fetchCurrentSong);
+  },
+
+  componentWillUnmount: function() {
+    this.currSongListener.remove();
   },
 
   fetchCurrentSong: function() {

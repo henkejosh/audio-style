@@ -24,6 +24,8 @@ const App = React.createClass({
   isCurrentSong: function() {
     if(CurrentSongStore.isCurrentSong()) {
       this.setState({ currentSong: "true"});
+    } else {
+      this.setState({ currentSong: "false"});
     }
   },
 
@@ -42,7 +44,6 @@ const App = React.createClass({
     if(this.state.currentSong === "true") {
       currSong = <CurrentSongPlayer/>;
     }
-    // let currSong = <div/>;
 
     return (
       <div>

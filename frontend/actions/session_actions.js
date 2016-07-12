@@ -2,6 +2,7 @@ const Dispatcher = require('../dispatcher/dispatcher.js');
 const SessionApiUtil = require('../util/session_api_util');
 const SessionConstants = require('../constants/session_constants.js');
 const ErrorActions = require('./error_actions.js');
+const CurrentSongActions = require('./current_song_actions.js');
 const hashHistory = require('react-router').hashHistory;
 
 const SessionActions = {
@@ -17,6 +18,7 @@ const SessionActions = {
 
   logout: function() {
     SessionApiUtil.logout(SessionActions.removeCurrentUser);
+    CurrentSongActions.clearCurrentSong();
   },
 
   receiveCurrentUser: function(user) {
