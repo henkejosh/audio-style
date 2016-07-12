@@ -54,7 +54,7 @@ const SongDetail = React.createClass({
           </div>
         </section>
 
-        <CommentsIndex />
+        <CommentsIndex songID={this.props.params.songID}/>
 
       </figure>
     );

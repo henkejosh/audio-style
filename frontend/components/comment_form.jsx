@@ -1,13 +1,21 @@
 const React = require('react');
+const SessionStore = require('../stores/session_store.js');
 
 const CommentForm = React.createClass({
   getInitialState: function() {
-    return {shown: "none"};
+    return {
+      body: "",
+      song_id: this.props.songID,
+      user_id: SessionStore.currentUser().id
+    };
   },
 
   handleForm: function(event) {
     event.preventDefault();
-
+    const comment = Object.assign({}, this.state);
+    // TODO create a Comment from this info
+    
+    debugger;
   },
 
   handleComment: function(event) {
@@ -22,15 +30,22 @@ const CommentForm = React.createClass({
     this.setState({ shown: displayAtt });
   },
 
+  update: function(property) {
+    return (e) => {
+      this.setState({[property]: e.target.value });
+    };
+  },
+
   render: function() {
     return (
       <section>
-        <button onClick={this.handleComment}>
-          Comment
-        </button>
+        <form onSubmit={this.handleForm}>
 
-        <form display={this.state.shown}
-          onSubmit={this.handleForm}>
+          <textarea onChange={this.update("body")}
+            value={this.state.body} />
+
+          <input type="submit" value="submit" />
+
         </form>
       </section>
     );

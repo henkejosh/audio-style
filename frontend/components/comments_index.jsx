@@ -6,7 +6,7 @@ const CommentsIndex = React.createClass({
     return (
       <div>
         Howdy
-        <CommentForm />
+        <CommentForm songID={this.props.songID} />
       </div>
     );
   }
