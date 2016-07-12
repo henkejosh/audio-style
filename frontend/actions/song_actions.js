@@ -12,7 +12,14 @@ const SongActions = {
       actionType: SongConstants.GET_SONGS,
       songs: songs
     });
-  }
+  },
+
+  getSong: function(songID) {
+    Dispatcher.dispatch({
+      actionType: SongConstants.GET_SONG,
+      songID: songID
+    });
+  },
 };
 
 module.exports = SongActions;

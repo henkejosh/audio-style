@@ -24,7 +24,7 @@ const SongIndexItem = React.createClass({
   handleSongPlay: function(e) {
     e.preventDefault();
     CurrentSongActions.selectCurrentSong(this.props.song.id);
-    this._wavesurfer.playPause();
+    // this._wavesurfer.playPause();
   },
 
   goToSongDetail: function(e) {

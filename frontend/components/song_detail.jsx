@@ -1,25 +1,26 @@
 const React = require('react');
-const CurrentSongStore = require('../stores/current_song_store');
-const CurrentSongActions = require('../actions/current_song_actions');
+const SongStore = require('../stores/song_store');
 const CommentForm = require('./comment_form.jsx');
+const SongActions = require('../actions/song_actions.js');
 
 const SongDetail = React.createClass({
   getInitialState: function() {
     // debugger;
-    return { song: CurrentSongStore.currentSong()};
+    return { song: SongStore.getSong(this.props.params.songID)};
   },
 
   componentDidMount: function() {
-    this.currentListener = CurrentSongStore.addListener(this.fetchCurrentSong);
-    CurrentSongActions.selectCurrentSong(this.props.params.songID);
+    this.songListener = SongStore.addListener(this.fetchCurrentSong);
+    // CurrentSongActions.selectCurrentSong(this.props.params.songID);
+    SongActions.getSong(this.props.params.songID);
   },
 
   fetchCurrentSong: function() {
-    this.setState({ song: CurrentSongStore.currentSong()});
+    this.setState({ song: SongStore.getSong(this.props.params.songID)});
   },
 
   componentWillUnmount: function() {
-    this.currentListener.remove();
+    this.songListener.remove();
   },
 
   render: function() {
