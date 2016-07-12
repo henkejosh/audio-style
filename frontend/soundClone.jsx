@@ -53,6 +53,4 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("root"));
 });
 
-window.CurrentSongStore = CurrentSongStore;
-window.CurrentSongActions = CurrentSongActions;
-window.AlbumActions = AlbumActions;
+window.CommentStore = CommentStore;

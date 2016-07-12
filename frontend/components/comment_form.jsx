@@ -1,5 +1,6 @@
 const React = require('react');
 const SessionStore = require('../stores/session_store.js');
+const CommentActions = require('../actions/comment_actions.js');
 
 const CommentForm = React.createClass({
   getInitialState: function() {
@@ -14,20 +15,16 @@ const CommentForm = React.createClass({
     event.preventDefault();
     const comment = Object.assign({}, this.state);
     // TODO create a Comment from this info
-    
-    debugger;
+    CommentActions.createSongComment(this.state.song_id, comment);
+    this.resetState();
   },
 
-  handleComment: function(event) {
-    event.preventDefault();
-    let displayAtt;
-
-    if(this.state.shown === "none") {
-      displayAtt = "block";
-    } else {
-      displayAtt = "none";
-    }
-    this.setState({ shown: displayAtt });
+  resetState: function() {
+    this.setState({
+      body: "",
+      song_id: this.props.songID,
+      user_id: SessionStore.currentUser().id
+    });
   },
 
   update: function(property) {

@@ -1,5 +1,5 @@
 const React = require('react');
-const CommentForm = require('./comment_form.jsx');
+// const CommentForm = require('./comment_form.jsx');
 const CurrentSongStore = require('../stores/current_song_store.js');
 const CurrentSongActions = require('../actions/current_song_actions');
 const hashHistory = require('react-router').hashHistory;
@@ -9,17 +9,17 @@ const SongIndexItem = React.createClass({
     return { shown: "none"};
   },
 
-  handleCommentForm: function(event) {
-    event.preventDefault();
-
-    let displayAtt;
-    if(this.state.shown === "none") {
-      displayAtt = "block";
-    } else {
-      displayAtt = "none";
-    }
-    this.setState({ shown: "block"});
-  },
+  // handleCommentForm: function(event) {
+  //   event.preventDefault();
+  //
+  //   let displayAtt;
+  //   if(this.state.shown === "none") {
+  //     displayAtt = "block";
+  //   } else {
+  //     displayAtt = "none";
+  //   }
+  //   this.setState({ shown: "block"});
+  // },
 
   handleSongPlay: function(e) {
     e.preventDefault();
@@ -78,9 +78,6 @@ const SongIndexItem = React.createClass({
           </div>
 
           <ul className="song-button-feats">
-            <li onClick={this.handleCommentForm}>
-              <CommentForm displayProp={this.state.shown}/>
-            </li>
             <li><button>Like</button></li>
             <li><button>Add to Playlist</button></li>
           </ul>
