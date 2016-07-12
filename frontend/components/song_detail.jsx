@@ -2,6 +2,7 @@ const React = require('react');
 const SongStore = require('../stores/song_store');
 const CommentForm = require('./comment_form.jsx');
 const SongActions = require('../actions/song_actions.js');
+const CurrentSongActions = require('../actions/current_song_actions.js');
 
 const SongDetail = React.createClass({
   getInitialState: function() {
@@ -11,12 +12,17 @@ const SongDetail = React.createClass({
 
   componentDidMount: function() {
     this.songListener = SongStore.addListener(this.fetchCurrentSong);
-    // CurrentSongActions.selectCurrentSong(this.props.params.songID);
     SongActions.getSong(this.props.params.songID);
   },
 
   fetchCurrentSong: function() {
     this.setState({ song: SongStore.getSong(this.props.params.songID)});
+  },
+
+  handleSongPlay: function(e) {
+    e.preventDefault();
+    CurrentSongActions.selectCurrentSong(this.props.params.songID);
+    // this._wavesurfer.playPause();
   },
 
   componentWillUnmount: function() {
