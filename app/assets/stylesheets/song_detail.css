@@ -14,6 +14,7 @@ div.songInfo {
   display: flex;
   flex-direction: column;
   border: 2px solid blue;
+  height: 300px;
 }
 
 div.comment {
@@ -22,5 +23,10 @@ div.comment {
 }
 
 span.song-detail-item img.albumPic {
-  width: 150px;
+  width: 175px;
+  margin: 15px;
+}
+
+div.song-data {
+
 }

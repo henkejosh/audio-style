@@ -22,7 +22,7 @@ const AudioApiPlayer = React.createClass({
     var frequencyData = new Uint8Array(200);
 
     var svgHeight = '300';
-    var svgWidth = '800';
+    var svgWidth = '700';
     var barPadding = '1';
 
     function createSvg(parent, height, width) {
@@ -82,14 +82,11 @@ const AudioApiPlayer = React.createClass({
   render: function() {
     // <section id="AudioGraph" />
     return (
-      <div className="webAudioP">AudioPlayer:::: {this.state.currentSong.title}
-
 
         <audio id="audioElement" controls="controls"
           src={this.state.currentSong.song_url}>
         </audio>
 
-      </div>
     );
   }
 });

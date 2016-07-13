@@ -1,10 +1,9 @@
-div.webAudioP {
-  height: 50px;
-  width: 100%;
-}
-
 #audioElement {
   height: 50px;
   width: 100%;
   border: 2px solid red;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

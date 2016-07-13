@@ -45,7 +45,7 @@ const SongDetail = React.createClass({
 
             <section className="song">
 
-              <div className="song-item">
+              <div className="song-data">
                 <div className="play-song-info">
 
                   <img src="http://f.cl.ly/items/2B380T1a0s181d370f3K/movie-player-play-button.png"
