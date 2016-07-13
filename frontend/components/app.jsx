@@ -11,6 +11,7 @@ const SongActions = require('../actions/song_actions.js');
 const CurrentSongPlayer = require('./current_song_player.jsx');
 const CurrentSongStore = require('../stores/current_song_store.js');
 const ReactPlayer = require('./react_player.jsx');
+const AudioApiPlayer = require('./audio_api_player.jsx');
 
 const App = React.createClass({
   getInitialState: function() {
@@ -44,7 +45,8 @@ const App = React.createClass({
   render: function() {
     let currSong;
     if(this.state.currentSong === "true") {
-      currSong = <CurrentSongPlayer/>;
+      // currSong = <CurrentSongPlayer/>;
+      currSong = <AudioApiPlayer/>;
     }
 
     return (

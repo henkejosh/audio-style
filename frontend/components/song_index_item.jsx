@@ -2,7 +2,6 @@ const React = require('react');
 // const CommentForm = require('./comment_form.jsx');
 const CurrentSongStore = require('../stores/current_song_store.js');
 const CurrentSongActions = require('../actions/current_song_actions');
-const AudioApiPlayer = require('./audio_api_player.jsx');
 const hashHistory = require('react-router').hashHistory;
 
 const SongIndexItem = React.createClass({

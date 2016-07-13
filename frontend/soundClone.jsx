@@ -18,6 +18,7 @@ const CurrentSongActions = require('./actions/current_song_actions.js');
 const CurrentSongStore = require('./stores/current_song_store.js');
 const UserPage = require('./components/user_page.jsx');
 const SongDetail = require('./components/song_detail.jsx');
+const NewSongIndex = require('./components/new_song_index.jsx');
 //Router
 const reactRouter = require('react-router');
 const Router = reactRouter.Router;
@@ -37,6 +38,7 @@ const appRouter = (
       <Route path="/login" component={ LoginForm } />
       <Route path="/signup" component={ SignupForm } />
       <Route path="/songs" component={ SongIndex } onEnter={ _ensureLoggedIn }/>
+      <Route path="/newsongs" component={ NewSongIndex } />
       <Route path="/songs/:songID" component={ SongDetail } onEnter={ _ensureLoggedIn }/>
       <Route path="/user" component= { UserPage } onEnter={ _ensureLoggedIn }/>
     </Route>

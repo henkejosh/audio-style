@@ -1,0 +1,26 @@
+figure.song-detail-index {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+}
+
+span.song-detail-item {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid green;
+}
+
+div.songInfo {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid blue;
+}
+
+div.comment {
+  display: flex;
+  flex-direction: row;
+}
+
+span.song-detail-item img.albumPic {
+  width: 150px;
+}

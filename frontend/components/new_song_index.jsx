@@ -1,5 +1,5 @@
 const React = require('react');
-const SongIndexItem = require('./song_index_item.jsx');
+const NewSongItem = require('./new_song_item.jsx');
 const SongStore = require('../stores/song_store.js');
 const SongActions = require('../actions/song_actions');
 
@@ -22,12 +22,11 @@ const NewSongIndex = React.createClass({
   },
 
   render: function() {
-    const that = this;
     return (
-      <ul className="songIndex">
-        { Object.keys(that.state.songs).map( songID => {
+      <ul className="newSongIndex">
+        { Object.keys(this.state.songs).map( songID => {
           return (
-              <SongIndexItem key={songID} song={that.state.songs[songID]} />
+              <NewSongItem key={songID} song={this.state.songs[songID]} />
             );
         })}
       </ul>

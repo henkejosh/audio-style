@@ -1,0 +1,17 @@
+ul.newSongIndex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+div.newSongItem img {
+  width: 300px;
+  margin: 20px;
+}
+
+div.newSongItem ul {
+  width: 300px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}

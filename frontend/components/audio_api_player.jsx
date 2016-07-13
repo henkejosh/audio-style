@@ -1,7 +1,12 @@
 const React = require('react');
+const CurrentSongStore = require('../stores/current_song_store.js');
 
 const AudioApiPlayer = React.createClass({
-  componentDidMount: function() {
+  getInitialState: function() {
+    return { currentSong: CurrentSongStore.currentSong()};
+  },
+
+  setupVisualizer: function() {
     var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     var audioElement = document.getElementById('audioElement');
     audioElement.crossOrigin = "anonymous";
@@ -17,7 +22,7 @@ const AudioApiPlayer = React.createClass({
     var frequencyData = new Uint8Array(200);
 
     var svgHeight = '300';
-    var svgWidth = '1000';
+    var svgWidth = '800';
     var barPadding = '1';
 
     function createSvg(parent, height, width) {
@@ -57,15 +62,31 @@ const AudioApiPlayer = React.createClass({
     }
 
     renderChart();
+  },
 
+  componentDidMount: function() {
+    this.currSongListener = CurrentSongStore.addListener(this.fetchCurrentSong);
+    this.setupVisualizer();
+  },
+
+  componentWillUnmount: function() {
+    this.currSongListener.remove();
+  },
+
+  fetchCurrentSong: function() {
+    this.setState({currentSong: CurrentSongStore.currentSong()});
+    const audio = document.getElementById('audioElement');
+    audio.load();
   },
 
   render: function() {
+    // <section id="AudioGraph" />
     return (
-      <div className="webAudioP">AudioPlayer:::: {this.props.song.title}
+      <div className="webAudioP">AudioPlayer:::: {this.state.currentSong.title}
+
 
         <audio id="audioElement" controls="controls"
-          src={this.props.song.song_url}>
+          src={this.state.currentSong.song_url}>
         </audio>
 
       </div>

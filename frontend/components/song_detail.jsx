@@ -33,37 +33,49 @@ const SongDetail = React.createClass({
   render: function() {
     // debugger;
     return (
-      <figure className="song-index-item">
+      <figure className="song-detail-index">
 
-        <img alt={this.state.song.album_name}
-          src={this.state.song.image_url}/>
+        <span className="song-detail-item">
 
-        <section className="song">
+          <div className="songInfo">
+            <img className="albumPic"
+              alt={this.state.song.album_name}
+              src={this.state.song.image_url}
+            />
 
-          <div className="song-item">
-            <div className="play-song-info">
+            <section className="song">
 
-              <img src="http://f.cl.ly/items/2B380T1a0s181d370f3K/movie-player-play-button.png"
-                onClick={this.handleSongPlay}
-                className="play-button"/>
+              <div className="song-item">
+                <div className="play-song-info">
 
-              <ul className="song-info">
-                <li>{this.state.song.artist_name} - {this.state.song.title}</li>
-                <li className="album-name">{this.state.song.album_name}</li>
-              </ul>
+                  <img src="http://f.cl.ly/items/2B380T1a0s181d370f3K/movie-player-play-button.png"
+                    onClick={this.handleSongPlay}
+                    className="play-button"/>
+
+                  <ul className="song-info">
+                    <li>{this.state.song.artist_name} - {this.state.song.title}</li>
+                    <li className="album-name">{this.state.song.album_name}</li>
+                  </ul>
+
+                  </div>
 
               </div>
-
-            <AudioApiPlayer song={this.state.song} />
-            <div id="AudioGraph" />
+            </section>
           </div>
-        </section>
 
-        <CommentsIndex songID={this.props.params.songID}/>
+          <figure id="AudioGraph" />
+
+        </span>
+
+        <div className="comment">
+          <CommentsIndex songID={this.props.params.songID}/>
+        </div>
+
 
       </figure>
     );
   }
 });
+// <AudioApiPlayer song={this.state.song} />
 
 module.exports = SongDetail;
