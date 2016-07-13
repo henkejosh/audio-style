@@ -3,6 +3,7 @@ const SongStore = require('../stores/song_store');
 const CommentForm = require('./comment_form.jsx');
 const SongActions = require('../actions/song_actions.js');
 const CurrentSongActions = require('../actions/current_song_actions.js');
+const AudioApiPlayer = require('./audio_api_player.jsx');
 const CommentsIndex = require('./comments_index.jsx');
 
 const SongDetail = React.createClass({
@@ -50,7 +51,11 @@ const SongDetail = React.createClass({
                 <li>{this.state.song.artist_name} - {this.state.song.title}</li>
                 <li className="album-name">{this.state.song.album_name}</li>
               </ul>
-            </div>
+
+              </div>
+
+            <AudioApiPlayer song={this.state.song} />
+            <div id="AudioGraph" />
           </div>
         </section>
 
