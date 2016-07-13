@@ -17,7 +17,7 @@ const AudioApiPlayer = React.createClass({
     var frequencyData = new Uint8Array(200);
 
     var svgHeight = '300';
-    var svgWidth = '1200';
+    var svgWidth = '1000';
     var barPadding = '1';
 
     function createSvg(parent, height, width) {
