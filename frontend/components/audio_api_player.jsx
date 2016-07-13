@@ -1,5 +1,6 @@
 const React = require('react');
 const CurrentSongStore = require('../stores/current_song_store.js');
+// const WAAClock = require('WAAClock');
 
 const AudioApiPlayer = React.createClass({
   getInitialState: function() {
@@ -7,21 +8,21 @@ const AudioApiPlayer = React.createClass({
   },
 
   setupVisualizer: function() {
-    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
     var audioElement = document.getElementById('audioElement');
+
     audioElement.crossOrigin = "anonymous";
-    var audioSrc = audioCtx.createMediaElementSource(audioElement);
-    var analyser = audioCtx.createAnalyser();
+    var audioSrc = this.audioCtx.createMediaElementSource(audioElement);
+    var analyser = this.audioCtx.createAnalyser();
 
     // Bind our analyser to the media element source.
     audioSrc.connect(analyser);
-    audioSrc.connect(audioCtx.destination);
+    audioSrc.connect(this.audioCtx.destination);
 
-    // break in the instructions....
+    var frequencyData = new Uint8Array(150);
 
-    var frequencyData = new Uint8Array(200);
-
-    var svgHeight = '300';
+    var svgHeight = '250';
     var svgWidth = '700';
     var barPadding = '1';
 
@@ -31,7 +32,7 @@ const AudioApiPlayer = React.createClass({
 
     var svg = createSvg('#AudioGraph', svgHeight, svgWidth);
 
-// Create our initial D3 chart.
+    // Create our initial D3 chart.
     svg.selectAll('rect')
       .data(frequencyData)
       .enter()
@@ -43,11 +44,10 @@ const AudioApiPlayer = React.createClass({
 
     function renderChart() {
       requestAnimationFrame(renderChart);
-
       // Copy frequency data to frequencyData array.
       analyser.getByteFrequencyData(frequencyData);
-
       // Update d3 chart with new data.
+
       svg.selectAll('rect')
         .data(frequencyData)
         .attr('y', function(d) {
@@ -80,13 +80,10 @@ const AudioApiPlayer = React.createClass({
   },
 
   render: function() {
-    // <section id="AudioGraph" />
     return (
-
         <audio id="audioElement" controls="controls"
           src={this.state.currentSong.song_url}>
         </audio>
-
     );
   }
 });

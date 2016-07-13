@@ -31,7 +31,6 @@ const SongDetail = React.createClass({
   },
 
   render: function() {
-    // debugger;
     return (
       <figure className="song-detail-index">
 

@@ -37,6 +37,7 @@
     "react-modal": "^1.3.0",
     "react-player": "^0.7.4",
     "react-router": "^2.5.1",
+    "waaclock": "^0.5.3",
     "webpack": "^1.13.1"
   }
 }
