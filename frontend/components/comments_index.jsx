@@ -16,7 +16,6 @@ const CommentsIndex = React.createClass({
 
   _onChange: function() {
     this.setState({ comments: CommentStore.all(parseInt(this.props.songID, 10)) });
-    // debugger;
   },
 
   fetchComments: function() {
@@ -25,18 +24,15 @@ const CommentsIndex = React.createClass({
 
   componentWillUnmount: function() {
     this.commentListener.remove();
-    // CommentActions.resetComments();
   },
 
   render: function() {
-    // debugger;
     return (
       <div>
-        Howdy
 
         <CommentForm songID={parseInt(this.props.songID, 10)} />
 
-        {Object.keys(this.state.comments).map( commentID => {
+        {Object.keys(this.state.comments).reverse().map( commentID => {
           return (
             <CommentIndexItem key={commentID}
               comment={this.state.comments[commentID] } />
