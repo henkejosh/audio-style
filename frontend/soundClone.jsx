@@ -55,4 +55,4 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("root"));
 });
 
-window.CommentStore = CommentStore;
+window.CurrentSongStore = CurrentSongStore;

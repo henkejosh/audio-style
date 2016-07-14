@@ -73,15 +73,22 @@ const AudioApiPlayer = React.createClass({
     this.currSongListener.remove();
   },
 
+  playPause: function() {
+    debugger;
+    // TODO --- AUDIOPlayer flux cycle - allow play from other components
+    // if(this.)
+    this.audio.play();
+  },
+
   fetchCurrentSong: function() {
     this.setState({currentSong: CurrentSongStore.currentSong()});
-    const audio = document.getElementById('audioElement');
-    audio.load();
+    this.audio = document.getElementById('audioElement');
+    this.audio.load();
   },
 
   render: function() {
     return (
-        <audio id="audioElement" controls="controls"
+        <audio id="audioElement" controls="controls" autoPlay
           src={this.state.currentSong.song_url}>
         </audio>
     );
