@@ -25,13 +25,13 @@ AudioApiPlayerStore.newSongReceived = function() {
   // AudioApiPlayerStore.__emitChange();
 };
 
-AudioApiPlayerStore.resetPlaying = function() {
+// AudioApiPlayerStore.resetPlaying = function() {
+AudioApiPlayerStore.pausePlaying = function() {
   _playing = false;
-  // AudioApiPlayerStore.__emitChange();
 };
 
 const resetPlaying = function() {
-  _playing = false;
+  _playing = true;
 };
 
 AudioApiPlayerStore.__onDispatch = payload => {

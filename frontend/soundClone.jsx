@@ -30,10 +30,16 @@ const IndexRoute = reactRouter.IndexRoute;
 
 const _ensureLoggedIn = function(nextState, replace) {
   if (!SessionStore.isUserLoggedIn()) {
-    replace('/');
+    hashHistory.replace('/');
   }
 };
 
+const chain = function(cb1, cb2){
+  cb1.call();
+  cb2.call();
+};
+
+// onEnter={ chain( _ensureLoggedIn,  AudioApiPlayerActions.resetPlaying) }  />
 const appRouter = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App } >

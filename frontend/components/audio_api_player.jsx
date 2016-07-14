@@ -9,29 +9,36 @@ const AudioApiPlayer = React.createClass({
     return { playing: AudioApiPlayerStore.getPlayStatus() };
   },
 
-  setupVisualizer: function() {
+  createAudioNode: function() {
     this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-    var audioElement = document.getElementById('audioElement');
+    this.audioElement = document.getElementById('audioElement');
 
-    audioElement.crossOrigin = "anonymous";
-    var audioSrc = this.audioCtx.createMediaElementSource(audioElement);
-    var analyser = this.audioCtx.createAnalyser();
+    this.audioElement.crossOrigin = "anonymous";
+    this.audioSrc = this.audioCtx.createMediaElementSource(this.audioElement);
+    this.analyser = this.audioCtx.createAnalyser();
 
-    audioSrc.connect(analyser);
-    audioSrc.connect(this.audioCtx.destination);
+    this.audioSrc.connect(this.analyser);
+    this.audioSrc.connect(this.audioCtx.destination);
+  },
 
+  createVisualizer: function() {
     var frequencyData = new Uint8Array(150);
 
     var svgHeight = '250';
     var svgWidth = '700';
     var barPadding = '1';
 
+    const that = this;
     function createSvg(parent, height, width) {
-      return d3.select(parent).append('svg').attr('height', height).attr('width', width);
+      return d3.select(parent)
+          .append('svg')
+          .attr('height', height)
+          .attr('width', width)
+          .attr('id', `graph-${that.props.song.id}`);
     }
 
-    var svg = createSvg('#AudioGraph', svgHeight, svgWidth);
+    var svg = createSvg(`#AudioGraph${that.props.song.id}`, svgHeight, svgWidth);
 
     svg.selectAll('rect')
       .data(frequencyData)
@@ -44,7 +51,7 @@ const AudioApiPlayer = React.createClass({
 
     function renderChart() {
       requestAnimationFrame(renderChart);
-      analyser.getByteFrequencyData(frequencyData);
+      that.analyser.getByteFrequencyData(frequencyData);
 
       svg.selectAll('rect')
         .data(frequencyData)
@@ -58,13 +65,67 @@ const AudioApiPlayer = React.createClass({
           return 'rgb(0, 0, ' + d + ')';
         });
     }
-
     renderChart();
   },
 
+  // setupVisualizer: function() {
+  //   var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  //
+  //   var audioElement = document.getElementById('audioElement');
+  //
+  //   audioElement.crossOrigin = "anonymous";
+  //   var audioSrc = audioCtx.createMediaElementSource(audioElement);
+  //   var analyser = audioCtx.createAnalyser();
+  //
+  //   audioSrc.connect(analyser);
+  //   audioSrc.connect(audioCtx.destination);
+  //
+  //   var frequencyData = new Uint8Array(150);
+  //
+  //   var svgHeight = '250';
+  //   var svgWidth = '700';
+  //   var barPadding = '1';
+  //
+  //   function createSvg(parent, height, width) {
+  //     return d3.select(parent).append('svg').attr('height', height).attr('width', width);
+  //   }
+  //
+  //   var svg = createSvg(`#AudioGraph${this.props.song.id}`, svgHeight, svgWidth);
+  //
+  //   svg.selectAll('rect')
+  //     .data(frequencyData)
+  //     .enter()
+  //     .append('rect')
+  //     .attr('x', function (d, i) {
+  //       return i * (svgWidth / frequencyData.length);
+  //     })
+  //     .attr('width', svgWidth / frequencyData.length - barPadding);
+  //
+  //   function renderChart() {
+  //     requestAnimationFrame(renderChart);
+  //     analyser.getByteFrequencyData(frequencyData);
+  //
+  //     svg.selectAll('rect')
+  //       .data(frequencyData)
+  //       .attr('y', function(d) {
+  //         return svgHeight - d;
+  //       })
+  //       .attr('height', function(d) {
+  //         return d;
+  //       })
+  //       .attr('fill', function(d) {
+  //         return 'rgb(0, 0, ' + d + ')';
+  //       });
+  //   }
+  //   if(/songs\/\d/.test(this.props.path)) {
+  //     renderChart();
+  //   }
+  // },
+
   componentDidMount: function() {
     this.playerStoreListener = AudioApiPlayerStore.addListener(this.updatePlayingStatus);
-    this.setupVisualizer();
+    // this.setupVisualizer();
+    this.createAudioNode();
     this.audio = document.getElementById('audioElement');
   },
 
@@ -87,7 +148,15 @@ const AudioApiPlayer = React.createClass({
   },
 
   componentDidUpdate: function() {
+    // test
+    this.checkForSongDetail();
+    //
     this.playPause();
+  },
+
+  componentWillUpdate: function() {
+    // debugger;
+    // this.checkForSongDetail();
   },
 
   handlePlay: function() {
@@ -99,9 +168,22 @@ const AudioApiPlayer = React.createClass({
   },
 
   componentWillReceiveProps: function() {
-    // set apiStore playing to true;
-
     this.setState({ playing: AudioApiPlayerStore.getPlayStatus() });
+  },
+
+  tempPause: function() {
+    // set it to Timeout to make it faster (asyncrhonous processes
+    // right before store launches?)
+    this.state.playing = false;
+  },
+
+  checkForSongDetail: function() {
+    if(/songs\/\d/.test(this.props.path)) {
+      // this.setupVisualizer();
+      if(!document.getElementById(`graph-${this.props.song.id}`)) {
+        this.createVisualizer();
+      }
+    }
   },
 
   render: function() {
@@ -111,7 +193,7 @@ const AudioApiPlayer = React.createClass({
     } else {
       button = "Play";
     }
-
+    // checkForSongDetail();
     return (
       <div>
         <button type="play" value="Play" onClick={this.handlePlay}>{button}</button>

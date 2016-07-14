@@ -44,7 +44,8 @@ const App = React.createClass({
   render: function() {
     let currSong;
     if(this.state.currentSong.id) {
-      currSong = <AudioApiPlayer song={this.state.currentSong}/>;
+      currSong = <AudioApiPlayer song={this.state.currentSong}
+        path={this.props.location.pathname}/>;
     }
 
     return (

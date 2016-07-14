@@ -7,6 +7,7 @@ const AudioApiPlayer = require('./audio_api_player.jsx');
 const CommentsIndex = require('./comments_index.jsx');
 const CurrentSongStore = require('../stores/current_song_store.js');
 const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
+const AudioApiPlayerStore = require('../stores/audio_api_player_store.js');
 
 const SongDetail = React.createClass({
   getInitialState: function() {
@@ -28,6 +29,11 @@ const SongDetail = React.createClass({
       AudioApiPlayerActions.playPause();
     } else {
       CurrentSongActions.selectCurrentSong(this.props.params.songID);
+      // Will prolly throw dispatcher error (below)
+      // --> need to rerender apiaudioPlayer when given a new song
+      // here (to make audiograph) appear
+      AudioApiPlayerStore.pausePlaying();
+      AudioApiPlayerActions.resetPlaying();
     }
   },
 
@@ -72,7 +78,7 @@ const SongDetail = React.createClass({
             </section>
 
           </div>
-          <figure id="AudioGraph" />
+          <figure id={`AudioGraph${this.state.song.id}`}/>
 
         </span>
 
