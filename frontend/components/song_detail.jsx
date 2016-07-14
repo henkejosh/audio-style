@@ -6,6 +6,7 @@ const CurrentSongActions = require('../actions/current_song_actions.js');
 const AudioApiPlayer = require('./audio_api_player.jsx');
 const CommentsIndex = require('./comments_index.jsx');
 const CurrentSongStore = require('../stores/current_song_store.js');
+const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 
 const SongDetail = React.createClass({
   getInitialState: function() {
@@ -24,10 +25,7 @@ const SongDetail = React.createClass({
   handleSongPlay: function(e) {
     e.preventDefault();
     if(CurrentSongStore.currentSong() && (this.state.song.id === CurrentSongStore.currentSong().id)) {
-      debugger;
-      // TODO - FLux store for audio component - call action
-      // here to playppause that shit
-      this.playPause();
+      AudioApiPlayerActions.playPause();
     } else {
       CurrentSongActions.selectCurrentSong(this.props.params.songID);
     }

@@ -108,14 +108,20 @@ const AudioApiPlayer = React.createClass({
 
   fetchCurrentSong: function() {
     this.setState({currentSong: CurrentSongStore.currentSong()});
-    debugger;
     this.audio.load();
   },
 
   render: function() {
+    let button;
+    if(this.state.playing === true) {
+      button = "Play";
+    } else {
+      button = "Pause";
+    }
+
     return (
       <div>
-        <button type="play" value="Play" onClick={this.handlePlay}>Play</button>
+        <button type="play" value="Play" onClick={this.handlePlay}>{button}</button>
         <audio id="audioElement"
           src={this.state.currentSong.song_url}>
         </audio>
