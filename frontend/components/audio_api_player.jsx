@@ -17,7 +17,7 @@ const AudioApiPlayer = React.createClass({
     this.audioElement.crossOrigin = "anonymous";
     this.audioSrc = this.audioCtx.createMediaElementSource(this.audioElement);
     this.analyser = this.audioCtx.createAnalyser();
-
+    this.analyser.smoothingTimeConstant = 0.1;
     this.audioSrc.connect(this.analyser);
     this.audioSrc.connect(this.audioCtx.destination);
   },
@@ -127,6 +127,7 @@ const AudioApiPlayer = React.createClass({
     // this.setupVisualizer();
     this.createAudioNode();
     this.audio = document.getElementById('audioElement');
+    this.checkForSongDetail();
   },
 
   componentWillUnmount: function() {
@@ -148,15 +149,8 @@ const AudioApiPlayer = React.createClass({
   },
 
   componentDidUpdate: function() {
-    // test
     this.checkForSongDetail();
-    //
     this.playPause();
-  },
-
-  componentWillUpdate: function() {
-    // debugger;
-    // this.checkForSongDetail();
   },
 
   handlePlay: function() {
@@ -172,14 +166,11 @@ const AudioApiPlayer = React.createClass({
   },
 
   tempPause: function() {
-    // set it to Timeout to make it faster (asyncrhonous processes
-    // right before store launches?)
     this.state.playing = false;
   },
 
   checkForSongDetail: function() {
     if(/songs\/\d/.test(this.props.path)) {
-      // this.setupVisualizer();
       if(!document.getElementById(`graph-${this.props.song.id}`)) {
         this.createVisualizer();
       }
