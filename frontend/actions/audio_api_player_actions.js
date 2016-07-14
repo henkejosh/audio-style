@@ -6,6 +6,12 @@ const AudioApiPlayerActions = {
     Dispatcher.dispatch({
       actionType: AudioApiPlayerConstants.PLAY_PAUSE
     });
+  },
+
+  resetPlaying: function() {
+    Dispatcher.dispatch({
+      actionType: AudioApiPlayerConstants.RESET_PLAYING
+    });
   }
 };
 

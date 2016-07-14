@@ -1,53 +1,27 @@
 const React = require('react');
-// const CommentForm = require('./comment_form.jsx');
 const CurrentSongStore = require('../stores/current_song_store.js');
 const CurrentSongActions = require('../actions/current_song_actions');
 const hashHistory = require('react-router').hashHistory;
+const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 
 const SongIndexItem = React.createClass({
   getInitialState: function() {
     return { shown: "none"};
   },
 
-  // handleCommentForm: function(event) {
-  //   event.preventDefault();
-  //
-  //   let displayAtt;
-  //   if(this.state.shown === "none") {
-  //     displayAtt = "block";
-  //   } else {
-  //     displayAtt = "none";
-  //   }
-  //   this.setState({ shown: "block"});
-  // },
-
   handleSongPlay: function(e) {
     e.preventDefault();
-    CurrentSongActions.selectCurrentSong(this.props.song.id);
-    // this._wavesurfer.playPause();
+    if(CurrentSongStore.currentSong() && (this.props.song.id === CurrentSongStore.currentSong().id)) {
+      AudioApiPlayerActions.playPause();
+    } else {
+      CurrentSongActions.selectCurrentSong(this.props.song.id);
+    }
   },
 
   goToSongDetail: function(e) {
     e.preventDefault();
     hashHistory.push(`songs/${this.props.song.id}`);
   },
-
-  // componentDidMount: function() {
-  //   // this._wavesurfer = WaveSurfer.create({
-  //   //   container: `#waveform${this.props.song.id}`,
-  //   //   waveColor: '#8C8C8C',
-  //   //   progressColor: 'grey',
-  //   //   fillParent: true,
-  //   //   barWidth: 1,
-  //   //   height: 70,
-  //   //   autoCenter: true,
-  //   //   backend: 'MediaElement'
-  //   // });
-  //
-  //   if(this.props.song.id) {
-  //     this._wavesurfer.load(this.props.song.song_url);
-  //   }
-  // },
 
   render: function() {
     return (

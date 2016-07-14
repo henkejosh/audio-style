@@ -6,8 +6,7 @@ const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 
 const AudioApiPlayer = React.createClass({
   getInitialState: function() {
-    return { currentSong: CurrentSongStore.currentSong(),
-      playing: AudioApiPlayerStore.getPlayStatus() };
+    return { playing: AudioApiPlayerStore.getPlayStatus() };
   },
 
   setupVisualizer: function() {
@@ -19,7 +18,6 @@ const AudioApiPlayer = React.createClass({
     var audioSrc = this.audioCtx.createMediaElementSource(audioElement);
     var analyser = this.audioCtx.createAnalyser();
 
-    // Bind our analyser to the media element source.
     audioSrc.connect(analyser);
     audioSrc.connect(this.audioCtx.destination);
 
@@ -35,7 +33,6 @@ const AudioApiPlayer = React.createClass({
 
     var svg = createSvg('#AudioGraph', svgHeight, svgWidth);
 
-    // Create our initial D3 chart.
     svg.selectAll('rect')
       .data(frequencyData)
       .enter()
@@ -47,9 +44,7 @@ const AudioApiPlayer = React.createClass({
 
     function renderChart() {
       requestAnimationFrame(renderChart);
-      // Copy frequency data to frequencyData array.
       analyser.getByteFrequencyData(frequencyData);
-      // Update d3 chart with new data.
 
       svg.selectAll('rect')
         .data(frequencyData)
@@ -68,28 +63,21 @@ const AudioApiPlayer = React.createClass({
   },
 
   componentDidMount: function() {
-    this.currSongListener = CurrentSongStore.addListener(this.fetchCurrentSong);
     this.playerStoreListener = AudioApiPlayerStore.addListener(this.updatePlayingStatus);
     this.setupVisualizer();
     this.audio = document.getElementById('audioElement');
-    this.playPause();
-    // this.audio = document.getElementById('audioElement');
   },
 
   componentWillUnmount: function() {
     this.currSongListener.remove();
+    AudioApiPlayerStore.resetPlaying();
     this.playerStoreListener.remove();
   },
 
   playPause: function() {
-    // if(this.audio.paused === true) {
-    //   this.audio.play();
-    // } else if(this.audio.paused === false) {
-    //   this.audio.pause();
-    // }
-    if(this.state.playing === true) {
+    if(this.state.playing === false) {
       this.audio.pause();
-    } else if(this.state.playing === false) {
+    } else if(this.state.playing === true) {
       this.audio.play();
     }
   },
@@ -108,22 +96,27 @@ const AudioApiPlayer = React.createClass({
 
   fetchCurrentSong: function() {
     this.setState({currentSong: CurrentSongStore.currentSong()});
-    this.audio.load();
+  },
+
+  componentWillReceiveProps: function() {
+    // set apiStore playing to true;
+
+    this.setState({ playing: AudioApiPlayerStore.getPlayStatus() });
   },
 
   render: function() {
     let button;
     if(this.state.playing === true) {
-      button = "Play";
-    } else {
       button = "Pause";
+    } else {
+      button = "Play";
     }
 
     return (
       <div>
         <button type="play" value="Play" onClick={this.handlePlay}>{button}</button>
-        <audio id="audioElement"
-          src={this.state.currentSong.song_url}>
+        <audio id="audioElement" autoPlay
+          src={this.props.song.song_url}>
         </audio>
       </div>
     );

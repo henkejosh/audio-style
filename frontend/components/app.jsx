@@ -12,10 +12,12 @@ const CurrentSongPlayer = require('./current_song_player.jsx');
 const CurrentSongStore = require('../stores/current_song_store.js');
 const ReactPlayer = require('./react_player.jsx');
 const AudioApiPlayer = require('./audio_api_player.jsx');
+const AudioApiPlayerStore = require('../stores/audio_api_player_store.js');
+const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 
 const App = React.createClass({
   getInitialState: function() {
-    return {currentSong: "false"};
+    return {currentSong: CurrentSongStore.currentSong() };
   },
 
   componentDidMount: function() {
@@ -25,11 +27,8 @@ const App = React.createClass({
   },
 
   isCurrentSong: function() {
-    if(CurrentSongStore.isCurrentSong()) {
-      this.setState({ currentSong: "true"});
-    } else {
-      this.setState({ currentSong: "false"});
-    }
+    AudioApiPlayerStore.newSongReceived();
+    this.setState({ currentSong: CurrentSongStore.currentSong() });
   },
 
   isUserLoggedIn: function() {
@@ -44,9 +43,8 @@ const App = React.createClass({
 
   render: function() {
     let currSong;
-    if(this.state.currentSong === "true") {
-      // currSong = <CurrentSongPlayer/>;
-      currSong = <AudioApiPlayer/>;
+    if(this.state.currentSong.id) {
+      currSong = <AudioApiPlayer song={this.state.currentSong}/>;
     }
 
     return (
