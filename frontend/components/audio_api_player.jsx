@@ -17,7 +17,7 @@ const AudioApiPlayer = React.createClass({
     this.audioElement.crossOrigin = "anonymous";
     this.audioSrc = this.audioCtx.createMediaElementSource(this.audioElement);
     this.analyser = this.audioCtx.createAnalyser();
-    this.analyser.smoothingTimeConstant = 0.1;
+    this.analyser.smoothingTimeConstant = .9;
     this.audioSrc.connect(this.analyser);
     this.audioSrc.connect(this.audioCtx.destination);
   },
@@ -124,7 +124,6 @@ const AudioApiPlayer = React.createClass({
 
   componentDidMount: function() {
     this.playerStoreListener = AudioApiPlayerStore.addListener(this.updatePlayingStatus);
-    // this.setupVisualizer();
     this.createAudioNode();
     this.audio = document.getElementById('audioElement');
     this.checkForSongDetail();
