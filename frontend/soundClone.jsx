@@ -19,6 +19,8 @@ const CurrentSongStore = require('./stores/current_song_store.js');
 const UserPage = require('./components/user_page.jsx');
 const SongDetail = require('./components/song_detail.jsx');
 const NewSongIndex = require('./components/new_song_index.jsx');
+const AudioApiPlayerActions = require('./actions/audio_api_player_actions.js');
+const AudioApiPlayerStore = require('./stores/audio_api_player_store.js');
 //Router
 const reactRouter = require('react-router');
 const Router = reactRouter.Router;
@@ -55,4 +57,5 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("root"));
 });
 
-window.CurrentSongStore = CurrentSongStore;
+window.AudioApiPlayerActions = AudioApiPlayerActions;
+window.AudioApiPlayerStore = AudioApiPlayerStore;

@@ -1,10 +1,13 @@
 const React = require('react');
 const CurrentSongStore = require('../stores/current_song_store.js');
+const AudioApiPlayerStore = require('../stores/audio_api_player_store.js');
+const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 // const WAAClock = require('WAAClock');
 
 const AudioApiPlayer = React.createClass({
   getInitialState: function() {
-    return { currentSong: CurrentSongStore.currentSong()};
+    return { currentSong: CurrentSongStore.currentSong(),
+      playing: AudioApiPlayerStore.getPlayStatus() };
   },
 
   setupVisualizer: function() {
@@ -66,31 +69,57 @@ const AudioApiPlayer = React.createClass({
 
   componentDidMount: function() {
     this.currSongListener = CurrentSongStore.addListener(this.fetchCurrentSong);
+    this.playerStoreListener = AudioApiPlayerStore.addListener(this.updatePlayingStatus);
     this.setupVisualizer();
+    this.audio = document.getElementById('audioElement');
+    this.playPause();
+    // this.audio = document.getElementById('audioElement');
   },
 
   componentWillUnmount: function() {
     this.currSongListener.remove();
+    this.playerStoreListener.remove();
   },
 
   playPause: function() {
-    debugger;
-    // TODO --- AUDIOPlayer flux cycle - allow play from other components
-    // if(this.)
-    this.audio.play();
+    // if(this.audio.paused === true) {
+    //   this.audio.play();
+    // } else if(this.audio.paused === false) {
+    //   this.audio.pause();
+    // }
+    if(this.state.playing === true) {
+      this.audio.pause();
+    } else if(this.state.playing === false) {
+      this.audio.play();
+    }
+  },
+
+  updatePlayingStatus: function() {
+    this.setState({ playing: AudioApiPlayerStore.getPlayStatus() });
+  },
+
+  componentDidUpdate: function() {
+    this.playPause();
+  },
+
+  handlePlay: function() {
+    AudioApiPlayerActions.playPause();
   },
 
   fetchCurrentSong: function() {
     this.setState({currentSong: CurrentSongStore.currentSong()});
-    this.audio = document.getElementById('audioElement');
+    debugger;
     this.audio.load();
   },
 
   render: function() {
     return (
-        <audio id="audioElement" controls="controls" autoPlay
+      <div>
+        <button type="play" value="Play" onClick={this.handlePlay}>Play</button>
+        <audio id="audioElement"
           src={this.state.currentSong.song_url}>
         </audio>
+      </div>
     );
   }
 });
