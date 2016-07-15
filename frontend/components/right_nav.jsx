@@ -104,7 +104,7 @@ const RightNav = React.createClass({
         </li>
 
         <li className="auth-button" onClick={this.updateAuthComp}>
-          <img src="http://f.cl.ly/items/0g2V1V3P08160j2t2y3X/users.png"/>
+          <img src="https://s3.amazonaws.com/f.cl.ly/items/0g2V1V3P08160j2t2y3X/users.png"/>
           <ul className="auth-links">
             {this.state.authLinks ? authLink : null }
           </ul>

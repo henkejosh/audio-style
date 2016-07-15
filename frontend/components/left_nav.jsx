@@ -12,7 +12,7 @@ const LeftNav = React.createClass({
     return (
         <ul className="left-nav">
           <li className="logo">
-            <img src="http://f.cl.ly/items/3o1I112P3y371p262D3j/headphones%20(2).png"/>
+            <img src="https://s3.amazonaws.com/f.cl.ly/items/0G3J0q3o0q0s252U4021/headphones%20(1).png"/>
           </li>
           <li>
             <a onClick={this.goToHome}>Home</a>

@@ -54,7 +54,7 @@ const SongDetail = React.createClass({
             <div className="albumThumb">
               <a>
                 <img className="play" onClick={this.handleSongPlay}
-                  src="http://f.cl.ly/items/2B380T1a0s181d370f3K/movie-player-play-button.png"/>
+                  src="https://s3.amazonaws.com/f.cl.ly/items/2B380T1a0s181d370f3K/movie-player-play-button.png"/>
                 <div className="overlay"></div>
               </a>
 

@@ -36,7 +36,7 @@ const SongIndexItem = React.createClass({
           <div className="song-item">
             <div className="play-song-info">
 
-              <img src="http://f.cl.ly/items/2B380T1a0s181d370f3K/movie-player-play-button.png"
+              <img src="https://s3.amazonaws.com/f.cl.ly/items/2B380T1a0s181d370f3K/movie-player-play-button.png"
                 onClick={this.handleSongPlay}
                 className="play-button"/>
 
