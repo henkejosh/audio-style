@@ -2,6 +2,7 @@ const React = require('react');
 const CurrentSongStore = require('../stores/current_song_store.js');
 const AudioApiPlayerStore = require('../stores/audio_api_player_store.js');
 const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
+const d3 = require('d3');
 // const WAAClock = require('WAAClock');
 
 const AudioApiPlayer = React.createClass({
