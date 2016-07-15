@@ -31,25 +31,25 @@ name: "Miles Davis",
 Album.create!(
   artist_id: 1,
   title: "Kind of Blue",
-  image_url: "http://res.cloudinary.com/dg2yejdpt/image/upload/v1467739480/a_-_Front_lscrcq.jpg"
+  image_url: "https://res.cloudinary.com/dg2yejdpt/image/upload/v1467739480/a_-_Front_lscrcq.jpg"
 )
 
 Song.create!(
   title: "So What",
   album_id: 1,
-  song_url: "http://res.cloudinary.com/dg2yejdpt/video/upload/v1467740825/01_So_What_tpyarx.mp3"
+  song_url: "https://res.cloudinary.com/dg2yejdpt/video/upload/v1467740825/01_So_What_tpyarx.mp3"
 )
 
 Song.create!(
   title: "Freddie Freeloader",
   album_id: 1,
-  song_url: "http://res.cloudinary.com/dg2yejdpt/video/upload/v1467910499/02_Freddie_Freeloader_ynsa54.mp3"
+  song_url: "https://res.cloudinary.com/dg2yejdpt/video/upload/v1467910499/02_Freddie_Freeloader_ynsa54.mp3"
 )
 
 Song.create!(
   title: "Blue in Green",
   album_id: 1,
-  song_url: "http://res.cloudinary.com/dg2yejdpt/video/upload/v1467740420/03_Blue_In_Green_xkjav5.mp3"
+  song_url: "https://res.cloudinary.com/dg2yejdpt/video/upload/v1467740420/03_Blue_In_Green_xkjav5.mp3"
 )
 
 Song.create!(
@@ -61,7 +61,7 @@ Song.create!(
 Song.create!(
   title: "Flamenco Sketches",
   album_id: 1,
-  song_url: "http://res.cloudinary.com/dg2yejdpt/video/upload/v1467741094/05_Flamenco_Sketches_sdcnnz.mp3"
+  song_url: "https://res.cloudinary.com/dg2yejdpt/video/upload/v1467741094/05_Flamenco_Sketches_sdcnnz.mp3"
 )
 
 
