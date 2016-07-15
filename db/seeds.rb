@@ -55,7 +55,7 @@ Song.create!(
 Song.create!(
   title: "All Blues",
   album_id: 1,
-  song_url: "http://res.cloudinary.com/dg2yejdpt/video/upload/v1467741007/04_All_Blues_o0jquz.mp3"
+  song_url: "https://res.cloudinary.com/dg2yejdpt/video/upload/v1467741007/04_All_Blues_o0jquz.mp3"
 )
 
 Song.create!(
