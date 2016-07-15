@@ -7,6 +7,8 @@ if @comments
     json.song_id comment.song_id
     json.created_at comment.created_at
     json.updated_at comment.updated_at
+    json.song_title comment.song.title
+
   end
   json.songID @comments.first.song_id
 end

@@ -5,8 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-guest = User.new(email: "guest", password: "password")
-guest.save!
+
+User.create!(
+  email: "guest",
+  password_digest: "password",
+  session_token: "2q523asdg"
+)
 
 User.create!(
   email: "testingaemail",
@@ -60,6 +64,115 @@ Song.create!(
   song_url: "http://res.cloudinary.com/dg2yejdpt/video/upload/v1467741094/05_Flamenco_Sketches_sdcnnz.mp3"
 )
 
+
+Playlist.create!(
+  user_id: 1,
+  name: "Guest Songs"
+)
+
+
+Comment.create!(
+  body: "So good",
+  user_id: 1,
+  song_id: 1
+)
+
+Comment.create!(
+  body: "Great jam!",
+  user_id: 1,
+  song_id: 1
+)
+
+Comment.create!(
+  body: "Great jam!",
+  user_id: 2,
+  song_id: 2
+)
+
+Comment.create!(
+  body: "Great jam!",
+  user_id: 1,
+  song_id: 3
+)
+
+Comment.create!(
+  body: "Great jam!",
+  user_id: 1,
+  song_id: 4
+)
+
+Comment.create!(
+  body: "Special",
+  user_id: 3,
+  song_id: 5
+)
+
+Comment.create!(
+  body: "Great song!",
+  user_id: 3,
+  song_id: 5
+)
+# #####
+# #####
+# #####
+
+
+Comment.create!(
+  body: "Real nice song",
+  user_id: 2,
+  song_id: 2
+)
+
+Comment.create!(
+  body: "Really good song",
+  user_id: 1,
+  song_id: 3
+)
+
+Comment.create!(
+  body: "Special",
+  user_id: 2,
+  song_id: 2
+)
+
+Comment.create!(
+  body: "Real nice",
+  user_id: 1,
+  song_id: 4
+)
+
+Comment.create!(
+  body: "Really good song",
+  user_id: 3,
+  song_id: 5
+)
+
+# #####
+# #####
+# #####
+
+Comment.create!(
+  body: "Special",
+  user_id: 1,
+  song_id: 1
+)
+
+
+
+Comment.create!(
+  body: "Special",
+  user_id: 1,
+  song_id: 3
+)
+
+Comment.create!(
+  body: "Special",
+  user_id: 1,
+  song_id: 4
+)
+
+
+
 # Album.create!(
 #   artist_id: 1,
 #   title: "Grace",
@@ -72,10 +185,6 @@ Song.create!(
 #   image_url: "http://f.cl.ly/items/2I0M121z2b1A0Q3X0y2S/220px-Pavement_Crooked_Rain.jpg"
 # )
 
-Playlist.create!(
-  user_id: 1,
-  name: "Guest Songs"
-)
 
 # Song.create!(
 #   title: "Mojo Pin",

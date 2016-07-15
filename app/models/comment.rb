@@ -3,6 +3,9 @@ class Comment < ActiveRecord::Base
 
   after_initialize :default_time_in
 
+  belongs_to :user
+  belongs_to :song
+
   private
   def default_time_in
     self.time_into_song ||= 0
