@@ -28,7 +28,7 @@ const CommentsIndex = React.createClass({
 
   render: function() {
     return (
-      <div>
+      <div className="comment-holder">
 
         <CommentForm songID={parseInt(this.props.songID, 10)} />
 

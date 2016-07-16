@@ -5,7 +5,7 @@ const CommentIndexItem = React.createClass({
 
   render: function() {
     return (
-      <ul>
+      <ul className="ComIndexItem">
         <li>Body: {this.props.comment.body}</li>
         <li>ID: {this.props.comment.id}</li>
         <li>song_ID: {this.props.comment.song_title}</li>

@@ -2,12 +2,17 @@ figure.song-detail-index {
   display: flex;
   flex-direction: column;
   border: 2px solid black;
+  padding-top: 2%;
 }
 
 span.song-detail-item {
   display: flex;
   flex-direction: row;
   border: 2px solid green;
+}
+
+section.song {
+  border: 2px solid orange;
 }
 
 div.songInfo {
@@ -21,18 +26,35 @@ div.songInfo {
 div.comment {
   display: flex;
   flex-direction: row;
+  margin-top: 5%;
+}
+
+div.comment-holder {
+  display: flex;
+  flex-direction: row;
+}
+
+section.comForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+ul.ComIndexItem {
+  display: flex;
+  flex-direction: row;
 }
 
 span.song-detail-item img.albumPic {
-  width: 175px;
-  margin: 5px;
+  width: 250px;
+  margin: 20px;
 }
 
-figure #AudioGraph {
-  padding: 5px;
+figure.AudioGraph {
+  padding: 10px;
   height: 250px;
   border: 2px solid orange;
   width: 100%;
+  margin: 0px 4%;
 }
 
 /*PLAY BUTTON (ALBUM IMAGE)*/

@@ -29,9 +29,7 @@ const SongDetail = React.createClass({
       AudioApiPlayerActions.playPause();
     } else {
       CurrentSongActions.selectCurrentSong(this.props.params.songID);
-      // Will prolly throw dispatcher error (below)
-      // --> need to rerender apiaudioPlayer when given a new song
-      // here (to make audiograph) appear
+
       AudioApiPlayerStore.pausePlaying();
       AudioApiPlayerActions.resetPlaying();
     }
@@ -66,19 +64,17 @@ const SongDetail = React.createClass({
 
             <section className="song">
               <div className="song-data">
-                <div className="play-song-info">
 
                   <ul className="song-info">
                     <li>{this.state.song.artist_name} - {this.state.song.title}</li>
                     <li className="album-name">{this.state.song.album_name}</li>
                   </ul>
-
-                </div>
               </div>
             </section>
 
           </div>
-          <figure id={`AudioGraph${this.state.song.id}`}/>
+          <figure id={`AudioGraph${this.state.song.id}`}
+            className='AudioGraph'/>
 
         </span>
 
@@ -89,6 +85,5 @@ const SongDetail = React.createClass({
     );
   }
 });
-// <AudioApiPlayer song={this.state.song} />
 
 module.exports = SongDetail;

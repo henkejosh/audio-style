@@ -3,6 +3,7 @@ const CurrentSongStore = require('../stores/current_song_store.js');
 const AudioApiPlayerStore = require('../stores/audio_api_player_store.js');
 const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 const d3 = require('d3');
+const KindOfBlue = require('../constants/kind_of_blue_colors.js');
 
 const AudioApiPlayer = React.createClass({
   getInitialState: function() {
@@ -77,7 +78,9 @@ const AudioApiPlayer = React.createClass({
           return d;
         })
         .attr('fill', function(d) {
-          return 'rgb(0, 0, ' + d + ')';
+          // return 'rgb(0, 0, ' + d + ')';
+          // return `rgb(${KindOfBlue[d]})`;
+          return KindOfBlue[d];
         });
     }
     renderChart();
@@ -150,13 +153,17 @@ const AudioApiPlayer = React.createClass({
 
     return (
       <div className="AudioPlayer">
-        <button type="play" value="Play" onClick={this.handlePlay}>{button}</button>
+        <button className="play" type="play"
+          value="Play" onClick={this.handlePlay}>{button}</button>
+
         <audio id="audioElement" autoPlay
           src={this.props.song.song_url} >
         </audio>
+
         <progress className="rangeslider__fill"
           value={this.state.timePlayed}
           onClick={this.handleSongScroll}/>
+
       </div>
     );
   }
