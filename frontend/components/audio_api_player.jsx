@@ -3,7 +3,6 @@ const CurrentSongStore = require('../stores/current_song_store.js');
 const AudioApiPlayerStore = require('../stores/audio_api_player_store.js');
 const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 const d3 = require('d3');
-const ProgressBar = require('./slider.jsx');
 
 const AudioApiPlayer = React.createClass({
   getInitialState: function() {
@@ -150,7 +149,7 @@ const AudioApiPlayer = React.createClass({
     }
 
     return (
-      <div>
+      <div className="AudioPlayer">
         <button type="play" value="Play" onClick={this.handlePlay}>{button}</button>
         <audio id="audioElement" autoPlay
           src={this.props.song.song_url} >
