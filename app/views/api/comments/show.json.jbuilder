@@ -6,4 +6,5 @@ json.comment do
   json.song_id @comment.song_id
   json.created_at @comment.created_at
   json.updated_at @comment.updated_at
+  json.user_pic @comment.user.profile_img_url
 end

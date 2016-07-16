@@ -15,4 +15,6 @@ class Song < ActiveRecord::Base
   has_one :artist,
   through: :album,
   source: :artist
+
+  has_many :comments
 end

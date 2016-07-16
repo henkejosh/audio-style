@@ -23,27 +23,6 @@ div.songInfo {
   padding: 5px;
 }
 
-div.comment {
-  display: flex;
-  flex-direction: row;
-  margin-top: 5%;
-}
-
-div.comment-holder {
-  display: flex;
-  flex-direction: row;
-}
-
-section.comForm form {
-  display: flex;
-  flex-direction: column;
-}
-
-ul.ComIndexItem {
-  display: flex;
-  flex-direction: row;
-}
-
 span.song-detail-item img.albumPic {
   width: 250px;
   margin: 20px;

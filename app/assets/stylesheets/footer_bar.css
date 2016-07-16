@@ -1,0 +1,63 @@
+section.audio-comments-bar {
+  display: flex;
+  flex-direction: row;
+  bottom: 0px;
+  border: 2px solid green;
+  position: fixed;
+  width: 100%;
+}
+
+div.existing-comments {
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  border: 2px solid blue;
+  width: 80%;
+  bottom: 50px;
+  position: fixed;
+}
+
+div.comment-bar {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid yellow;
+  width: 100%;
+  bottom: 50px;
+  position: fixed;
+}
+
+div.comments-index {
+  display: flex;
+  flex-direction: row;
+  height: 25px;
+}
+
+div.current-comment {
+  border: 2px solid orange;
+}
+
+section.comForm {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid purple;
+  width: 20%;
+}
+
+section.comForm textarea{
+  width: 100%;
+}
+
+div.comments-index {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid red;
+}
+
+ul.ComIndexItem {
+  display: flex;
+  flex-direction: row;
+}
+
+ul.ComIndexItem li > img{
+  height: 25px;
+}

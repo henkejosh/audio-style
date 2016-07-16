@@ -32,17 +32,17 @@ const CommentForm = React.createClass({
     };
   },
 
+  // <form onSubmit={this.handleForm}>
+  // </form>
   render: function() {
     return (
       <section className="comForm">
-        <form onSubmit={this.handleForm}>
 
           <textarea onChange={this.update("body")}
             value={this.state.body} />
 
-          <input type="submit" value="Comment" />
+          <input onClick={this.handleForm} type="submit" value="Comment" />
 
-        </form>
       </section>
     );
   }

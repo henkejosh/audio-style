@@ -22,7 +22,6 @@ const AlbumApiUtil = {
   },
 
   addSongToDB: function(song, albumID) {
-    debugger;
     $.ajax({
       type: "POST",
       url: "api/songs",

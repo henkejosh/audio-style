@@ -10,6 +10,7 @@ const SongIndex = require('./song_index.jsx');
 const SongActions = require('../actions/song_actions.js');
 const CurrentSongPlayer = require('./current_song_player.jsx');
 const CurrentSongStore = require('../stores/current_song_store.js');
+const CommentStore = require('../stores/comment_store.js');
 const ReactPlayer = require('./react_player.jsx');
 const AudioApiPlayer = require('./audio_api_player.jsx');
 const AudioApiPlayerStore = require('../stores/audio_api_player_store.js');
@@ -17,18 +18,30 @@ const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 
 const App = React.createClass({
   getInitialState: function() {
-    return {currentSong: CurrentSongStore.currentSong() };
+    const currSong = CurrentSongStore.currentSong();
+    return {currentSong: currSong, comments: currSong.comments };
   },
 
   componentDidMount: function() {
     this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
     this.currentSongListener = CurrentSongStore.addListener(this.isCurrentSong);
+    this.commentListener = CommentStore.addListener(this._onCommentChange);
+    this.checkForCurrentSong();
     SongActions.getAllSongs();
   },
 
+  _onCommentChange: function() {
+    this.setState({ comments: CommentStore.all(parseInt(this.props.songID, 10)) });
+  },
+
+  // fetchComments: function() {
+  //   CommentActions.fetchSongComments(parseInt(this.props.songID, 10));
+  // },
+
   isCurrentSong: function() {
     AudioApiPlayerStore.newSongReceived();
-    this.setState({ currentSong: CurrentSongStore.currentSong() });
+    const currSong = CurrentSongStore.currentSong();
+    this.setState({ currentSong: currSong, comments: currSong.comments });
   },
 
   isUserLoggedIn: function() {
@@ -37,15 +50,30 @@ const App = React.createClass({
     }
   },
 
- componentWillMount() {
+  // componentDidUpdate: function() {
+  //   this.checkForCurrentSong();
+  // },
+
+  checkForCurrentSong: function() {
+    if(this.state.currentSong.id) {
+      this.setState({
+        // comments: CommentStore.all(this.state.currentSong.id)
+        comments: this.state.currentSong.comments
+      });
+    }
+  },
+
+  componentWillMount: function() {
     Modal.setAppElement(document.getElementById("root"));
- },
+  },
 
   render: function() {
     let currSong;
+
     if(this.state.currentSong.id) {
       currSong = <AudioApiPlayer song={this.state.currentSong}
-        path={this.props.location.pathname}/>;
+          path={this.props.location.pathname}
+          comments={this.state.comments}/>;
     }
 
     return (

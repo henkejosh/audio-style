@@ -1,15 +1,12 @@
 const React = require('react');
-
 const CommentIndexItem = React.createClass({
 
 
+  // <li>Occurs: {this.props.comment.time_into_song}</li>
   render: function() {
     return (
       <ul className="ComIndexItem">
-        <li>Body: {this.props.comment.body}</li>
-        <li>ID: {this.props.comment.id}</li>
-        <li>song_ID: {this.props.comment.song_title}</li>
-        <li>user_ID: {this.props.comment.user_email}</li>
+        <li><img src={this.props.comment.user_pic}/></li>
       </ul>
     );
   },

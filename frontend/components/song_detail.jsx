@@ -78,12 +78,12 @@ const SongDetail = React.createClass({
 
         </span>
 
-        <div className="comment">
-          <CommentsIndex songID={this.props.params.songID}/>
-        </div>
       </figure>
     );
   }
 });
+// <div className="comment">
+// <CommentsIndex songID={this.props.params.songID}/>
+// </div>
 
 module.exports = SongDetail;

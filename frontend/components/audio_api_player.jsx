@@ -4,11 +4,14 @@ const AudioApiPlayerStore = require('../stores/audio_api_player_store.js');
 const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 const d3 = require('d3');
 const KindOfBlue = require('../constants/kind_of_blue_colors.js');
+const CommentBar = require('./comment_bar.jsx');
 
 const AudioApiPlayer = React.createClass({
   getInitialState: function() {
     return { playing: AudioApiPlayerStore.getPlayStatus(),
       timePlayed: this.calcElapsedTime() };
+      // timePlayed: this.calcElapsedTime(),
+      // comments: this.props.comments};
   },
 
   calcElapsedTime: function() {
@@ -143,28 +146,38 @@ const AudioApiPlayer = React.createClass({
     this.audioElement.currentTime = this.audioElement.duration * (lengthIntoSong);
   },
 
-  render: function() {
-    let button;
+  togglePlayButton: function() {
     if(this.state.playing === true) {
-      button = "Pause";
+      return "Pause";
     } else {
-      button = "Play";
+      return "Play";
     }
+  },
+
+  render: function() {
+    let button = this.togglePlayButton();
 
     return (
-      <div className="AudioPlayer">
-        <button className="play" type="play"
-          value="Play" onClick={this.handlePlay}>{button}</button>
+      <section className="audio-comments-bar">
 
-        <audio id="audioElement" autoPlay
-          src={this.props.song.song_url} >
-        </audio>
+        <CommentBar songID={this.props.song.id}
+          time={this.state.timePlayed}
+          comments={this.props.comments}/>
 
-        <progress className="rangeslider__fill"
-          value={this.state.timePlayed}
-          onClick={this.handleSongScroll}/>
+        <div className="AudioPlayer">
+          <button className="play" type="play"
+            value="Play" onClick={this.handlePlay}>{button}</button>
 
-      </div>
+          <audio id="audioElement" autoPlay
+            src={this.props.song.song_url} >
+          </audio>
+
+          <progress className="rangeslider__fill"
+            value={this.state.timePlayed}
+            onClick={this.handleSongScroll}/>
+        </div>
+
+      </section>
     );
   }
 });
