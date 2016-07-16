@@ -7,3 +7,48 @@
   left: 0;
   right: 0;
 }
+
+div.rangeslider {
+  height: 10px;
+  border: 2px solid green;
+}
+
+/*progress.rangeslider__fill {
+  height: 10px;
+  border: 2px solid green;
+  width: 400px;
+}*/
+
+div.rangeslider__fill {
+  width: 400px;
+}
+/*
+div.rangeslider__fill:not([value]) {
+  border: 1px solid black;
+}*/
+
+div.rangeslider__fill[value] {
+  width: 250px;
+  height: 20px;
+}
+
+div.progressThingy {
+  width: 400px;
+}
+
+
+
+/*FOR PROGRESS BAR*/
+progress.rangeslider__fill {
+  width: 400px;
+}
+
+progress[value] {
+  width: 250px;
+  height: 20px;
+}
+
+div.progressThingy {
+  width: 400px;
+}
+/**/

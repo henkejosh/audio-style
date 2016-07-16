@@ -3,11 +3,25 @@ const CurrentSongStore = require('../stores/current_song_store.js');
 const AudioApiPlayerStore = require('../stores/audio_api_player_store.js');
 const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 const d3 = require('d3');
-// const WAAClock = require('WAAClock');
+const ProgressBar = require('./slider.jsx');
 
 const AudioApiPlayer = React.createClass({
   getInitialState: function() {
-    return { playing: AudioApiPlayerStore.getPlayStatus() };
+    return { playing: AudioApiPlayerStore.getPlayStatus(),
+      timePlayed: this.calcElapsedTime() };
+  },
+
+  calcElapsedTime: function() {
+    if(this.audioElement) {
+      return (this.audioElement.currentTime / this.audioElement.duration);
+    } else {
+      return 0;
+    }
+  },
+
+  trackElapsedTime: function() {
+    this.setState({ timePlayed: this.calcElapsedTime() });
+    requestAnimationFrame(this.trackElapsedTime);
   },
 
   createAudioNode: function() {
@@ -21,6 +35,7 @@ const AudioApiPlayer = React.createClass({
     this.analyser.smoothingTimeConstant = .9;
     this.audioSrc.connect(this.analyser);
     this.audioSrc.connect(this.audioCtx.destination);
+    this.trackElapsedTime();
   },
 
   createVisualizer: function() {
@@ -69,60 +84,6 @@ const AudioApiPlayer = React.createClass({
     renderChart();
   },
 
-  // setupVisualizer: function() {
-  //   var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  //
-  //   var audioElement = document.getElementById('audioElement');
-  //
-  //   audioElement.crossOrigin = "anonymous";
-  //   var audioSrc = audioCtx.createMediaElementSource(audioElement);
-  //   var analyser = audioCtx.createAnalyser();
-  //
-  //   audioSrc.connect(analyser);
-  //   audioSrc.connect(audioCtx.destination);
-  //
-  //   var frequencyData = new Uint8Array(150);
-  //
-  //   var svgHeight = '250';
-  //   var svgWidth = '700';
-  //   var barPadding = '1';
-  //
-  //   function createSvg(parent, height, width) {
-  //     return d3.select(parent).append('svg').attr('height', height).attr('width', width);
-  //   }
-  //
-  //   var svg = createSvg(`#AudioGraph${this.props.song.id}`, svgHeight, svgWidth);
-  //
-  //   svg.selectAll('rect')
-  //     .data(frequencyData)
-  //     .enter()
-  //     .append('rect')
-  //     .attr('x', function (d, i) {
-  //       return i * (svgWidth / frequencyData.length);
-  //     })
-  //     .attr('width', svgWidth / frequencyData.length - barPadding);
-  //
-  //   function renderChart() {
-  //     requestAnimationFrame(renderChart);
-  //     analyser.getByteFrequencyData(frequencyData);
-  //
-  //     svg.selectAll('rect')
-  //       .data(frequencyData)
-  //       .attr('y', function(d) {
-  //         return svgHeight - d;
-  //       })
-  //       .attr('height', function(d) {
-  //         return d;
-  //       })
-  //       .attr('fill', function(d) {
-  //         return 'rgb(0, 0, ' + d + ')';
-  //       });
-  //   }
-  //   if(/songs\/\d/.test(this.props.path)) {
-  //     renderChart();
-  //   }
-  // },
-
   componentDidMount: function() {
     this.playerStoreListener = AudioApiPlayerStore.addListener(this.updatePlayingStatus);
     this.createAudioNode();
@@ -165,16 +126,19 @@ const AudioApiPlayer = React.createClass({
     this.setState({ playing: AudioApiPlayerStore.getPlayStatus() });
   },
 
-  tempPause: function() {
-    this.state.playing = false;
-  },
-
   checkForSongDetail: function() {
     if(/songs\/\d/.test(this.props.path)) {
       if(!document.getElementById(`graph-${this.props.song.id}`)) {
         this.createVisualizer();
       }
     }
+  },
+
+  handleSongScroll: function(e) {
+    e.preventDefault();
+    const xCoord = e.pageX - e.target.offsetLeft;
+    const lengthIntoSong = (xCoord / e.target.offsetWidth);
+    this.audioElement.currentTime = this.audioElement.duration * (lengthIntoSong);
   },
 
   render: function() {
@@ -184,13 +148,16 @@ const AudioApiPlayer = React.createClass({
     } else {
       button = "Play";
     }
-    // checkForSongDetail();
+
     return (
       <div>
         <button type="play" value="Play" onClick={this.handlePlay}>{button}</button>
         <audio id="audioElement" autoPlay
-          src={this.props.song.song_url}>
+          src={this.props.song.song_url} >
         </audio>
+        <progress className="rangeslider__fill"
+          value={this.state.timePlayed}
+          onClick={this.handleSongScroll}/>
       </div>
     );
   }
