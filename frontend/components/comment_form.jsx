@@ -35,15 +35,23 @@ const CommentForm = React.createClass({
   },
 
   render: function() {
+    // <section className="comForm">
+    //
+    // <textarea onChange={this.update("body")}
+    // value={this.state.body} />
+    //
+    // <span onClick={this.handleForm} type="submit">Comment</span>
+    //
+    // </section>
     return (
-      <section className="comForm">
+      <form onSubmit={this.handleForm} className="comForm">
 
-          <textarea onChange={this.update("body")}
+          <input type="textarea" onChange={this.update("body")}
             value={this.state.body} />
 
-          <input onClick={this.handleForm} type="submit" value="Comment" />
+          <input value="Comment" type="submit"/>
 
-      </section>
+      </form>
     );
   }
 });

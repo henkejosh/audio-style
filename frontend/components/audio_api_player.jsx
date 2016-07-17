@@ -225,6 +225,7 @@ const AudioApiPlayer = React.createClass({
     return (
       <section className="audio-comments-bar">
 
+      <div>
         <div className="comment-bar">
           {currComm}
 
@@ -235,19 +236,20 @@ const AudioApiPlayer = React.createClass({
             order={this.ensureCurrentCommentOrder()} />
 
         </div>
+      </div>
 
-        <div className="AudioPlayer">
-          <button className="play" type="play"
-            value="Play" onClick={this.handlePlay}>{button}</button>
+          <div className="AudioPlayer">
+            <button className="play" type="play"
+              value="Play" onClick={this.handlePlay}>{button}</button>
 
-          <audio id="audioElement" autoPlay
-            src={this.props.song.song_url} >
-          </audio>
+            <audio id="audioElement" autoPlay
+              src={this.props.song.song_url} >
+            </audio>
 
-          <progress className="rangeslider__fill"
-            value={this.state.timePlayed}
-            onClick={this.handleSongScroll}/>
-        </div>
+            <progress className="rangeslider__fill"
+              value={this.state.timePlayed}
+              onClick={this.handleSongScroll}/>
+          </div>
       </section>
     );
   }

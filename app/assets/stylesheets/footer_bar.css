@@ -7,17 +7,12 @@ section.audio-comments-bar {
   /*border: 2px solid green;*/
   position: fixed;
   width: 100%;
+  height: auto;
 }
 
-/*div.existing-comments {
-  display: flex;
-  flex-direction: column;
-  height: 50px;
-  border: 2px solid blue;
-  width: 100%;
-  bottom: 50px;
-  position: fixed;
-}*/
+div.comment-bar-padding {
+  padding: 0px 5%;
+}
 
 div.comment-bar {
   display: flex;
@@ -27,6 +22,14 @@ div.comment-bar {
   width: 100%;
   bottom: 50px;
   position: fixed;
+  height: 25px;
+  border-bottom: 1px solid #333333;
+  padding: 0px 5%;
+}
+
+div.existing-comments {
+  display: flex;
+  flex-direction: row;
 }
 
 div.new-comment-bar {
@@ -49,15 +52,32 @@ div.current-comment img {
   height: 50px;
 }
 
-section.comForm {
+/*section.comForm {
   display: flex;
   flex-direction: column;
   border: 2px solid purple;
   width: 35%;
+  align-items: center;
 }
 
 section.comForm textarea{
   width: 100%;
+  position: fixed;
+  bottom: 75px;
+}*/
+
+form.comForm {
+  display: flex;
+  flex-direction: column;
+  /*border: 2px solid purple;*/
+  width: 35%;
+  align-items: center;
+}
+
+form.comForm input[type="textarea"]{
+  width: 100%;
+  position: fixed;
+  bottom: 75px;
 }
 
 div.comments-index {
@@ -68,6 +88,7 @@ div.comments-index {
   bottom: 50px;
   width: 60%;
   align-items: baseline;
+  overflow: auto;
 }
 
 ul.ComIndexItem {
@@ -86,7 +107,6 @@ ul.ComIndexItem > img {
 
 ul.ComIndexItem > img.current {
   height: 30px;
-  opacity: 1;
 }
 
 ul.ComIndexItem  > img.normal {
@@ -96,4 +116,28 @@ ul.ComIndexItem  > img.normal {
 ul.ComIndexItem  > img.passed {
   opacity: 0.5;
   height: 25px;
+}
+
+/*section.comForm span[type="submit"] {
+  color: #CBCBCB;
+  font: 100 10px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+  width: 30%;
+  height: 20px;
+}*/
+
+form.comForm input[type="submit"] {
+  color: #CBCBCB;
+  font: 100 10px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+  width: 30%;
+  height: 20px;
+  border-color: none;
+  border-style: none;
+  border: none;
+  background-color: #111111;
+}
+
+form.comForm input[type="submit"]:hover {
+  border-width: 2px;
+  background-color: #333333;
+  border-radius: 8px;
 }
