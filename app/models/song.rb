@@ -16,5 +16,10 @@ class Song < ActiveRecord::Base
   through: :album,
   source: :artist
 
-  has_many :comments
+  def comments
+    @comments = Comment.where(song_id: self.id)
+    @comments.to_a.sort! do |x, y|
+      x.time_into_song <=> y.time_into_song
+    end
+  end
 end

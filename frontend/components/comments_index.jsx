@@ -6,16 +6,14 @@ const CommentIndexItem = require('./comment_index_item.jsx');
 
 const CommentsIndex = React.createClass({
 
-  // <CommentForm songID={parseInt(this.props.songID, 10)} />
   render: function() {
     return (
       <div className="comments-index">
 
-
-        {Object.keys(this.props.comments).reverse().map( commentID => {
+        {Object.keys(this.props.comments).map( commentOrder => {
           return (
-            <CommentIndexItem key={commentID}
-              comment={this.props.comments[commentID] } />
+            <CommentIndexItem key={commentOrder}
+              comment={this.props.comments[commentOrder] } />
           );
         })}
       </div>

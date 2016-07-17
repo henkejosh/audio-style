@@ -8,10 +8,10 @@ const CommentBar = require('./comment_bar.jsx');
 
 const AudioApiPlayer = React.createClass({
   getInitialState: function() {
-    return { playing: AudioApiPlayerStore.getPlayStatus(),
-      timePlayed: this.calcElapsedTime() };
-      // timePlayed: this.calcElapsedTime(),
-      // comments: this.props.comments};
+    return (
+      { playing: AudioApiPlayerStore.getPlayStatus(),
+        timePlayed: this.calcElapsedTime() }
+    );
   },
 
   calcElapsedTime: function() {

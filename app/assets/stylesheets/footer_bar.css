@@ -36,6 +36,10 @@ div.current-comment {
   border: 2px solid orange;
 }
 
+div.current-comment img {
+  
+}
+
 section.comForm {
   display: flex;
   flex-direction: column;
