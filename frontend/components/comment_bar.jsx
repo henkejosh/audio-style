@@ -52,7 +52,8 @@ const CommentBar = React.createClass({
     // <div className="comment-bar">
     return (
       <div className="new-comment-bar">
-        <CommentForm songID={this.props.songID} time={this.props.time}/>
+        <CommentForm songID={this.props.songID} time={this.props.time}
+          actualTime={this.props.actualTime}/>
 
         <div className="existing-comments">
 

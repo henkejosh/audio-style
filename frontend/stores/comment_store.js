@@ -72,12 +72,10 @@ const _sortComments = function() {
 //     sortedComments[timeStart] = _comments[id];
 //   });
 //
-//   debugger;
 //   return sortedComments;
 // };
 
 CommentStore.all = function(songID) {
-  // debugger;
   if(songID === _songID) {
     return _sortComments();
   } else {

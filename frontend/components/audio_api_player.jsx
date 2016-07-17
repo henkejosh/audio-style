@@ -149,7 +149,6 @@ const AudioApiPlayer = React.createClass({
     e.preventDefault();
     const xCoord = e.pageX - e.target.offsetLeft;
     const lengthIntoSong = (xCoord / e.target.offsetWidth);
-    debugger;
     this.audioElement.currentTime = this.audioElement.duration * (lengthIntoSong);
   },
 
@@ -194,12 +193,27 @@ const AudioApiPlayer = React.createClass({
     }
   },
 
+  toggleCurrentComment: function() {
+    if(this.state.timePlayed) {
+      return <CurrentComment comment={this.currentComment} />;
+    }
+  },
+
+  outputCurrentSongTime: function() {
+    if(this.audioElement) {
+      return this.audioElement.currentTime;
+    } else {
+      return 0;
+    }
+  },
+
   render: function() {
     let button = this.togglePlayButton();
-    let currComm;
-    if(this.state.timePlayed) {
-      currComm = <CurrentComment comment={this.currentComment} />;
-    }
+    // let currComm;
+    let currComm = this.toggleCurrentComment();
+    // if(this.state.timePlayed) {
+    //   currComm = <CurrentComment comment={this.currentComment} />;
+    // }
 
     return (
       <section className="audio-comments-bar">
@@ -209,7 +223,8 @@ const AudioApiPlayer = React.createClass({
 
           <CommentBar songID={this.props.song.id}
             time={this.state.timePlayed}
-            comments={this.props.comments} />
+            comments={this.props.comments}
+            actualTime={this.outputCurrentSongTime()}/>
 
         </div>
 
