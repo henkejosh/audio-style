@@ -5,15 +5,31 @@ const CommentActions = require('../actions/comment_actions.js');
 const CommentIndexItem = require('./comment_index_item.jsx');
 
 const CommentsIndex = React.createClass({
+  setOrderDisplay: function(commentOrder) {
+    let style;
+    commentOrder = parseInt(commentOrder, 10);
+    if (commentOrder < this.props.order) {
+      return "passed";
+    } else if(commentOrder === this.props.order) {
+      return "current";
+    } else {
+      return "normal";
+    }
+  },
 
   render: function() {
     return (
       <div className="comments-index">
 
         {Object.keys(this.props.comments).map( commentOrder => {
+          let order;
+          if(this.props.order) {
+            order = this.setOrderDisplay(commentOrder);
+          }
           return (
             <CommentIndexItem key={this.props.comments[commentOrder].id}
-              comment={this.props.comments[commentOrder] } />
+              comment={this.props.comments[commentOrder]}
+              styleType={order} />
           );
         })}
       </div>

@@ -34,8 +34,6 @@ const CommentForm = React.createClass({
     };
   },
 
-  // <form onSubmit={this.handleForm}>
-  // </form>
   render: function() {
     return (
       <section className="comForm">

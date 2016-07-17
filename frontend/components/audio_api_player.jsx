@@ -175,7 +175,7 @@ const AudioApiPlayer = React.createClass({
       // this.currentComment = this.props.comments[firstComment];
       this.currentCommentOrder = 1;
       this.currentComment = this.props.comments[this.currentCommentOrder];
-      return;
+      // return;
     } else {
       const commentTime = Math.floor(this.state.timePlayed *
         this.audioElement.duration);
@@ -190,6 +190,13 @@ const AudioApiPlayer = React.createClass({
           this.currentCommentOrder += 1;
           this.currentComment = this.props.comments[this.currentCommentOrder];
       }
+    }
+    // return this.currentCommentOrder;
+  },
+
+  ensureCurrentCommentOrder: function() {
+    if(this.currentCommentOrder) {
+      return this.currentCommentOrder;
     }
   },
 
@@ -224,7 +231,8 @@ const AudioApiPlayer = React.createClass({
           <CommentBar songID={this.props.song.id}
             time={this.state.timePlayed}
             comments={this.props.comments}
-            actualTime={this.outputCurrentSongTime()}/>
+            actualTime={this.outputCurrentSongTime()}
+            order={this.ensureCurrentCommentOrder()} />
 
         </div>
 

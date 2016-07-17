@@ -23,6 +23,7 @@ div.comment-bar {
   display: flex;
   flex-direction: row;
   border: 2px solid yellow;
+  background: #111111;
   width: 100%;
   bottom: 50px;
   position: fixed;
@@ -71,7 +72,7 @@ div.comments-index {
   border: 2px solid red;
   position: fixed;
   bottom: 50px;
-  width: 100%;
+  width: 60%;
 }
 
 ul.ComIndexItem {
@@ -79,6 +80,20 @@ ul.ComIndexItem {
   flex-direction: row;
 }
 
-ul.ComIndexItem li > img{
+ul.ComIndexItem li > img {
+  height: 25px;
+}
+
+ul.ComIndexItem li > img.current {
+  height: 30px;
+  opacity: 1;
+}
+
+ul.ComIndexItem li > img.normal {
+  height: 25px;
+}
+
+ul.ComIndexItem li > img.passed {
+  opacity: 0.5;
   height: 25px;
 }
