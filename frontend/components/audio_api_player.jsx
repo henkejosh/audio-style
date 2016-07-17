@@ -123,9 +123,9 @@ const AudioApiPlayer = React.createClass({
     AudioApiPlayerActions.playPause();
   },
 
-  fetchCurrentSong: function() {
-    this.setState({currentSong: CurrentSongStore.currentSong()});
-  },
+  // fetchCurrentSong: function() {
+  //   this.setState({currentSong: CurrentSongStore.currentSong()});
+  // },
 
   componentWillReceiveProps: function() {
     this.setState({ playing: AudioApiPlayerStore.getPlayStatus() });

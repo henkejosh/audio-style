@@ -9,7 +9,6 @@ const CurrentComment = require('./current_comment.jsx');
 const CommentBar = React.createClass({
   getInitialState: function() {
     const comments = this.props.comments || {};
-    // return { comments: comments, currentComment: comments[0] };
     return { comments: comments };
   },
 
@@ -17,10 +16,6 @@ const CommentBar = React.createClass({
     // this.commentListener = CommentStore.addListener(this._onChange);
     // this.fetchComments();
     this.setCurrentComment();
-  },
-
-  _onChange: function() {
-    this.setState({ comments: CommentStore.all(parseInt(this.props.songID, 10)) });
   },
 
   fetchComments: function() {
@@ -34,9 +29,9 @@ const CommentBar = React.createClass({
   setCurrentComment: function() {
     const comments = this.props.comments;
     if(this.props.time > 0) {
-      Object.keys(comments).forEach( id => {
-        if(comments[id].time_into_song === this.props.time) {
-          this.setState({ currentComment: comments[id]});
+      Object.keys(comments).forEach( orderID => {
+        if(comments[orderID].time_into_song === this.props.time) {
+          this.setState({ currentComment: comments[orderID]});
         }
       });
     } else if(this.props.time === 0) {

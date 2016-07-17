@@ -62,5 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("root"));
 });
 
+window.CurrentSongStore = CurrentSongStore;
+window.CommentStore = CommentStore;
 window.AudioApiPlayerActions = AudioApiPlayerActions;
 window.AudioApiPlayerStore = AudioApiPlayerStore;

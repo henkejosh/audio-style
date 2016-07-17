@@ -31,7 +31,7 @@ const App = React.createClass({
   },
 
   _onCommentChange: function() {
-    this.setState({ comments: CommentStore.all(parseInt(this.props.songID, 10)) });
+    this.setState({ comments: CommentStore.all(parseInt(this.props.params.songID, 10)) });
   },
 
   // fetchComments: function() {
@@ -55,7 +55,7 @@ const App = React.createClass({
   // },
 
   checkForCurrentSong: function() {
-    if(this.state.currentSong.id) {
+    if(this.state.currentSong.id && !this.state.comments) {
       this.setState({
         // comments: CommentStore.all(this.state.currentSong.id)
         comments: this.state.currentSong.comments
@@ -75,6 +75,7 @@ const App = React.createClass({
           path={this.props.location.pathname}
           comments={this.state.comments}/>;
     }
+    debugger;
 
     return (
       <div>
