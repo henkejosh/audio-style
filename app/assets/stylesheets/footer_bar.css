@@ -35,12 +35,6 @@ div.new-comment-bar {
   width: 65%;
 }
 
-div.comments-index {
-  display: flex;
-  flex-direction: row;
-  height: 25px;
-}
-
 div.current-comment {
   border: 2px solid orange;
   /*height: 50px;*/
@@ -73,6 +67,7 @@ div.comments-index {
   position: fixed;
   bottom: 50px;
   width: 60%;
+  align-items: baseline;
 }
 
 ul.ComIndexItem {
@@ -80,20 +75,25 @@ ul.ComIndexItem {
   flex-direction: row;
 }
 
-ul.ComIndexItem li > img {
+/*ul.ComIndexItem li {
+  position: absolute;
+}*/
+
+ul.ComIndexItem > img {
   height: 25px;
+  top: auto;
 }
 
-ul.ComIndexItem li > img.current {
+ul.ComIndexItem > img.current {
   height: 30px;
   opacity: 1;
 }
 
-ul.ComIndexItem li > img.normal {
+ul.ComIndexItem  > img.normal {
   height: 25px;
 }
 
-ul.ComIndexItem li > img.passed {
+ul.ComIndexItem  > img.passed {
   opacity: 0.5;
   height: 25px;
 }

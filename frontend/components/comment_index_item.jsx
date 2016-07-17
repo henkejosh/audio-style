@@ -6,9 +6,9 @@ const CommentIndexItem = React.createClass({
   render: function() {
     return (
       <ul className="ComIndexItem">
-        <li><img className={this.props.styleType}
+        <img className={this.props.styleType}
           src={this.props.comment.user_pic}/>
-        </li>
+        
       </ul>
     );
   },
