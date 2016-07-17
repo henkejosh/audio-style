@@ -164,20 +164,22 @@ const AudioApiPlayer = React.createClass({
   // },
 
   updateCurrentComment: function() {
+    // #TODO fix this - need to update it for new _sortComments (commentsTore)
+    // function --> now sorting by time into Song
     if(!this.state.timePlayed > 0) {
-      this.currentComment = this.props.comments[1];
+      let firstComment = Math.min(...Object.keys(this.props.comments));
+      this.currentComment = this.props.comments[firstComment];
       return;
     } else {
       const commentTime = Math.floor(this.state.timePlayed *
         this.audioElement.duration);
-
       // const commentTime = Math.ceil(this.state.timePlayed / this.commentDuration);
       // debugger;
       if(this.props.comments[commentTime]) {
         this.currentComment = this.props.comments[commentTime];
       }
-      // this.currentComment = this.props.comments[commentTime];
     }
+      // this.currentComment = this.props.comments[commentTime];
   },
 
   render: function() {

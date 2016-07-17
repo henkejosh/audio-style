@@ -42,7 +42,7 @@ const _firstSongComment = function(comment) {
   _comments[comment.comment.id] = comment.comment;
 };
 
-const _sortComments = function() {
+const _sortComments2 = function() {
   const ids = Object.keys(_comments);
 
   let sortedIDs = ids.sort(function(commA, commB) {
@@ -58,7 +58,7 @@ const _sortComments = function() {
   _comments = sortedComments;
 };
 
-const _sortComments2 = function() {
+const _sortComments = function() {
   const ids = Object.keys(_comments);
 
   let sortedIDs = ids.sort(function(commA, commB) {
