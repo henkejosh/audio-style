@@ -12,7 +12,7 @@ div.existing-comments {
   flex-direction: column;
   height: 50px;
   border: 2px solid blue;
-  width: 80%;
+  width: 100%;
   bottom: 50px;
   position: fixed;
 }
@@ -24,6 +24,12 @@ div.comment-bar {
   width: 100%;
   bottom: 50px;
   position: fixed;
+}
+
+div.new-comment-bar {
+  display: flex;
+  flex-direction: row;
+  width: 65%;
 }
 
 div.comments-index {
@@ -39,6 +45,7 @@ div.current-comment {
   position: fixed;
   display: flex;
   flex-direction: row;
+  left: 50%;
 }
 
 div.current-comment img {

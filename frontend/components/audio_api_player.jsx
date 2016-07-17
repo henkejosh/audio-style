@@ -5,6 +5,7 @@ const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 const d3 = require('d3');
 const KindOfBlue = require('../constants/kind_of_blue_colors.js');
 const CommentBar = require('./comment_bar.jsx');
+const CurrentComment = require('./current_comment.jsx');
 
 const AudioApiPlayer = React.createClass({
   getInitialState: function() {
@@ -94,6 +95,8 @@ const AudioApiPlayer = React.createClass({
     this.createAudioNode();
     this.audio = document.getElementById('audioElement');
     this.checkForSongDetail();
+    // this.calcCommentDuration();
+    this.updateCurrentComment();
   },
 
   componentWillUnmount: function() {
@@ -117,15 +120,12 @@ const AudioApiPlayer = React.createClass({
   componentDidUpdate: function() {
     this.checkForSongDetail();
     this.playPause();
+    this.updateCurrentComment();
   },
 
   handlePlay: function() {
     AudioApiPlayerActions.playPause();
   },
-
-  // fetchCurrentSong: function() {
-  //   this.setState({currentSong: CurrentSongStore.currentSong()});
-  // },
 
   componentWillReceiveProps: function() {
     this.setState({ playing: AudioApiPlayerStore.getPlayStatus() });
@@ -154,15 +154,51 @@ const AudioApiPlayer = React.createClass({
     }
   },
 
+  // calcCommentDuration: function() {
+  //   // this.commentDuration = Math.floor(100 /
+  //   //     Object.keys(this.props.comments).length);
+  //   // if (this.audioElement) {
+  //   //
+  //   //   this.commentDuration = this.audioElement.duration /
+  //   // }
+  // },
+
+  updateCurrentComment: function() {
+    if(!this.state.timePlayed > 0) {
+      this.currentComment = this.props.comments[1];
+      return;
+    } else {
+      const commentTime = Math.floor(this.state.timePlayed *
+        this.audioElement.duration);
+
+      // const commentTime = Math.ceil(this.state.timePlayed / this.commentDuration);
+      // debugger;
+      if(this.props.comments[commentTime]) {
+        this.currentComment = this.props.comments[commentTime];
+      }
+      // this.currentComment = this.props.comments[commentTime];
+    }
+  },
+
   render: function() {
     let button = this.togglePlayButton();
+    let currComm;
+    if(this.state.timePlayed) {
+      currComm = <CurrentComment comment={this.currentComment} />;
+    }
 
+    // debugger;
     return (
       <section className="audio-comments-bar">
 
-        <CommentBar songID={this.props.song.id}
-          time={this.state.timePlayed}
-          comments={this.props.comments}/>
+        <div className="comment-bar">
+          {currComm}
+
+          <CommentBar songID={this.props.song.id}
+            time={this.state.timePlayed}
+            comments={this.props.comments} />
+
+        </div>
 
         <div className="AudioPlayer">
           <button className="play" type="play"
@@ -176,7 +212,6 @@ const AudioApiPlayer = React.createClass({
             value={this.state.timePlayed}
             onClick={this.handleSongScroll}/>
         </div>
-
       </section>
     );
   }

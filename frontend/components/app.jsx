@@ -34,10 +34,6 @@ const App = React.createClass({
     this.setState({ comments: CommentStore.all(parseInt(this.props.params.songID, 10)) });
   },
 
-  // fetchComments: function() {
-  //   CommentActions.fetchSongComments(parseInt(this.props.songID, 10));
-  // },
-
   isCurrentSong: function() {
     AudioApiPlayerStore.newSongReceived();
     const currSong = CurrentSongStore.currentSong();
@@ -50,14 +46,9 @@ const App = React.createClass({
     }
   },
 
-  // componentDidUpdate: function() {
-  //   this.checkForCurrentSong();
-  // },
-
   checkForCurrentSong: function() {
     if(this.state.currentSong.id && !this.state.comments) {
       this.setState({
-        // comments: CommentStore.all(this.state.currentSong.id)
         comments: this.state.currentSong.comments
       });
     }
@@ -75,7 +66,6 @@ const App = React.createClass({
           path={this.props.location.pathname}
           comments={this.state.comments}/>;
     }
-    debugger;
 
     return (
       <div>

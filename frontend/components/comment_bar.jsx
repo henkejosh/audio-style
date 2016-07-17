@@ -7,51 +7,54 @@ const CommentsIndex = require('./comments_index.jsx');
 const CurrentComment = require('./current_comment.jsx');
 
 const CommentBar = React.createClass({
-  getInitialState: function() {
-    const comments = this.props.comments || {};
-    return { comments: comments };
-  },
+  // getInitialState: function() {
+  //   const comments = this.props.comments || {};
+  //   return { comments: comments };
+  // },
 
-  componentDidMount: function() {
-    // this.commentListener = CommentStore.addListener(this._onChange);
-    // this.fetchComments();
-    this.setCurrentComment();
-  },
-
-  fetchComments: function() {
-    CommentActions.fetchSongComments(parseInt(this.props.songID, 10));
-  },
+  // componentDidMount: function() {
+  //   // this.setCurrentComment();
+  // },
 
   componentWillUnmount: function() {
     this.commentListener.remove();
   },
 
-  setCurrentComment: function() {
-    const comments = this.props.comments;
-    if(this.props.time > 0) {
-      Object.keys(comments).forEach( orderID => {
-        if(comments[orderID].time_into_song === this.props.time) {
-          this.setState({ currentComment: comments[orderID]});
-        }
-      });
-    } else if(this.props.time === 0) {
-      this.setState({ currentComment: comments[0] });
-    }
+  // componentWillReceiveProps: function() {
+  //   // this.setCurrentComment();
+  // },
+
+  calcCommentDisplayDuration: function() {
+    this.commentDuration = Math.floor(this.props.songLength / this.state.comments.length);
+
   },
 
+  // setCurrentComment: function() {
+  //   const comments = this.props.comments;
+  //   if(this.props.time > 0) {
+  //     Object.keys(comments).forEach( orderID => {
+  //       if(comments[orderID].time_into_song / 100 === this.props.time) {
+  //         this.setState({ currentComment: comments[orderID]});
+  //       }
+  //     });
+  //   } else if(this.props.time === 0) {
+  //     this.setState({ currentComment: comments[0] });
+  //   }
+  // },
+
   render: function() {
-    let currComm;
-    if(this.props.time) {
-      currComm = <CurrentComment comment={this.state.currentComment} />;
-    }
+    // let currComm;
+    // if(this.props.time) {
+    //   currComm = <CurrentComment comment={this.state.currentComment} />;
+    // }
+    // {currComm}
 
+    // <div className="comment-bar">
     return (
-      <div className="comment-bar">
-
+      <div className="new-comment-bar">
         <CommentForm songID={this.props.songID} time={this.props.time}/>
 
         <div className="existing-comments">
-          {currComm}
 
           <CommentsIndex songID={this.props.songID}
             comments={this.props.comments}/>

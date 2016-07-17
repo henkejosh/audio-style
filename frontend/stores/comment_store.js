@@ -58,6 +58,23 @@ const _sortComments = function() {
   _comments = sortedComments;
 };
 
+const _sortComments2 = function() {
+  const ids = Object.keys(_comments);
+
+  let sortedIDs = ids.sort(function(commA, commB) {
+    return _comments[commA].time_into_song - _comments[commB].time_into_song;
+  });
+
+  let sortedComments = {};
+  sortedIDs.forEach( (id, index) => {
+    let timeStart = _comments[id].time_into_song;
+    // sortedComments[index] = { id: _comments[id] };
+    sortedComments[timeStart] = _comments[id];
+  });
+
+  _comments = sortedComments;
+};
+
 CommentStore.all = function(songID) {
   if(songID === _songID) {
     _sortComments();

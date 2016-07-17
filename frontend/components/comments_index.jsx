@@ -12,7 +12,7 @@ const CommentsIndex = React.createClass({
 
         {Object.keys(this.props.comments).map( commentOrder => {
           return (
-            <CommentIndexItem key={commentOrder}
+            <CommentIndexItem key={this.props.comments[commentOrder].id}
               comment={this.props.comments[commentOrder] } />
           );
         })}
