@@ -8,7 +8,7 @@ const CommentIndexItem = React.createClass({
       <ul className="ComIndexItem">
         <img className={this.props.styleType}
           src={this.props.comment.user_pic}/>
-        
+
       </ul>
     );
   },

@@ -5,7 +5,7 @@ const CommentActions = require('../actions/comment_actions.js');
 const CommentForm = React.createClass({
   getInitialState: function() {
     return {
-      body: "",
+      body: "Write a comment...",
       song_id: this.props.songID,
       user_id: SessionStore.currentUser().id
     };
@@ -22,7 +22,7 @@ const CommentForm = React.createClass({
 
   resetState: function() {
     this.setState({
-      body: "",
+      body: "Write a comment...",
       song_id: this.props.songID,
       user_id: SessionStore.currentUser().id
     });
