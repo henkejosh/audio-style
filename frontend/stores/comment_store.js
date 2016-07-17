@@ -41,8 +41,8 @@ const _firstSongComment = function(comment) {
   _songID = comment.comment.song_id;
   _comments[comment.comment.id] = comment.comment;
 };
-
-const _sortComments2 = function() {
+//
+const _sortComments = function() {
   const ids = Object.keys(_comments);
 
   let sortedIDs = ids.sort(function(commA, commB) {
@@ -55,30 +55,31 @@ const _sortComments2 = function() {
     sortedComments[index] = _comments[id];
   });
 
-  _comments = sortedComments;
+  // _comments = sortedComments;
+  return sortedComments;
 };
 
-const _sortComments = function() {
-  const ids = Object.keys(_comments);
-
-  let sortedIDs = ids.sort(function(commA, commB) {
-    return _comments[commA].time_into_song - _comments[commB].time_into_song;
-  });
-
-  let sortedComments = {};
-  sortedIDs.forEach( (id, index) => {
-    let timeStart = _comments[id].time_into_song;
-    // sortedComments[index] = { id: _comments[id] };
-    sortedComments[timeStart] = _comments[id];
-  });
-
-  _comments = sortedComments;
-};
+// const _sortComments = function() {
+//   const ids = Object.keys(_comments);
+//
+//   let sortedIDs = ids.sort(function(commA, commB) {
+//     return _comments[commA].time_into_song - _comments[commB].time_into_song;
+//   });
+//
+//   let sortedComments = {};
+//   sortedIDs.forEach( (id, index) => {
+//     let timeStart = _comments[id].time_into_song;
+//     sortedComments[timeStart] = _comments[id];
+//   });
+//
+//   debugger;
+//   return sortedComments;
+// };
 
 CommentStore.all = function(songID) {
+  // debugger;
   if(songID === _songID) {
-    _sortComments();
-    return Object.assign({}, _comments);
+    return _sortComments();
   } else {
     return {};
   }

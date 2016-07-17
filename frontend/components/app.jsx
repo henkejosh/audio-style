@@ -31,7 +31,8 @@ const App = React.createClass({
   },
 
   _onCommentChange: function() {
-    this.setState({ comments: CommentStore.all(parseInt(this.props.params.songID, 10)) });
+    // this.setState({ comments: CommentStore.all(parseInt(this.props.params.songID, 10)) });
+    this.setState({ comments: CommentStore.all(this.state.currentSong.id) });
   },
 
   isCurrentSong: function() {

@@ -96,6 +96,12 @@ const AudioApiPlayer = React.createClass({
     this.audio = document.getElementById('audioElement');
     this.checkForSongDetail();
     // this.calcCommentDuration();
+    // this.updateCurrentComment();
+  },
+
+
+  // TESTING!!
+  componentWillMount: function() {
     this.updateCurrentComment();
   },
 
@@ -164,22 +170,27 @@ const AudioApiPlayer = React.createClass({
   // },
 
   updateCurrentComment: function() {
-    // #TODO fix this - need to update it for new _sortComments (commentsTore)
-    // function --> now sorting by time into Song
     if(!this.state.timePlayed > 0) {
       let firstComment = Math.min(...Object.keys(this.props.comments));
-      this.currentComment = this.props.comments[firstComment];
+      // this.currentComment = this.props.comments[firstComment];
+      this.currentCommentOrder = 1;
+      this.currentComment = this.props.comments[this.currentCommentOrder];
       return;
     } else {
       const commentTime = Math.floor(this.state.timePlayed *
         this.audioElement.duration);
-      // const commentTime = Math.ceil(this.state.timePlayed / this.commentDuration);
-      // debugger;
-      if(this.props.comments[commentTime]) {
-        this.currentComment = this.props.comments[commentTime];
+
+      // console.log(this.props.song.title);
+      // console.log(this.currentCommentOrder);
+      // // So this.props.comments is not loading correctly on song switch;
+      // console.log(this.props.comments[1]);
+      if(this.props.comments[this.currentCommentOrder + 1] &&
+        this.props.comments[this.currentCommentOrder + 1].time_into_song
+        === commentTime) {
+          this.currentCommentOrder += 1;
+          this.currentComment = this.props.comments[this.currentCommentOrder];
       }
     }
-      // this.currentComment = this.props.comments[commentTime];
   },
 
   render: function() {
@@ -189,7 +200,6 @@ const AudioApiPlayer = React.createClass({
       currComm = <CurrentComment comment={this.currentComment} />;
     }
 
-    // debugger;
     return (
       <section className="audio-comments-bar">
 
