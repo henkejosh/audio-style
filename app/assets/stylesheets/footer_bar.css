@@ -2,7 +2,7 @@ section.audio-comments-bar {
   display: flex;
   flex-direction: row;
   bottom: 0px;
-  border: 2px solid green;
+  /*border: 2px solid green;*/
   position: fixed;
   width: 100%;
 }

@@ -149,6 +149,7 @@ const AudioApiPlayer = React.createClass({
     e.preventDefault();
     const xCoord = e.pageX - e.target.offsetLeft;
     const lengthIntoSong = (xCoord / e.target.offsetWidth);
+    debugger;
     this.audioElement.currentTime = this.audioElement.duration * (lengthIntoSong);
   },
 

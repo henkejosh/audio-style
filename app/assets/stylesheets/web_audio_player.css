@@ -1,9 +1,9 @@
 div.AudioPlayer {
   height: 50px;
   width: 100%;
-  border: 2px solid #333333;
+  /*border: 2px solid #333333;*/
   background: #111111;
-  /*position: fixed;*/
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
