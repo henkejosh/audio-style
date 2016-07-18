@@ -7,14 +7,6 @@ const CommentsIndex = require('./comments_index.jsx');
 const CurrentComment = require('./current_comment.jsx');
 
 const CommentBar = React.createClass({
-  componentWillUnmount: function() {
-    this.commentListener.remove();
-  },
-
-  calcCommentDisplayDuration: function() {
-    this.commentDuration = Math.floor(this.props.songLength / this.state.comments.length);
-  },
-
   render: function() {
     return (
       <div className="new-comment-bar">

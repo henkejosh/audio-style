@@ -47,7 +47,7 @@ const appRouter = (
 
       <Route path="/login" component={ LoginForm } />
       <Route path="/signup" component={ SignupForm } />
-      <Route path="/songs" component={ SongIndex } onEnter={ _ensureLoggedIn }/>
+      <Route path="/songs" component={ NewSongIndex } onEnter={ _ensureLoggedIn }/>
       <Route path="/newsongs" component={ NewSongIndex } />
       <Route path="/songs/:songID" component={ SongDetail } onEnter={ _ensureLoggedIn }/>
       <Route path="/user" component= { UserPage } onEnter={ _ensureLoggedIn }/>

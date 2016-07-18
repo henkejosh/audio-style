@@ -3,6 +3,7 @@
 const Store = require('flux/utils').Store;
 const AudioApiPlayerConstants = require('../constants/audio_api_player_constants.js');
 const Dispatcher = require('../dispatcher/dispatcher.js');
+const SessionConstants = require('../constants/session_constants.js');
 
 let _playing = true;
 
@@ -25,6 +26,10 @@ AudioApiPlayerStore.newSongReceived = function() {
   // AudioApiPlayerStore.__emitChange();
 };
 
+const _turnPlayerOff = function() {
+  _playing = false;
+};
+
 // AudioApiPlayerStore.resetPlaying = function() {
 AudioApiPlayerStore.pausePlaying = function() {
   _playing = false;
@@ -43,6 +48,10 @@ AudioApiPlayerStore.__onDispatch = payload => {
 
     case AudioApiPlayerConstants.RESET_PLAYING:
       resetPlaying();
+      AudioApiPlayerStore.__emitChange();
+      break;
+    case SessionConstants.LOGOUT:
+      _turnPlayerOff();
       AudioApiPlayerStore.__emitChange();
       break;
   }

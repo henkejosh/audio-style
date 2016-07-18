@@ -59,8 +59,9 @@ const LoginForm = React.createClass({
   },
 
   render: function() {
+    // <Modal style={modStyle} isOpen="true">
     return (
-      <Modal style={modStyle} isOpen="true">
+      <Modal style={modStyle} isOpen={this.props.isOpen}>
         <div>
 
         <h2>Log In</h2>

@@ -4,6 +4,7 @@ const Store = require('flux/utils').Store;
 const Dispatcher = require('../dispatcher/dispatcher.js');
 const CommentConstants = require('../constants/comment_constants.js');
 const CurrentSongConstants = require('../constants/current_song_constants.js');
+const SessionConstants = require('../constants/session_constants.js');
 
 let _comments = {};
 let _songID = null;
@@ -105,6 +106,10 @@ CommentStore.__onDispatch = payload => {
 
     case CurrentSongConstants.RECEIVE_CURRENT_SONG:
       _receiveCurrentSong(payload.currentSong);
+      CommentStore.__emitChange();
+      break;
+    case SessionConstants.LOGOUT:
+      _resetComments();
       CommentStore.__emitChange();
       break;
   }

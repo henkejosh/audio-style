@@ -53,8 +53,7 @@ const SignupForm = React.createClass({
 
   render: function() {
     return (
-      <Modal style={modStyle}
-        isOpen="true">
+      <Modal style={modStyle} isOpen={this.props.isOpen}>
         <div>
           <h2>Sign Up</h2>
           <br/>

@@ -22,11 +22,12 @@ const NewSongIndex = React.createClass({
   },
 
   render: function() {
+    const that = this;
     return (
-      <ul className="newSongIndex">
-        { Object.keys(this.state.songs).map( songID => {
+      <ul className="songIndex">
+        { Object.keys(that.state.songs).map( songID => {
           return (
-              <NewSongItem key={songID} song={this.state.songs[songID]} />
+              <NewSongItem key={songID} song={that.state.songs[songID]} />
             );
         })}
       </ul>

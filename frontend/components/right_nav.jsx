@@ -17,7 +17,8 @@ const RightNav = React.createClass({
 
   openSignUpForm: function() {
     ErrorActions.clearErrors();
-    hashHistory.push("/signup");
+    // hashHistory.push("/signup");
+    this.setState({ signUpIsOpen: true });
   },
 
   closeSignUpForm: function() {
@@ -26,7 +27,8 @@ const RightNav = React.createClass({
 
   openLoginForm: function() {
     ErrorActions.clearErrors();
-    hashHistory.push("/login");
+    // hashHistory.push("/login");
+    this.setState({ loginIsOpen: true });
   },
 
   closeLoginForm: function() {

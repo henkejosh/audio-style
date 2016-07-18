@@ -12,7 +12,7 @@ const AudioApiPlayer = React.createClass({
     return (
       { playing: AudioApiPlayerStore.getPlayStatus(),
         timePlayed: this.calcElapsedTime(),
-        commentsDisplayed: false }
+        commentsDisplayed: true }
     );
   },
 
@@ -107,8 +107,8 @@ const AudioApiPlayer = React.createClass({
   },
 
   componentWillUnmount: function() {
-    this.currSongListener.remove();
-    AudioApiPlayerStore.resetPlaying();
+    // AudioApiPlayerStore.resetPlaying();
+    // this.setState({ playing: false });
     this.playerStoreListener.remove();
   },
 

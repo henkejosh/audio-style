@@ -5,7 +5,7 @@ const hashHistory = require('react-router').hashHistory;
 const LeftNav = React.createClass({
   goToHome: function(e) {
     e.preventDefault();
-    hashHistory.replace("/songs");
+    hashHistory.replace("/");
   },
 
   render: function() {

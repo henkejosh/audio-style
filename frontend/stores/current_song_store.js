@@ -3,6 +3,7 @@
 const Store = require('flux/utils').Store;
 const Dispatcher = require('../dispatcher/dispatcher.js');
 const CurrentSongConstants = require('../constants/current_song_constants.js');
+const SessionConstants = require('../constants/session_constants.js');
 
 let _currentSong = {};
 
@@ -36,7 +37,11 @@ CurrentSongStore.__onDispatch = payload => {
       _clearCurrentSong();
       CurrentSongStore.__emitChange();
       break;
-  }
+    case SessionConstants.LOGOUT:
+      _clearCurrentSong();
+      CurrentSongStore.__emitChange();
+      break;
+    }
 };
 
 module.exports = CurrentSongStore;
