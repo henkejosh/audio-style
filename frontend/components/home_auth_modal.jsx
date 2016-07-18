@@ -32,6 +32,14 @@ const HomeAuthModal = React.createClass({
     this.setState({ authModalOpen: this.props.isOpen });
   },
 
+  closeLoginForm: function() {
+    this.setState({ loginIsOpen: false });
+  },
+
+  closeSignupForm: function() {
+    this.setState({ signupIsOpen: false });
+  },
+
   cancelOut: function() {
     this.setState({ authModalOpen: false });
   },
@@ -46,12 +54,14 @@ const HomeAuthModal = React.createClass({
         <ul>
           <li onClick={this.guestLogin}>Guest Login</li>
 
-          <li onClick={this.openSignUpForm}><p>Sign Up</p>
-            <SignupForm isOpen={this.state.signupIsOpen} />
+          <li onClick={this.openSignupForm}><p>Sign Up</p>
+            <SignupForm isOpen={this.state.signupIsOpen}
+              closeForm={this.closeSignupForm}/>
             </li>
 
           <li onClick={this.openLoginForm}><p>Log In</p>
-            <LoginForm isOpen={this.state.loginIsOpen}/>
+            <LoginForm isOpen={this.state.loginIsOpen}
+              closeForm={this.closeLoginForm}/>
           </li>
 
           <li onClick={this.props.cancelOut}>Exit</li>

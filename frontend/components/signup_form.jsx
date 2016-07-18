@@ -83,7 +83,7 @@ const SignupForm = React.createClass({
           </form>
 
           <div className="cancel-button">
-            <button type="cancel" onClick={this.backToHome}>Cancel</button>
+            <button type="cancel" onClick={this.props.closeForm}>Cancel</button>
           </div>
         </div>
       </Modal>
