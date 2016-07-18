@@ -31,7 +31,8 @@ const IndexRoute = reactRouter.IndexRoute;
 
 const _ensureLoggedIn = function(nextState, replace) {
   if (!SessionStore.isUserLoggedIn()) {
-    replace('/login');
+    // replace('/login');
+    replace('/');
   }
 };
 

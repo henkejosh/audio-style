@@ -101,19 +101,104 @@ Playlist.create!(
   name: "Guest Songs"
 )
 
+Comment.create!(
+  body: "So good",
+  user_id: 1,
+  song_id: 1,
+  time_into_song: 0
+)
+
+Comment.create!(
+  body: "Best song!",
+  user_id: 3,
+  song_id: 2,
+  time_into_song: 0
+)
+
+Comment.create!(
+  body: "I love this one!",
+  user_id: 2,
+  song_id: 3,
+  time_into_song: 0
+)
+
+Comment.create!(
+  body: "I forgot to ask - do you like guacamole?",
+  user_id: 2,
+  song_id: 4,
+  time_into_song: 0
+)
+
+Comment.create!(
+  body: "Great jam!",
+  user_id: 3,
+  song_id: 5,
+  time_into_song: 0
+)
+
+Comment.create!(
+  body: "Special",
+  user_id: 3,
+  song_id: 5,
+  time_into_song: 4
+)
+####
+
+Comment.create!(
+  body: "YASSS",
+  user_id: 2,
+  song_id: 1,
+  time_into_song: 20
+)
+
+Comment.create!(
+  body: "Best song!",
+  user_id: 3,
+  song_id: 3,
+  time_into_song: 20
+)
+
+Comment.create!(
+  body: "I love this one!",
+  user_id: 2,
+  song_id: 2,
+  time_into_song: 20
+)
+
+Comment.create!(
+  body: "I forgot to ask - do you like guacamole?",
+  user_id: 2,
+  song_id: 5,
+  time_into_song: 20
+)
+
+Comment.create!(
+  body: "OMG",
+  user_id: 3,
+  song_id: 4,
+  time_into_song: 20
+)
+
+Comment.create!(
+  body: "Special",
+  user_id: 3,
+  song_id: 5,
+  time_into_song: 4
+)
+####
 
 Comment.create!(
   body: "So good",
   user_id: 1,
   song_id: 1,
-  time_into_song: 13
+  time_into_song: 4
 )
 
 Comment.create!(
   body: "Great jam!",
   user_id: 1,
   song_id: 1,
-  time_into_song: 15
+  time_into_song: 20
 )
 
 Comment.create!(
