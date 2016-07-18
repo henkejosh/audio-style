@@ -26,7 +26,7 @@ const AudioApiPlayer = React.createClass({
 
   trackElapsedTime: function() {
     this.setState({ timePlayed: this.calcElapsedTime() });
-    requestAnimationFrame(this.trackElapsedTime);
+    this.trackTimeID = requestAnimationFrame(this.trackElapsedTime);
   },
 
   createAudioNode: function() {
@@ -71,7 +71,7 @@ const AudioApiPlayer = React.createClass({
       .attr('width', svgWidth / frequencyData.length - barPadding);
 
     function renderChart() {
-      requestAnimationFrame(renderChart);
+      this.renderChartID = requestAnimationFrame(renderChart);
       that.analyser.getByteFrequencyData(frequencyData);
 
       svg.selectAll('rect')
@@ -109,6 +109,8 @@ const AudioApiPlayer = React.createClass({
   componentWillUnmount: function() {
     // AudioApiPlayerStore.resetPlaying();
     // this.setState({ playing: false });
+    cancelAnimationFrame(this.trackTimeID);
+    cancelAnimationFrame(this.renderChartID);
     this.playerStoreListener.remove();
   },
 

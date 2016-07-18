@@ -55,6 +55,7 @@ h2.home-modal > p {
 div.home-auth-modal > ul {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 div.home-auth-modal > ul > li {
@@ -75,25 +76,25 @@ div.home-auth-modal > ul > li:hover {
 /* PULSE THINGY */
 @-webkit-keyframes hvr-pulse {
   25% {
-    -webkit-transform: scale(1.001);
-    transform: scale(1.001);
+    -webkit-transform: scale(1.002);
+    transform: scale(1.002);
   }
 
   75% {
-    -webkit-transform: scale(0.999);
-    transform: scale(0.999);
+    -webkit-transform: scale(0.998);
+    transform: scale(0.998);
   }
 }
 
 @keyframes hvr-pulse {
   25% {
-    -webkit-transform: scale(1.001);
-    transform: scale(1.001);
+    -webkit-transform: scale(1.002);
+    transform: scale(1.002);
   }
 
   75% {
-    -webkit-transform: scale(0.999);
-    transform: scale(0.999);
+    -webkit-transform: scale(0.998);
+    transform: scale(0.998);
   }
 }
 

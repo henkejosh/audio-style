@@ -54,7 +54,7 @@ const HomeAuthModal = React.createClass({
             <LoginForm isOpen={this.state.loginIsOpen}/>
           </li>
 
-          <li onClick={this.props.cancelOut}>Cancel</li>
+          <li onClick={this.props.cancelOut}>Exit</li>
         </ul>
         </div>
         </Modal>
