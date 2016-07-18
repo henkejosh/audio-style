@@ -34,24 +34,33 @@ const CommentForm = React.createClass({
     };
   },
 
+  showCommentForm: function() {
+    $('#commentForm').show();
+  },
+
+  hideCommentForm: function() {
+    $('#commentForm').hide();
+  },
+
   render: function() {
-    // <section className="comForm">
+    // <form onSubmit={this.handleForm} className="comForm">
     //
-    // <textarea onChange={this.update("body")}
+    // <input type="textarea" onChange={this.update("body")}
     // value={this.state.body} />
     //
-    // <span onClick={this.handleForm} type="submit">Comment</span>
+    // <input value="Comment" type="submit"/>
     //
-    // </section>
+    // </form>
     return (
-      <form onSubmit={this.handleForm} className="comForm">
+      <section className="comForm" onMouseEnter={this.showCommentForm}
+        onMouseLeave={this.hideCommentForm}>
 
-          <input type="textarea" onChange={this.update("body")}
-            value={this.state.body} />
+        <textarea id="commentForm" onChange={this.update("body")}
+          value={this.state.body} />
 
-          <input value="Comment" type="submit"/>
+        <span onClick={this.handleForm} type="submit">Comment</span>
 
-      </form>
+      </section>
     );
   }
 });

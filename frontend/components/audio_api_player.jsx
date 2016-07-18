@@ -11,7 +11,8 @@ const AudioApiPlayer = React.createClass({
   getInitialState: function() {
     return (
       { playing: AudioApiPlayerStore.getPlayStatus(),
-        timePlayed: this.calcElapsedTime() }
+        timePlayed: this.calcElapsedTime(),
+        commentsDisplayed: false }
     );
   },
 
@@ -154,9 +155,9 @@ const AudioApiPlayer = React.createClass({
 
   togglePlayButton: function() {
     if(this.state.playing === true) {
-      return "Pause";
+      return "https://s3.amazonaws.com/f.cl.ly/items/2c14210Y1O0d0q2z3B0U/rounded-pause-button.png";
     } else {
-      return "Play";
+      return "https://s3.amazonaws.com/f.cl.ly/items/0w0D2u2d051p0T3v3K2k/play-button%20(1).png";
     }
   },
 
@@ -214,33 +215,62 @@ const AudioApiPlayer = React.createClass({
     }
   },
 
+  toggleComments: function() {
+    if(this.state.commentsDisplayed === true) {
+      this.setState({ commentsDisplayed: false });
+    } else {
+      this.setState({ commentsDisplayed: true });
+    }
+  },
+
+  createCommentBar: function() {
+    if(this.state.commentsDisplayed === true ) {
+      let currComm = this.toggleCurrentComment();
+      return (
+        <div>
+        {currComm}
+        <div>
+          <div className="comment-bar">
+        <CommentBar songID={this.props.song.id}
+          time={this.state.timePlayed}
+          comments={this.props.comments}
+          actualTime={this.outputCurrentSongTime()}
+          order={this.ensureCurrentCommentOrder()} />
+          </div>
+        </div>
+        </div>
+      );
+    }
+  },
+
   render: function() {
-    let button = this.togglePlayButton();
+    let playImageSrc = this.togglePlayButton();
     // let currComm;
-    let currComm = this.toggleCurrentComment();
+    let commentBar = this.createCommentBar();
     // if(this.state.timePlayed) {
     //   currComm = <CurrentComment comment={this.currentComment} />;
     // }
 
+    // <CommentBar songID={this.props.song.id}
+    // time={this.state.timePlayed}
+    // comments={this.props.comments}
+    // actualTime={this.outputCurrentSongTime()}
+    // order={this.ensureCurrentCommentOrder()} />
     return (
       <section className="audio-comments-bar">
 
-      <div>
-        <div className="comment-bar">
-          {currComm}
-
-          <CommentBar songID={this.props.song.id}
-            time={this.state.timePlayed}
-            comments={this.props.comments}
-            actualTime={this.outputCurrentSongTime()}
-            order={this.ensureCurrentCommentOrder()} />
-
-        </div>
-      </div>
+          {commentBar}
 
           <div className="AudioPlayer">
-            <button className="play" type="play"
-              value="Play" onClick={this.handlePlay}>{button}</button>
+
+            <ul className="artist-title-album">
+              <li>{this.props.song.title}</li>
+              <li>{this.props.song.artist_name}</li>
+              <li className="album-title">{this.props.song.album_name}</li>
+            </ul>
+
+            <img src={playImageSrc}
+              className="play" type="play" onClick={this.handlePlay} />
 
             <audio id="audioElement" autoPlay
               src={this.props.song.song_url} >
@@ -249,10 +279,17 @@ const AudioApiPlayer = React.createClass({
             <progress className="rangeslider__fill"
               value={this.state.timePlayed}
               onClick={this.handleSongScroll}/>
+
+            <img className="comment-icon"
+              src="https://s3.amazonaws.com/f.cl.ly/items/0N3K1O433d0Z1e173H2a/blank-squared-bubble.png"
+              onClick={this.toggleComments} />
+
           </div>
       </section>
     );
   }
 });
+// <button className="play" type="play"
+// value="Play" onClick={this.handlePlay}>{button}</button>
 
 module.exports = AudioApiPlayer;
