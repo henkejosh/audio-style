@@ -5,7 +5,7 @@ body {
 
 nav.header {
   width: 100%;
-  height: 40px;
+  height: 42px;
   display: flex;
   /*background: #333333;*/
   background: #111111;
@@ -59,7 +59,7 @@ ul.right-nav {
 ul.auth-links {
   position: absolute;
   /*background: blue;*/
-  top: 42px;
+  top: 40px;
 }
 
 ul.auth-links li:hover {
@@ -111,7 +111,8 @@ li.auth-button > img {
 }
 
 .left-nav li:hover {
-  background-color: #111111;
+  /*background-color: #111111;*/
+  background-color: #333333;
   cursor: pointer;
 }
 
@@ -147,14 +148,20 @@ li.auth-button > img {
 }
 
 .right-nav li:hover {
-  background-color: #111111;
+  /*background-color: #111111;*/
+  background-color: #333333;
   cursor: pointer;
 }
 
 li.logo {
-  background: #FF5500;
+  background: #111111;;
   text-align: center;
-  border-left: 1px solid #111111;
+  /*border-left: 1px solid #111111;*/
+}
+
+li.logo:hover {
+  background: #111111;
+  cursor: auto;
 }
 
 li.logo img {
