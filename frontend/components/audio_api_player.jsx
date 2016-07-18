@@ -47,7 +47,7 @@ const AudioApiPlayer = React.createClass({
     var frequencyData = new Uint8Array(150);
 
     var svgHeight = '250';
-    var svgWidth = '700';
+    var svgWidth = '600';
     var barPadding = '1';
 
     const that = this;
@@ -59,7 +59,8 @@ const AudioApiPlayer = React.createClass({
           .attr('id', `graph-${that.props.song.id}`);
     }
 
-    var svg = createSvg(`#AudioGraph${that.props.song.id}`, svgHeight, svgWidth);
+    // var svg = createSvg(`#AudioGraph${that.props.song.id}`, svgHeight, svgWidth);
+    var svg = createSvg(`#AudioGraph`, svgHeight, svgWidth);
 
     svg.selectAll('rect')
       .data(frequencyData)
@@ -71,7 +72,7 @@ const AudioApiPlayer = React.createClass({
       .attr('width', svgWidth / frequencyData.length - barPadding);
 
     function renderChart() {
-      this.renderChartID = requestAnimationFrame(renderChart);
+      that.renderChartID = requestAnimationFrame(renderChart);
       that.analyser.getByteFrequencyData(frequencyData);
 
       svg.selectAll('rect')
@@ -95,20 +96,15 @@ const AudioApiPlayer = React.createClass({
     this.playerStoreListener = AudioApiPlayerStore.addListener(this.updatePlayingStatus);
     this.createAudioNode();
     this.audio = document.getElementById('audioElement');
-    this.checkForSongDetail();
-    // this.calcCommentDuration();
-    // this.updateCurrentComment();
+    // this.checkForSongDetail();
+    this.createVisualizer();
   },
 
-
-  // TESTING!!
   componentWillMount: function() {
     this.updateCurrentComment();
   },
 
   componentWillUnmount: function() {
-    // AudioApiPlayerStore.resetPlaying();
-    // this.setState({ playing: false });
     cancelAnimationFrame(this.trackTimeID);
     cancelAnimationFrame(this.renderChartID);
     this.playerStoreListener.remove();
@@ -163,30 +159,16 @@ const AudioApiPlayer = React.createClass({
     }
   },
 
-  // calcCommentDuration: function() {
-  //   // this.commentDuration = Math.floor(100 /
-  //   //     Object.keys(this.props.comments).length);
-  //   // if (this.audioElement) {
-  //   //
-  //   //   this.commentDuration = this.audioElement.duration /
-  //   // }
-  // },
-
   updateCurrentComment: function() {
     if(!this.state.timePlayed > 0) {
       let firstComment = Math.min(...Object.keys(this.props.comments));
-      // this.currentComment = this.props.comments[firstComment];
       this.currentCommentOrder = 1;
       this.currentComment = this.props.comments[this.currentCommentOrder];
-      // return;
+
     } else {
       const commentTime = Math.floor(this.state.timePlayed *
         this.audioElement.duration);
 
-      // console.log(this.props.song.title);
-      // console.log(this.currentCommentOrder);
-      // // So this.props.comments is not loading correctly on song switch;
-      // console.log(this.props.comments[1]);
       if(this.props.comments[this.currentCommentOrder + 1] &&
         this.props.comments[this.currentCommentOrder + 1].time_into_song
         === commentTime) {
@@ -194,7 +176,6 @@ const AudioApiPlayer = React.createClass({
           this.currentComment = this.props.comments[this.currentCommentOrder];
       }
     }
-    // return this.currentCommentOrder;
   },
 
   ensureCurrentCommentOrder: function() {
@@ -247,17 +228,8 @@ const AudioApiPlayer = React.createClass({
 
   render: function() {
     let playImageSrc = this.togglePlayButton();
-    // let currComm;
     let commentBar = this.createCommentBar();
-    // if(this.state.timePlayed) {
-    //   currComm = <CurrentComment comment={this.currentComment} />;
-    // }
 
-    // <CommentBar songID={this.props.song.id}
-    // time={this.state.timePlayed}
-    // comments={this.props.comments}
-    // actualTime={this.outputCurrentSongTime()}
-    // order={this.ensureCurrentCommentOrder()} />
     return (
       <section className="audio-comments-bar">
 
@@ -291,7 +263,5 @@ const AudioApiPlayer = React.createClass({
     );
   }
 });
-// <button className="play" type="play"
-// value="Play" onClick={this.handlePlay}>{button}</button>
 
 module.exports = AudioApiPlayer;

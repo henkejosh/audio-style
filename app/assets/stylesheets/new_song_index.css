@@ -1,17 +1,65 @@
+div.index-album-image {
+  display: flex;
+  position: fixed;
+  top: 42px;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 3%;
+}
+
+div.album-and-visualizer {
+  display: flex;
+  flex-direction: row;
+}
+
+div.album-and-visualizer > img{
+  width: 30%;
+  max-height: 274px;
+}
+
+div.index-album-image ul.song-table-columns {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+  margin-right: 20px;
+  padding-left: calc(5% + 81px);
+}
+
+div.index-album-image ul.song-table-columns > li {
+  width: 100%;
+  font: 100 10px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+  padding: 1px 0px;
+  border-bottom: 1px solid #111111;
+}
+
 ul.newSongIndex {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
+div.newSongItem {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #333333;
+}
+
 div.newSongItem img {
-  width: 300px;
+  width: 100px;
   margin: 20px;
 }
 
 div.newSongItem ul {
-  width: 300px;
   margin: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  width: 100%;
+}
+
+div.newSongItem > ul > li {
+  width: 100%;
+  font: 100 10px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+  padding: 1px 0px;
+  border-bottom: 1px solid #111111;
 }
