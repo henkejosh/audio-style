@@ -32,6 +32,13 @@ div.index-album-image ul.song-table-columns > li {
   border-bottom: 1px solid #111111;
 }
 
+div.song-table {
+  display: flex;
+  flex-direction: column;
+  background-color: #333333;
+}
+
+
 ul.newSongIndex {
   display: flex;
   flex-direction: row;
@@ -42,7 +49,6 @@ div.newSongItem {
   display: flex;
   flex-direction: row;
   width: 100%;
-  background-color: #333333;
 }
 
 div.newSongItem img {

@@ -84,9 +84,10 @@ const AudioApiPlayer = React.createClass({
           return d;
         })
         .attr('fill', function(d) {
+          return 'rgb(0, 0, ' + d + ')';
           // return 'rgb(0, 0, ' + d + ')';
           // return `rgb(${KindOfBlue[d]})`;
-          return KindOfBlue[d];
+          // return KindOfBlue[d];
         });
     }
     renderChart();

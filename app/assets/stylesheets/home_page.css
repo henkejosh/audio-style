@@ -115,8 +115,8 @@ img.home-album-pic {
   transition-property: box-shadow;
   -webkit-animation-name: hvr-pulse;
   animation-name: hvr-pulse;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
   -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;

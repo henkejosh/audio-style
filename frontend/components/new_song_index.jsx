@@ -39,19 +39,21 @@ const NewSongIndex = React.createClass({
           <figure id='AudioGraph' className='AudioGraph'/>
         </div>
 
-        <ul className="song-table-columns">
-          <li>ARTIST</li>
-          <li>TITLE</li>
-          <li>ALBUM</li>
-        </ul>
+        <div className="song-table" >
+          <ul className="song-table-columns">
+            <li>ARTIST</li>
+            <li>TITLE</li>
+            <li>ALBUM</li>
+          </ul>
 
-        <ul className="songIndex">
-          { Object.keys(that.state.songs).map( songID => {
-            return (
-                <NewSongItem key={songID} song={that.state.songs[songID]} />
-              );
-          })}
-        </ul>
+          <ul className="songIndex">
+            { Object.keys(that.state.songs).map( songID => {
+              return (
+                  <NewSongItem key={songID} song={that.state.songs[songID]} />
+                );
+            })}
+          </ul>
+        </div>
       </div>
     );
   }
