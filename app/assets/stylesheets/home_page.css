@@ -1,0 +1,18 @@
+div.home-page {
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  /*background:*/
+  align-items: center;
+  position: fixed;
+  top: 40px;
+  right: 5%;
+  left: 5%;
+}
+
+img.home-album-pic {
+  max-width: 50%;
+  max-height: 50%;
+  left: 50%;
+  padding-top: 5%;
+}

@@ -21,6 +21,7 @@ const SongDetail = require('./components/song_detail.jsx');
 const NewSongIndex = require('./components/new_song_index.jsx');
 const AudioApiPlayerActions = require('./actions/audio_api_player_actions.js');
 const AudioApiPlayerStore = require('./stores/audio_api_player_store.js');
+const HomePage = require('./components/home.jsx');
 //Router
 const reactRouter = require('react-router');
 const Router = reactRouter.Router;
@@ -30,7 +31,7 @@ const IndexRoute = reactRouter.IndexRoute;
 
 const _ensureLoggedIn = function(nextState, replace) {
   if (!SessionStore.isUserLoggedIn()) {
-    replace('/');
+    replace('/login');
   }
 };
 
@@ -42,6 +43,8 @@ const chain = function(cb1, cb2){
 const appRouter = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App } >
+      <IndexRoute component={ HomePage } />
+
       <Route path="/login" component={ LoginForm } />
       <Route path="/signup" component={ SignupForm } />
       <Route path="/songs" component={ SongIndex } onEnter={ _ensureLoggedIn }/>
