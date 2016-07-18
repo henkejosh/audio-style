@@ -5,11 +5,16 @@ body {
 
 nav.header {
   width: 100%;
-  height: 46px;
+  height: 40px;
   display: flex;
-  background: #333333;
+  /*background: #333333;*/
+  background: #111111;
+  position: fixed;
+  top: 0px;
+  z-index: 1;
   justify-content: space-between;
-  border: 1px solid #111111;
+  border-bottom: 1px solid #5B8DAF;
+  /*border: 1px solid #111111;*/
 }
 
 ul.left-nav {
@@ -52,11 +57,12 @@ ul.right-nav {
 ul.auth-links {
   position: absolute;
   /*background: blue;*/
-  top: 48px;
+  top: 42px;
 }
 
 ul.auth-links li:hover {
   background-color: #333333;
+  /*background-color: #111111;*/
   cursor: pointer;
 }
 
@@ -73,20 +79,20 @@ ul.auth-links li {
 }
 
 li.auth-button {
-  height: 46px;
-  width: 46px;
+  height: 40px;
+  width: 40px;
   cursor: pointer;
-  max-height: 46px;
-  min-height: 46px;
-  max-width: 46px;
-  min-width: 46px;
+  max-height: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  min-width: 40px;
 }
 
 li.auth-button > img {
-  max-height: 46px;
-  min-height: 46px;
-  max-width: 46px;
-  min-width: 46px;
+  max-height: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  min-width: 40px;
 }
 
 .left-nav li {
@@ -142,10 +148,10 @@ li.logo {
 }
 
 li.logo img {
-  max-width: 46px;
-  max-height: 46px;
-  min-width: 46px;
-  min-height: 46px;
+  max-width: 40px;
+  max-height: 40px;
+  min-width: 40px;
+  min-height: 40px;
 }
 
 li {

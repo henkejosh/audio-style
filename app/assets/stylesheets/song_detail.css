@@ -3,6 +3,14 @@ figure.song-detail-index {
   flex-direction: column;
   border: 2px solid black;
   padding-top: 2%;
+  height: 100%;
+
+  /*background-color: #333333;*/
+  /*background-color: #212121;*/
+  /*background: #F5F5F5;*/
+  background: #FFFFFF;
+  /*background-color: #111111;*/
+  /*background-color: #1A1E1F;*/
 }
 
 span.song-detail-item {
