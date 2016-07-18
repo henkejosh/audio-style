@@ -17,9 +17,6 @@ const LeftNav = React.createClass({
           <li>
             <a onClick={this.goToHome}>Home</a>
           </li>
-          <li>
-            <a href="">Collection</a>
-          </li>
         </ul>
     );
   }

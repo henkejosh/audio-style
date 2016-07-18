@@ -12,7 +12,7 @@ nav.header {
   position: fixed;
   top: 0px;
   z-index: 1;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
   border-bottom: 1px solid #5B8DAF;
   /*border: 1px solid #111111;*/
 }
@@ -40,9 +40,11 @@ ul.right-nav {
   width: 25%;
   /*border: 1px solid orange;*/
   height: 100%;
-  padding: 0px 5% 0px 0px;
+  padding: 0px;
   margin: 0px;
-  flex-basis: 200px;
+  position: fixed;
+  right: 0%;
+  height: 41px;
 }
 
 .search input {
@@ -79,13 +81,13 @@ ul.auth-links li {
 }
 
 li.auth-button {
-  height: 40px;
-  width: 40px;
+  /*height: 40px;
+  width: 40px;*/
   cursor: pointer;
-  max-height: 40px;
+  /*max-height: 40px;
   min-height: 40px;
   max-width: 40px;
-  min-width: 40px;
+  min-width: 40px;*/
 }
 
 li.auth-button > img {
@@ -119,6 +121,14 @@ li.auth-button > img {
   text-decoration: none;
   vertical-align: middle;
   display: block;
+  line-height: 45px;
+}
+.right-nav p.welcome {
+  font: 100 14px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+  color: #CBCBCB;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
   line-height: 45px;
 }
 

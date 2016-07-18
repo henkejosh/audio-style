@@ -82,34 +82,36 @@ const RightNav = React.createClass({
   },
 
   render: function() {
-    let authLink = (
-        <ul>
-          <li onClick={this.NavToUserPage}>Profile</li>
-          <li onClick={this.LogOut}>Log Out</li>
+    let authLink;
+    let welcome;
+    if (SessionStore.currentUser().id === undefined) {
+      welcome = <p className="welcome">Join</p>;
+      authLink = (
+        <ul className="auth-links">
+          <ul>
+            <li onClick={this.guestLogin}>Guest Login</li>
+            <li onClick={this.openSignUpForm}>Sign Up</li>
+            <li onClick={this.openLoginForm}>Log In</li>
+          </ul>
         </ul>
       );
-    if (SessionStore.currentUser().id === undefined) {
-      authLink = (
-        <ul>
-          <li onClick={this.guestLogin}>Guest Login</li>
-          <li onClick={this.openSignUpForm}>Sign Up</li>
-          <li onClick={this.openLoginForm}>Log In</li>
+    } else {
+      welcome = <p className="welcome">{SessionStore.currentUser().email}</p>;
+      authLink = (<ul className="auth-links">
+          <ul>
+            <li onClick={this.NavToUserPage}>Profile</li>
+            <li onClick={this.LogOut}>Log Out</li>
+          </ul>
         </ul>
       );
     }
 
+    // <img src="https://s3.amazonaws.com/f.cl.ly/items/0g2V1V3P08160j2t2y3X/users.png"/>
     return(
       <ul className="right-nav">
-
-        <li>
-          Upload
-        </li>
-
         <li className="auth-button" onClick={this.updateAuthComp}>
-          <img src="https://s3.amazonaws.com/f.cl.ly/items/0g2V1V3P08160j2t2y3X/users.png"/>
-          <ul className="auth-links">
+            {welcome}
             {this.state.authLinks ? authLink : null }
-          </ul>
         </li>
 
       </ul>

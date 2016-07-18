@@ -9,7 +9,6 @@ const Header = React.createClass({
     return (
       <nav className="header">
         <LeftNav/>
-        <SearchIndex/>
         <RightNav/>
       </nav>
     );
