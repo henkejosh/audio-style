@@ -44,9 +44,9 @@ const appRouter = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App } >
       <IndexRoute component={ HomePage } />
-
       <Route path="/login" component={ LoginForm } />
       <Route path="/signup" component={ SignupForm } />
+
       <Route path="/songs" component={ NewSongIndex } onEnter={ _ensureLoggedIn }/>
       <Route path="/newsongs" component={ NewSongIndex } />
       <Route path="/songs/:songID" component={ SongDetail } onEnter={ _ensureLoggedIn }/>

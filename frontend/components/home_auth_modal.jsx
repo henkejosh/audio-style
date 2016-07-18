@@ -11,7 +11,8 @@ const SignupForm = require('./signup_form.jsx');
 
 const HomeAuthModal = React.createClass({
   getInitialState: function() {
-    return { signUpIsOpen: false, loginIsOpen: false , authLinks: false};
+    return { authModalOpen: this.props.isOpen,
+      signUpIsOpen: false, loginIsOpen: false , authLinks: false };
   },
 
   guestLogin: function(e) {
@@ -27,10 +28,18 @@ const HomeAuthModal = React.createClass({
     this.setState({ signupIsOpen: true });
   },
 
+  willReceiveProps: function() {
+    this.setState({ authModalOpen: this.props.isOpen });
+  },
+
+  cancelOut: function() {
+    this.setState({ authModalOpen: false });
+  },
+
   render: function() {
     return (
       <Modal style={modStyle} isOpen={this.props.isOpen}>
-        <div>
+        <div className="home-auth-modal">
 
         <h2 className="home-modal">Welcome to <p>Kind of Blue</p></h2>
 
@@ -45,10 +54,10 @@ const HomeAuthModal = React.createClass({
             <LoginForm isOpen={this.state.loginIsOpen}/>
           </li>
 
-          <li onClick={this.cancelOut}>Cancel</li>
+          <li onClick={this.props.cancelOut}>Cancel</li>
         </ul>
         </div>
-      </Modal>
+        </Modal>
     );
   }
 });

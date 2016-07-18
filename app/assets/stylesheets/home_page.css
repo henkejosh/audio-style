@@ -8,6 +8,16 @@ div.home-page {
   top: 40px;
   right: 5%;
   left: 5%;
+  /*background: #CBCBCB;*/
+}
+
+div.home-auth-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+h2.home-modal {
+  margin-bottom: 5%;
 }
 
 img.home-album-pic {
@@ -33,4 +43,28 @@ img.home-album-pic:hover, img.home-album-pic:focus,
   img.home-album-pic:active {
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
     cursor: pointer;
+}
+
+h2.home-modal > p {
+  display: inline;
+}
+
+div.home-auth-modal > ul {
+  display: flex;
+  flex-direction: column;
+}
+
+div.home-auth-modal > ul > li {
+  text-align: center;
+  margin-bottom: 20px;
+  font: 100 14px/1.5 "Interstate","Lucida Grande",Arial,sans-serif;
+  border-radius: 5px;
+  background: #111111;
+  color: #CBCBCB;
+  width: 60%;
+  min-width: 110px;
+}
+div.home-auth-modal > ul > li:hover {
+  background-color: #333333;
+  cursor: pointer;
 }
