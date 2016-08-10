@@ -28,6 +28,9 @@ const Router = reactRouter.Router;
 const hashHistory = reactRouter.hashHistory;
 const Route = reactRouter.Route;
 const IndexRoute = reactRouter.IndexRoute;
+// new stuff
+const FinalSongIndex = require('./components/final_song_index.jsx');
+const FinalSongIndexItem = require('./components/final_song_index_item.jsx');
 
 const _ensureLoggedIn = function(nextState, replace) {
   if (!SessionStore.isUserLoggedIn()) {
@@ -40,6 +43,8 @@ const chain = function(cb1, cb2){
   cb1.call();
   cb2.call();
 };
+// <Route path="/songs" component={ NewSongIndex } onEnter={ _ensureLoggedIn }/>
+// <Route path="/newsongs" component={ NewSongIndex } />
 
 const appRouter = (
   <Router history={ hashHistory }>
@@ -48,7 +53,7 @@ const appRouter = (
       <Route path="/login" component={ LoginForm } />
       <Route path="/signup" component={ SignupForm } />
 
-      <Route path="/songs" component={ NewSongIndex } onEnter={ _ensureLoggedIn }/>
+      <Route path="/songs" component={ FinalSongIndex } onEnter={ _ensureLoggedIn }/>
       <Route path="/newsongs" component={ NewSongIndex } />
       <Route path="/songs/:songID" component={ SongDetail } onEnter={ _ensureLoggedIn }/>
       <Route path="/user" component= { UserPage } onEnter={ _ensureLoggedIn }/>

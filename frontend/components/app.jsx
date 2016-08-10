@@ -15,6 +15,7 @@ const ReactPlayer = require('./react_player.jsx');
 const AudioApiPlayer = require('./audio_api_player.jsx');
 const AudioApiPlayerStore = require('../stores/audio_api_player_store.js');
 const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
+// new stuff
 
 const App = React.createClass({
   getInitialState: function() {
@@ -39,7 +40,6 @@ const App = React.createClass({
   },
 
   _onCommentChange: function() {
-    // this.setState({ comments: CommentStore.all(parseInt(this.props.params.songID, 10)) });
     this.setState({ comments: CommentStore.all(this.state.currentSong.id) });
   },
 
