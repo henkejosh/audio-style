@@ -9,39 +9,44 @@ const CurrentComment = require('./current_comment.jsx');
 
 const AudioApiPlayer = React.createClass({
   getInitialState: function() {
+    // return (
+    //   { playing: AudioApiPlayerStore.getPlayStatus(),
+    //     timePlayed: this.calcElapsedTime(),
+    //     commentsDisplayed: true }
+    // );
     return (
-      { playing: AudioApiPlayerStore.getPlayStatus(),
-        timePlayed: this.calcElapsedTime(),
+      { playing: this.props.playing,
+        timePlayed: this.props.timePlayed,
         commentsDisplayed: true }
     );
   },
 
-  calcElapsedTime: function() {
-    if(this.audioElement) {
-      return (this.audioElement.currentTime / this.audioElement.duration);
-    } else {
-      return 0;
-    }
-  },
+  // calcElapsedTime: function() {
+  //   if(this.audioElement) {
+  //     return (this.audioElement.currentTime / this.audioElement.duration);
+  //   } else {
+  //     return 0;
+  //   }
+  // },
+  //
+  // trackElapsedTime: function() {
+  //   this.setState({ timePlayed: this.calcElapsedTime() });
+  //   this.trackTimeID = requestAnimationFrame(this.trackElapsedTime);
+  // },
 
-  trackElapsedTime: function() {
-    this.setState({ timePlayed: this.calcElapsedTime() });
-    this.trackTimeID = requestAnimationFrame(this.trackElapsedTime);
-  },
-
-  createAudioNode: function() {
-    this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-    this.audioElement = document.getElementById('audioElement');
-
-    this.audioElement.crossOrigin = "anonymous";
-    this.audioSrc = this.audioCtx.createMediaElementSource(this.audioElement);
-    this.analyser = this.audioCtx.createAnalyser();
-    this.analyser.smoothingTimeConstant = .9;
-    this.audioSrc.connect(this.analyser);
-    this.audioSrc.connect(this.audioCtx.destination);
-    this.trackElapsedTime();
-  },
+  // createAudioNode: function() {
+  //   this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  //
+  //   this.audioElement = document.getElementById('audioElement');
+  //
+  //   this.audioElement.crossOrigin = "anonymous";
+  //   this.audioSrc = this.audioCtx.createMediaElementSource(this.audioElement);
+  //   this.analyser = this.audioCtx.createAnalyser();
+  //   this.analyser.smoothingTimeConstant = .9;
+  //   this.audioSrc.connect(this.analyser);
+  //   this.audioSrc.connect(this.audioCtx.destination);
+  //   this.trackElapsedTime();
+  // },
 
   createVisualizer: function() {
     var frequencyData = new Uint8Array(150);
@@ -94,21 +99,22 @@ const AudioApiPlayer = React.createClass({
   },
 
   componentDidMount: function() {
-    this.playerStoreListener = AudioApiPlayerStore.addListener(this.updatePlayingStatus);
-    this.createAudioNode();
-    this.audio = document.getElementById('audioElement');
-    // this.checkForSongDetail();
-    this.createVisualizer();
+
+    this.props.createAudioNode();
+    // this.playerStoreListener = AudioApiPlayerStore.addListener(this.updatePlayingStatus);
+    // this.createAudioNode();
+    // this.audio = document.getElementById('audioElement');
+    // this.createVisualizer();
   },
 
   componentWillMount: function() {
-    this.updateCurrentComment();
+    // this.updateCurrentComment();
   },
 
   componentWillUnmount: function() {
-    cancelAnimationFrame(this.trackTimeID);
-    cancelAnimationFrame(this.renderChartID);
-    this.playerStoreListener.remove();
+    // cancelAnimationFrame(this.trackTimeID);
+    // cancelAnimationFrame(this.renderChartID);
+    // this.playerStoreListener.remove();
   },
 
   playPause: function() {
@@ -124,9 +130,9 @@ const AudioApiPlayer = React.createClass({
   },
 
   componentDidUpdate: function() {
-    this.checkForSongDetail();
-    this.playPause();
-    this.updateCurrentComment();
+    // this.checkForSongDetail();
+    // this.playPause();
+    // this.updateCurrentComment();
   },
 
   handlePlay: function() {
@@ -134,7 +140,7 @@ const AudioApiPlayer = React.createClass({
   },
 
   componentWillReceiveProps: function() {
-    this.setState({ playing: AudioApiPlayerStore.getPlayStatus() });
+    // this.setState({ playing: AudioApiPlayerStore.getPlayStatus() });
   },
 
   checkForSongDetail: function() {
@@ -153,21 +159,21 @@ const AudioApiPlayer = React.createClass({
   },
 
   togglePlayButton: function() {
-    if(this.state.playing === true) {
-      return "https://s3.amazonaws.com/f.cl.ly/items/2c14210Y1O0d0q2z3B0U/rounded-pause-button.png";
-    } else {
+    if(this.props.wholeState.playing === true) {
       return "https://s3.amazonaws.com/f.cl.ly/items/0w0D2u2d051p0T3v3K2k/play-button%20(1).png";
+    } else {
+      return "https://s3.amazonaws.com/f.cl.ly/items/2c14210Y1O0d0q2z3B0U/rounded-pause-button.png";
     }
   },
 
   updateCurrentComment: function() {
-    if(!this.state.timePlayed > 0) {
+    if(!this.props.wholeState.timePlayed > 0) {
       let firstComment = Math.min(...Object.keys(this.props.comments));
       this.currentCommentOrder = 1;
       this.currentComment = this.props.comments[this.currentCommentOrder];
 
     } else {
-      const commentTime = Math.floor(this.state.timePlayed *
+      const commentTime = Math.floor(this.props.wholeState.timePlayed *
         this.audioElement.duration);
 
       if(this.props.comments[this.currentCommentOrder + 1] &&
@@ -216,7 +222,7 @@ const AudioApiPlayer = React.createClass({
         <div>
           <div className="comment-bar">
         <CommentBar songID={this.props.song.id}
-          time={this.state.timePlayed}
+          time={this.props.wholeState.timePlayed}
           comments={this.props.comments}
           actualTime={this.outputCurrentSongTime()}
           order={this.ensureCurrentCommentOrder()} />
@@ -245,7 +251,7 @@ const AudioApiPlayer = React.createClass({
             </ul>
 
             <img src={playImageSrc}
-              className="play" type="play" onClick={this.handlePlay} />
+              className="play" type="play" onClick={this.props.handlePlaying} />
 
             <audio id="audioElement" autoPlay
               src={this.props.song.song_url} >

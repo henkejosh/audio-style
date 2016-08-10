@@ -19,7 +19,15 @@ const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 const App = React.createClass({
   getInitialState: function() {
     const currSong = CurrentSongStore.currentSong();
-    return {currentSong: currSong, comments: currSong.comments };
+    return {
+      currentSong: currSong,
+      comments: currSong.comments,
+      // playing: AudioApiPlayerStore.getPlayStatus(),
+      // timePlayed: this.calcElapsedTime(),
+      playing: false,
+      timePlayed: 0,
+      commentsDisplayed: true
+    };
   },
 
   componentDidMount: function() {
@@ -58,14 +66,73 @@ const App = React.createClass({
   componentWillMount: function() {
     Modal.setAppElement(document.getElementById("root"));
   },
+// // // // // // // // // // // // // // // // // // // // //
+  // CAPSTONE v2.0 changes here!!
+  playSong: function() {
+    this.audioElement.play();
+  },
 
+  pauseSong: function() {
+    this.audioElement.pause();
+  },
+
+  createAudioNode: function() {
+    this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    this.audioElement = document.getElementById('audioElement');
+
+    this.audioElement.crossOrigin = "anonymous";
+    this.audioSrc = this.audioCtx.createMediaElementSource(this.audioElement);
+    this.analyser = this.audioCtx.createAnalyser();
+    this.analyser.smoothingTimeConstant = .9;
+    this.audioSrc.connect(this.analyser);
+    this.audioSrc.connect(this.audioCtx.destination);
+    this.trackElapsedTime();
+  },
+
+  calcElapsedTime: function() {
+    if(this.audioElement) {
+      return (this.audioElement.currentTime / this.audioElement.duration);
+    } else {
+      return 0;
+    }
+  },
+
+  trackElapsedTime: function() {
+    this.setState({ timePlayed: this.calcElapsedTime() });
+    this.trackTimeID = requestAnimationFrame(this.trackElapsedTime);
+  },
+
+  handlePlaying(e) {
+    e.preventDefault();
+    if(this.state.playing === false ) {
+      this.setState({ playing: true });
+    } else if(this.state.playing) {
+      this.setState({ playing: false });
+    }
+
+    this.playPause();
+  },
+
+  playPause: function() {
+    if(this.state.playing === false) {
+      this.pauseSong();
+    } else if(this.state.playing === true) {
+      this.playSong();
+    }
+  },
+//// // // // // //// // // // // //// // // // // //// // // // // //// // // //
   render: function() {
     let currSong;
 
     if(this.state.currentSong.id) {
       currSong = <AudioApiPlayer song={this.state.currentSong}
           path={this.props.location.pathname}
-          comments={this.state.comments}/>;
+          wholeState={this.state}
+          comments={this.state.comments}
+          handlePlaying={this.handlePlaying}
+          createAudioNode={this.createAudioNode}
+          />;
     }
 
     return (
