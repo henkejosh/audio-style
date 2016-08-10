@@ -15,7 +15,7 @@ const CommentForm = React.createClass({
     event.preventDefault();
     const comment = Object.assign({}, this.state);
     comment.song_id = this.props.songID;
-    comment.time_into_song = Math.floor(this.props.timePlayed);
+    comment.time_into_song = Math.floor(this.props.absTimeIntoSong);
     CommentActions.createSongComment(this.props.song_id, comment);
     this.resetState();
   },
@@ -43,14 +43,6 @@ const CommentForm = React.createClass({
   },
 
   render: function() {
-    // <form onSubmit={this.handleForm} className="comForm">
-    //
-    // <input type="textarea" onChange={this.update("body")}
-    // value={this.state.body} />
-    //
-    // <input value="Comment" type="submit"/>
-    //
-    // </form>
     return (
       <section className="comForm" onMouseEnter={this.showCommentForm}
         onMouseLeave={this.hideCommentForm}>

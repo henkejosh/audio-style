@@ -99,7 +99,9 @@ const App = React.createClass({
   },
 
   trackElapsedTime: function() {
-    this.setState({ timePlayed: this.calcElapsedTime() });
+    this.setState({
+      timePlayed: this.calcElapsedTime(),
+      absTimeIntoSong: this.audioElement.currentTime });
     this.trackTimeID = requestAnimationFrame(this.trackElapsedTime);
   },
 
