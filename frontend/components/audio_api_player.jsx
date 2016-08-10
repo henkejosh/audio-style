@@ -117,17 +117,17 @@ const AudioApiPlayer = React.createClass({
     // this.playerStoreListener.remove();
   },
 
-  playPause: function() {
-    if(this.state.playing === false) {
-      this.audio.pause();
-    } else if(this.state.playing === true) {
-      this.audio.play();
-    }
-  },
+  // playPause: function() {
+  //   if(this.state.playing === false) {
+  //     this.audio.pause();
+  //   } else if(this.state.playing === true) {
+  //     this.audio.play();
+  //   }
+  // },
 
-  updatePlayingStatus: function() {
-    this.setState({ playing: AudioApiPlayerStore.getPlayStatus() });
-  },
+  // updatePlayingStatus: function() {
+  //   this.setState({ playing: AudioApiPlayerStore.getPlayStatus() });
+  // },
 
   componentDidUpdate: function() {
     // this.checkForSongDetail();
@@ -135,27 +135,27 @@ const AudioApiPlayer = React.createClass({
     // this.updateCurrentComment();
   },
 
-  handlePlay: function() {
-    AudioApiPlayerActions.playPause();
-  },
+  // handlePlay: function() {
+  //   AudioApiPlayerActions.playPause();
+  // },
 
   componentWillReceiveProps: function() {
     // this.setState({ playing: AudioApiPlayerStore.getPlayStatus() });
   },
 
-  checkForSongDetail: function() {
-    if(/songs\/\d/.test(this.props.path)) {
-      if(!document.getElementById(`graph-${this.props.song.id}`)) {
-        this.createVisualizer();
-      }
-    }
-  },
+  // checkForSongDetail: function() {
+  //   if(/songs\/\d/.test(this.props.path)) {
+  //     if(!document.getElementById(`graph-${this.props.song.id}`)) {
+  //       this.createVisualizer();
+  //     }
+  //   }
+  // },
 
   handleSongScroll: function(e) {
     e.preventDefault();
     const xCoord = e.pageX - e.target.offsetLeft;
     const lengthIntoSong = (xCoord / e.target.offsetWidth);
-    this.audioElement.currentTime = this.audioElement.duration * (lengthIntoSong);
+    this.props.audioElement.currentTime = this.props.audioElement.duration * (lengthIntoSong);
   },
 
   togglePlayButton: function() {
@@ -258,7 +258,7 @@ const AudioApiPlayer = React.createClass({
             </audio>
 
             <progress className="rangeslider__fill"
-              value={this.state.timePlayed}
+              value={this.props.wholeState.timePlayed}
               onClick={this.handleSongScroll}/>
 
             <img className="comment-icon"

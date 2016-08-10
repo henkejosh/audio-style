@@ -132,6 +132,7 @@ const App = React.createClass({
           comments={this.state.comments}
           handlePlaying={this.handlePlaying}
           createAudioNode={this.createAudioNode}
+          audioElement={this.audioElement}
           />;
     }
 
