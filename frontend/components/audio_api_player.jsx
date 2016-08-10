@@ -108,7 +108,7 @@ const AudioApiPlayer = React.createClass({
   },
 
   componentWillMount: function() {
-    // this.updateCurrentComment();
+    this.updateCurrentComment();
   },
 
   componentWillUnmount: function() {
@@ -173,8 +173,9 @@ const AudioApiPlayer = React.createClass({
       this.currentComment = this.props.comments[this.currentCommentOrder];
 
     } else {
+
       const commentTime = Math.floor(this.props.wholeState.timePlayed *
-        this.audioElement.duration);
+        this.props.audioElement.duration);
 
       if(this.props.comments[this.currentCommentOrder + 1] &&
         this.props.comments[this.currentCommentOrder + 1].time_into_song
@@ -186,24 +187,26 @@ const AudioApiPlayer = React.createClass({
   },
 
   ensureCurrentCommentOrder: function() {
+    // debugger;
+    this.updateCurrentComment();
     if(this.currentCommentOrder) {
       return this.currentCommentOrder;
     }
   },
 
   toggleCurrentComment: function() {
-    if(this.state.timePlayed) {
+    if(this.props.wholeState.timePlayed) {
       return <CurrentComment comment={this.currentComment} />;
     }
   },
 
-  outputCurrentSongTime: function() {
-    if(this.audioElement) {
-      return this.audioElement.currentTime;
-    } else {
-      return 0;
-    }
-  },
+  // outputCurrentSongTime: function() {
+  //   if(this.audioElement) {
+  //     return this.audioElement.currentTime;
+  //   } else {
+  //     return 0;
+  //   }
+  // },
 
   toggleComments: function() {
     if(this.state.commentsDisplayed === true) {
@@ -222,9 +225,8 @@ const AudioApiPlayer = React.createClass({
         <div>
           <div className="comment-bar">
         <CommentBar songID={this.props.song.id}
-          time={this.props.wholeState.timePlayed}
           comments={this.props.comments}
-          actualTime={this.outputCurrentSongTime()}
+          timePlayed={this.props.wholeState.timePlayed}
           order={this.ensureCurrentCommentOrder()} />
           </div>
         </div>

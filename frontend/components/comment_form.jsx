@@ -15,7 +15,7 @@ const CommentForm = React.createClass({
     event.preventDefault();
     const comment = Object.assign({}, this.state);
     comment.song_id = this.props.songID;
-    comment.time_into_song = Math.floor(this.props.actualTime);
+    comment.time_into_song = Math.floor(this.props.timePlayed);
     CommentActions.createSongComment(this.props.song_id, comment);
     this.resetState();
   },

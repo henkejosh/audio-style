@@ -7,11 +7,12 @@ const CommentsIndex = require('./comments_index.jsx');
 const CurrentComment = require('./current_comment.jsx');
 
 const CommentBar = React.createClass({
+  // <CommentForm songID={this.props.songID} time={this.props.time}
   render: function() {
     return (
       <div className="new-comment-bar">
-        <CommentForm songID={this.props.songID} time={this.props.time}
-          actualTime={this.props.actualTime}/>
+        <CommentForm songID={this.props.songID}
+          timePlayed={this.props.timePlayed}/>
 
         <div className="existing-comments">
 
