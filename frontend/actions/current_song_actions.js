@@ -7,6 +7,11 @@ const CurrentSongActions = {
     CurrentSongApiUtil.selectCurrentSong(songID, this.receiveCurrentSong);
   },
 
+  selectSpotifyCurrentSong: function(song) {
+    // CurrentSongApiUtil.selectCurrentSong(songID, this.receiveCurrentSong);
+    this.receiveCurrentSong(song);
+  },
+
   receiveCurrentSong: function(song) {
     Dispatcher.dispatch({
       actionType: CurrentSongConstants.RECEIVE_CURRENT_SONG,

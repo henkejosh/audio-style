@@ -14,7 +14,6 @@ const CurrentSongApiUtil = {
     });
   },
 
-
 };
 
 module.exports = CurrentSongApiUtil;

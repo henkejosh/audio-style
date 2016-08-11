@@ -17,7 +17,8 @@ const AudioApiPlayer = React.createClass({
     return (
       { playing: this.props.playing,
         timePlayed: this.props.timePlayed,
-        commentsDisplayed: true }
+        // commentsDisplayed: true }
+        commentsDisplayed: false }
     );
   },
 
@@ -108,7 +109,8 @@ const AudioApiPlayer = React.createClass({
   },
 
   componentWillMount: function() {
-    this.updateCurrentComment();
+    // TODO -> uncomment this line --> needed for SpotifyInte
+    // this.updateCurrentComment();
   },
 
   componentWillUnmount: function() {
@@ -238,12 +240,14 @@ const AudioApiPlayer = React.createClass({
 
   render: function() {
     let playImageSrc = this.togglePlayButton();
-    let commentBar = this.createCommentBar();
+    // let commentBar = this.createCommentBar();
 
+    // TODO -> comment bar (below)
+    // {commentBar} => line 246
+    // debugger;
     return (
       <section className="audio-comments-bar">
 
-          {commentBar}
 
           <div className="AudioPlayer">
 
@@ -257,7 +261,7 @@ const AudioApiPlayer = React.createClass({
               className="play" type="play" onClick={this.props.handlePlaying} />
 
             <audio id="audioElement" autoPlay
-              src={this.props.song.song_url} >
+              src={this.props.song.preview_url} >
             </audio>
 
             <progress className="rangeslider__fill"

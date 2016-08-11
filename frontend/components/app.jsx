@@ -24,20 +24,17 @@ const App = React.createClass({
     const currSong = CurrentSongStore.currentSong();
     return {
       currentSong: currSong,
-      comments: currSong.comments,
-      // playing: AudioApiPlayerStore.getPlayStatus(),
-      // timePlayed: this.calcElapsedTime(),
+      // comments: currSong.comments,
       playing: false,
       timePlayed: 0,
       commentsDisplayed: true,
-      // songs: SpotifySongActions.fetchZeppelinSongs()
     };
   },
 
   componentDidMount: function() {
     this.sessionListener = SessionStore.addListener(this.isUserLoggedIn);
     this.currentSongListener = CurrentSongStore.addListener(this.isCurrentSong);
-    this.commentListener = CommentStore.addListener(this._onCommentChange);
+    // this.commentListener = CommentStore.addListener(this._onCommentChange);
     this.checkForCurrentSong();
     SongActions.getAllSongs();
 
@@ -61,11 +58,11 @@ const App = React.createClass({
   },
 
   checkForCurrentSong: function() {
-    if(this.state.currentSong.id && !this.state.comments) {
-      this.setState({
-        comments: this.state.currentSong.comments
-      });
-    }
+    // if(this.state.currentSong.id && !this.state.comments) {
+    //   this.setState({
+    //     comments: this.state.currentSong.comments
+    //   });
+    // }
   },
 
   componentWillMount: function() {
@@ -137,13 +134,21 @@ const App = React.createClass({
           song={this.state.currentSong}
           path={this.props.location.pathname}
           wholeState={this.state}
-          comments={this.state.comments}
+          // comments={this.state.comments}
           handlePlaying={this.handlePlaying}
           createAudioNode={this.createAudioNode}
           audioElement={this.audioElement}
           />;
     }
 
+    const childrenWithProps = React.Children.map(this.props.children,
+    (child) => React.cloneElement(child, {
+      wholeState: this.state,
+      handlePlaying: this.handlePlaying
+    })
+   );
+
+  //  {this.props.children}
     return (
       <div>
         <Header/>
@@ -151,7 +156,7 @@ const App = React.createClass({
         <div className="define-content-area">
           <div className="content-start">
 
-          {this.props.children}
+          {childrenWithProps}
           {currSong}
 
           </div>

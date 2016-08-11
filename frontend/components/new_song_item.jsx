@@ -15,9 +15,11 @@ const NewSongItem = React.createClass({
   handleSongPlay: function(e) {
     e.preventDefault();
     if(CurrentSongStore.currentSong() && (this.props.song.id === CurrentSongStore.currentSong().id)) {
-      AudioApiPlayerActions.playPause();
+      // AudioApiPlayerActions.playPause();
+      this.props.handlePlaying();
     } else {
-      CurrentSongActions.selectCurrentSong(this.props.song.id);
+      // CurrentSongActions.selectCurrentSong(this.props.song.id);
+      CurrentSongActions.selectSpotifyCurrentSong(this.props.song);
     }
   },
 
@@ -31,7 +33,7 @@ const NewSongItem = React.createClass({
       <div className="newSongItem">
 
         <img src="https://s3.amazonaws.com/f.cl.ly/items/2B380T1a0s181d370f3K/movie-player-play-button.png"
-          onClick={this.props.handlePlaying}
+          onClick={this.handleSongPlay}
           className="play-button"/>
 
         <img className="final-item-image"
