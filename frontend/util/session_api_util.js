@@ -38,7 +38,7 @@ const SessionApiUtil = {
         console.log("SessionApiUtil#logout error");
       }
     });
-  },
+  }
 };
 
 module.exports = SessionApiUtil;

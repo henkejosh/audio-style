@@ -31,6 +31,7 @@ const IndexRoute = reactRouter.IndexRoute;
 // new stuff
 const FinalSongIndex = require('./components/final_song_index.jsx');
 const FinalSongIndexItem = require('./components/final_song_index_item.jsx');
+const SpotifySongStore = require('./stores/spotify_song_store.js');
 
 const _ensureLoggedIn = function(nextState, replace) {
   if (!SessionStore.isUserLoggedIn()) {
@@ -75,3 +76,4 @@ window.CurrentSongStore = CurrentSongStore;
 window.CommentStore = CommentStore;
 window.AudioApiPlayerActions = AudioApiPlayerActions;
 window.AudioApiPlayerStore = AudioApiPlayerStore;
+window.SpotifySongStore = SpotifySongStore;

@@ -16,6 +16,8 @@ const AudioApiPlayer = require('./audio_api_player.jsx');
 const AudioApiPlayerStore = require('../stores/audio_api_player_store.js');
 const AudioApiPlayerActions = require('../actions/audio_api_player_actions.js');
 // new stuff
+const SpotifyApiUtil = require('../util/spotify_api_util.js');
+const SpotifySongActions = require('../actions/spotify_song_actions.js');
 
 const App = React.createClass({
   getInitialState: function() {
@@ -27,7 +29,8 @@ const App = React.createClass({
       // timePlayed: this.calcElapsedTime(),
       playing: false,
       timePlayed: 0,
-      commentsDisplayed: true
+      commentsDisplayed: true,
+      // songs: SpotifySongActions.fetchZeppelinSongs()
     };
   },
 
@@ -37,6 +40,8 @@ const App = React.createClass({
     this.commentListener = CommentStore.addListener(this._onCommentChange);
     this.checkForCurrentSong();
     SongActions.getAllSongs();
+
+
   },
 
   _onCommentChange: function() {

@@ -31,13 +31,16 @@ const NewSongItem = React.createClass({
       <div className="newSongItem">
 
         <img src="https://s3.amazonaws.com/f.cl.ly/items/2B380T1a0s181d370f3K/movie-player-play-button.png"
-          onClick={this.handleSongPlay}
+          onClick={this.props.handlePlaying}
           className="play-button"/>
 
+        <img className="final-item-image"
+          src={this.props.song.album.images[1].url} />
+
         <ul>
-          <li>{this.props.song.artist_name}</li>
-          <li>{this.props.song.title}</li>
-          <li>{this.props.song.album_name}</li>
+          <li>{this.props.song.artists[0].name}</li>
+          <li>{this.props.song.name}</li>
+          <li>{this.props.song.album.name}</li>
         </ul>
       </div>
     );

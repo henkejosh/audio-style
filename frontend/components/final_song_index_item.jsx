@@ -12,10 +12,11 @@ const AudioApiPlayerStore = require('../stores/audio_api_player_store.js');
 
 const FinalSongIndexItem = React.createClass({
   render: function() {
+    // debugger;
     return (
       <figure className="final-song-index-item">
         <img className="final-item-image"
-          src={this.props.song.album_name}
+          src={this.props.song.album.images[1].url}
           onClick={this.props.handlePlaying} />
       </figure>
     );
