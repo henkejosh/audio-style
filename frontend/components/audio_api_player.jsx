@@ -174,10 +174,14 @@ const AudioApiPlayer = React.createClass({
       this.currentCommentOrder = 1;
       this.currentComment = this.props.comments[this.currentCommentOrder];
 
+    } else if(this.props.comments === undefined) {
+      return;
+
     } else {
 
       const commentTime = Math.floor(this.props.wholeState.timePlayed *
         this.props.audioElement.duration);
+        // debugger;
 
       if(this.props.comments[this.currentCommentOrder + 1] &&
         this.props.comments[this.currentCommentOrder + 1].time_into_song
@@ -240,16 +244,14 @@ const AudioApiPlayer = React.createClass({
 
   render: function() {
     let playImageSrc = this.togglePlayButton();
-    // let commentBar = this.createCommentBar();
+    let commentBar = this.createCommentBar();
 
-    // TODO -> comment bar (below)
-    // {commentBar} => line 246
-    // debugger;
     return (
       <section className="audio-comments-bar">
 
 
           <div className="AudioPlayer">
+            {commentBar}
 
             <ul className="artist-title-album">
               <li>{this.props.song.title}</li>

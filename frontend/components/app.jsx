@@ -24,7 +24,7 @@ const App = React.createClass({
     const currSong = CurrentSongStore.currentSong();
     return {
       currentSong: currSong,
-      // comments: currSong.comments,
+      comments: {},
       playing: false,
       timePlayed: 0,
       commentsDisplayed: true,
@@ -134,7 +134,7 @@ const App = React.createClass({
           song={this.state.currentSong}
           path={this.props.location.pathname}
           wholeState={this.state}
-          // comments={this.state.comments}
+          comments={this.state.comments}
           handlePlaying={this.handlePlaying}
           createAudioNode={this.createAudioNode}
           audioElement={this.audioElement}

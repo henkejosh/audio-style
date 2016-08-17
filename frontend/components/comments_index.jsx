@@ -17,21 +17,28 @@ const CommentsIndex = React.createClass({
     }
   },
 
+  formatComments: function() {
+    if(this.props.comments === undefined) { return; }
+
+    Object.keys(this.props.comments).map( commentOrder => {
+      let order;
+      if(this.props.order) {
+        order = this.setOrderDisplay(commentOrder);
+      }
+      return (
+        <CommentIndexItem key={this.props.comments[commentOrder].id}
+          comment={this.props.comments[commentOrder]}
+          styleType={order} />
+      );
+    });
+  },
+
   render: function() {
     return (
       <div className="comments-index">
 
-        {Object.keys(this.props.comments).map( commentOrder => {
-          let order;
-          if(this.props.order) {
-            order = this.setOrderDisplay(commentOrder);
-          }
-          return (
-            <CommentIndexItem key={this.props.comments[commentOrder].id}
-              comment={this.props.comments[commentOrder]}
-              styleType={order} />
-          );
-        })}
+        { this.formatComments }
+        
       </div>
     );
   }

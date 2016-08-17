@@ -22,6 +22,10 @@ const _receiveComments = function(comments) {
 const _receiveCurrentSong = function(currentSong) {
   _comments = {};
   _songID = currentSong.id;
+  if(currentSong.comments === undefined) {
+    return;
+  }
+
   currentSong.comments.forEach( comment => {
     _comments[comment.id] = comment;
   });
